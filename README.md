@@ -7,3 +7,5 @@
 
 
 <iframe width="100%" height="300" src="//jsfiddle.net/jlsheep/doxqoyLf/embedded/result/" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<script async src="//jsfiddle.net/jlsheep/doxqoyLf/8/embed/result/"></script>
