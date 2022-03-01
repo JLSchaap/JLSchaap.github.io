@@ -1,0 +1,57 @@
+{
+    "version": 8,
+    "name": "Standaard Visualisatie",
+    "id": "1",
+    "zoom": 12,
+    "pitch": 50,
+    "center": [
+        0,
+        0
+    ],
+    "sprite": "http://localhost:4200/styles/standaardsprites/sprites",
+    "glyphs": "http://localhost:4200/styles/font/{fontstack}/{range}.pbf",
+    "layers": [
+        {
+            "minzoom": 14.092701099153356,
+            "id": "Nummeraanduidingsreeks pand_nummeraanduiding symbol1000",
+            "type": "symbol",
+            "paint": {
+                "text-opacity": 1,
+                "text-color": "#000000",
+                "text-halo-color": "#ffffff"
+            },
+            "layout": {
+                "text-field": "{tekst}",
+                "text-font": [
+                    "Arial"
+                ],
+                "text-size": 13,
+                "text-rotate": {
+                    "type": "identity",
+                    "property": "hoek"
+                }
+            },
+            "source": "bgt",
+            "metadata": {
+                "name": "Standaard VisualisatieVisualisatie van de nummeraanduidingsreeks",
+                "id": "Nummeraanduidingsreeks",
+                "sourcelayer": "pand_nummeraanduiding",
+                "sld": "sld\\standaardvisualisatie\\sld-0070-nummeraanduidingreeks.xml"
+            },
+            "source-layer": "pand_nummeraanduiding",
+            "filter": [
+                "==",
+                "status",
+                "bestaand"
+            ]
+        }
+    ],
+    "sources": {
+        "bgt": {
+            "type": "vector",
+            "tiles": [
+                "https://api.pdok.nl/lv/bgt/oat/v1_0-preprod/tiles/EPSG:28992/{z}/{x}/{y}"
+            ]
+        }
+    }
+}
