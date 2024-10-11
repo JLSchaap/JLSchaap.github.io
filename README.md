@@ -8,7 +8,7 @@
 
 ## [OGC Api features](https://ogcapi.ogc.org/features/)
 
-### [Find Landingpage ](https://docs.ogc.org/is/17-069r4/17-069r4.html#_api_landing_page)
+### Find Landingspage [Open Graph protocol](https://ogp.me/) and [sidemap](https://api.pdok.nl/sitemap.xml)
 
 * [Via Index](https://api.pdok.nl/) -[OGC API - Records](https://ogcapi.ogc.org/records/)  
   * [PDOK](https://www.pdok.nl/ogc-apis/-/article/basisregistratie-topografie-brt-topnl)
@@ -16,6 +16,8 @@
 * Via Search-engine 
   * [duck duck go](https://duckduckgo.com/?q=ogc+api+top10nl+pdok&t=h_&ia=web)
   * [Google](https://www.google.nl/search?q=pdok+top10nl+ogc+api)
+
+### [Landingpage ](https://docs.ogc.org/is/17-069r4/17-069r4.html#_api_landing_page)
 
 ### [Collections](https://docs.ogc.org/is/17-069r4/17-069r4.html#_feature_collections_rootcollections)
 
