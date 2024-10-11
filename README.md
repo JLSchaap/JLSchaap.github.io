@@ -1,11 +1,12 @@
 # [JLSchaap.github.io](https://jlschaap.github.io/)
- [BGT vector tile demo](https://jlschaap.github.io/vectortile-demo-viewer/).
- 
+ [PDOK vector tile demo](https://pdok.github.io/vectortile-demo-viewer). 
  [sources in public PDOK repo](https://github.com/PDOK/vectortile-demo-viewer)
+
+ [Edit styles in maputnik](https://jlschaap.github.io/maputnik/?layer=298854420%7E0#14.05/52.15531/5.39044)
  
  
  
- Compile status vectortile demo:  [![Node.js CI](https://github.com/JLSchaap/vectortile-demo-viewer/actions/workflows/buildanddeploy.yml/badge.svg)](https://github.com/JLSchaap/vectortile-demo-viewer/actions/workflows/buildanddeploy.yml)
+
  
  
  
