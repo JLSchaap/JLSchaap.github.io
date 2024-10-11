@@ -36,6 +36,7 @@
 
 * [building 3d tiles :'3D Basisvoorziening - 3D Tiles Gebouwen'](https://api.pdok.nl/kadaster/3d-basisvoorziening/ogc/v1/collections/gebouwen/3dtiles)
 
+* [PDOK 3D - Viewer](https://app.pdok.nl/3d-viewer/#x=186070.65&y=319298.78&alt=131&range=288&heading=200&pitch=-11&roll=360&background=Luchtfoto&layers=) 
 
 ___
 
