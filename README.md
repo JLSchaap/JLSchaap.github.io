@@ -11,7 +11,7 @@
 
 ## [OGC Api features](https://ogcapi.ogc.org/features/)
 
-- [building collection: 'BRT TOP10NL - Gebouw vlak'](https://api.pdok.nl/brt/top10nl/ogc/v1/xcollections/gebouw_vlak)
+- [building collection: 'BRT TOP10NL - Gebouw vlak'](https://api.pdok.nl/brt/top10nl/ogc/v1/collections/gebouw_vlak)
 
 ## [OGC Api features](https://ogcapi.ogc.org/features/) Download Grid for [Cityjson](https://www.cityjson.org/) Zip
 
