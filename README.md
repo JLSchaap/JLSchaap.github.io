@@ -1,6 +1,5 @@
 
-# [OGC Api features](https://ogcapi.ogc.org/features/)
-
+# [OGC API Common](https://ogcapi.ogc.org/common/)
 ## Find Landingspage [Open Graph protocol](https://ogp.me/) and [sidemap](https://api.pdok.nl/sitemap.xml)
 
 * [Via Index](https://api.pdok.nl/) -[OGC API - Records](https://ogcapi.ogc.org/records/)  
@@ -11,7 +10,19 @@
   * [Google](https://www.google.nl/search?q=pdok+top10nl+ogc+api)
 * [Via announcement](https://www.google.nl/search?q=PDOK+lanceert+de+BRT+TOP10NL+in+OGC+API%E2%80%99s)
 
-## [Landingpage](https://docs.ogc.org/is/17-069r4/17-069r4.html#_api_landing_page)
+## [OGC API Landingpage](https://docs.ogc.org/is/17-069r4/17-069r4.html#_api_landing_page)
+
+
+
+* [Top10NL](https://api.pdok.nl/brt/top10nl/ogc/v1)
+* [BGT](https://api.pdok.nl/lv/bgt/ogc/v1)
+* [BAG](https://api.pdok.nl/lv/bag/ogc/v1)
+* [Bestuurlijke gebieden](https://api.pdok.nl/kadaster/bestuurlijkegebieden/ogc/v1)
+* [BRO](https://api.pdok.nl/bzk/bro-gminsamenhang-karakteristieken/ogc/v1)
+* [3D basisvoorziening](https://api.pdok.nl/kadaster/3d-basisvoorziening/ogc/v1)
+
+# [OGC Api features](https://ogcapi.ogc.org/features/)
+
 
 ## [Collections](https://docs.ogc.org/is/17-069r4/17-069r4.html#_feature_collections_rootcollections)
 
