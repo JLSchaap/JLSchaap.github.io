@@ -1,0 +1,14 @@
+
+{
+  "name": "mainpage",
+  "version": "1.0.0",
+
+  "scripts": {
+    "check": "markdown-link-check ./README.md"
+
+  },
+
+  "devDependencies": {
+    "markdown-link-check": "^3.12.2"
+  }
+}
