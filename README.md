@@ -36,8 +36,8 @@
 * [TOP10NL Item](https://api.pdok.nl/brt/top10nl/ogc/v1/collections/gebouw_vlak/items?lokaal_id=103018712)
 * [BGT item](https://api.pdok.nl/lv/bgt/ogc/v1/collections/pand/items?lokaal_id=G0307.b94c2bd2f8f44429a23bb46202b1627b)
 * [BAG Item](https://api.pdok.nl/lv/bag/ogc/v1-preprod/collections/pand/items?identificatie=0307100000333887)
-* 
-## by key from PDOK-API
+
+## Item Feature by key from PDOK-API
 
 * [TOP10NL](https://api.pdok.nl/brt/top10nl/ogc/v1/collections/gebouw_vlak/items/bffedb27-48f8-50d9-a725-66f6024ec569)
 * [BGT](https://api.pdok.nl/lv/bgt/ogc/v1/collections/pand/items/6f694250-fbb5-52f3-8761-3cf564846700)
