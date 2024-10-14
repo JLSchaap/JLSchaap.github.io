@@ -46,4 +46,4 @@
 
 ___
 
-[![Check Markdown links](https://github.com/JLSchaap/JLSchaap.github.io/actions/workflows/checklinks.yml/badge.svg)](https://github.com/JLSchaap/JLSchaap.github.io/actions/workflows/checklinks.yml)
+[![check markdown links](https://github.com/JLSchaap/JLSchaap.github.io/actions/workflows/checkMarkdown.yml/badge.svg)](https://github.com/JLSchaap/JLSchaap.github.io/actions/workflows/checkMarkdown.yml)
