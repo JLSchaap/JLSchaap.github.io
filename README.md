@@ -86,7 +86,7 @@
 
 * PDOK achtergrond kaart (simple)
 * Vectortile styling:  
-* * [Edit styles in maputnik](https://jlschaap.github.io/maputnik/?layer=3709811513%7E0#14.03/52.10126/5.76428)
+* * [Edit styles in maputnik](https://jlschaap.github.io/maputnik/?layer=2385953104%7E0#15.55/52.075336/5.628303)
  
 ## Geniet 
 
