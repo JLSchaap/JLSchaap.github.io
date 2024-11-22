@@ -43,6 +43,16 @@
 
 
 # Camping
+## Mini Camping
+* [mini camping BGT](https://api.pdok.nl/lv/bgt/ogc/v1/collections/functioneelgebied/items?lokaal_id=G0228.74db96b42a17437a9e0db32655fe85b3)
+* [mini camping TOP10NL](https://api.pdok.nl/brt/top10nl/ogc/v1/collections/functioneel_gebied_vlak/items?lokaal_id=131049741) 
+
+## Camping Groot 
+* [Vakantiepark Top10nl](https://api.pdok.nl/brt/top10nl/ogc/v1/collections/functioneel_gebied_vlak/items?lokaal_id=130899350) 
+* [Camping BGT deel 1](https://api.pdok.nl/lv/bgt/ogc/v1/collections/functioneelgebied/items?lokaal_id=G0228.f2f158bc65484a1890e5161cf13850cc)
+* [Camping BGT deel 2](https://api.pdok.nl/lv/bgt/ogc/v1/collections/functioneelgebied/items?lokaal_id=G0228.25ebc050f44945a8ad232ded52ce8c92)
+
+
 
 
 
