@@ -5,12 +5,17 @@
 
 ### Find Landingspage [Open Graph protocol](https://ogp.me/) and [sidemap](https://api.pdok.nl/sitemap.xml)
 
-* [Via Index](https://api.pdok.nl/) -[OGC API - Records](https://ogcapi.ogc.org/records/)  
-  * [PDOK](https://www.pdok.nl/ogc-apis/-/article/basisregistratie-topografie-brt-topnl)  *
-  * [NGR](https://www.nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/search?any=BRT%20TOP10NL%20OGC%20API)  
+
 * Via Search-engine
-  * [duck duck go](https://duckduckgo.com/?q=ogc+api+top10nl+pdok&t=h_&ia=web)
-  * [Google](https://www.google.nl/search?q=pdok+top10nl+ogc+api)
+  * [Google dataset kasteel](https://www.google.nl/search?q=dataset+kasteel)
+  * [Google pdok kasteel](https://www.google.nl/search?q=pdok+kasteel)
+  * [Google pdok camping ](https://www.google.nl/search?q=pdok+camping)
+  * [Google pdok camping bgt ](https://www.google.nl/search?q=pdok+camping+bgt)
+
+* [Via Index](https://api.pdok.nl/) -[OGC API - Records](https://ogcapi.ogc.org/records/)  
+  * [PDOK](https://www.pdok.nl/ogc-apis/-/article/basisregistratie-topografie-brt-topnl)
+  * [NGR](https://www.nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/search?any=BRT%20TOP10NL%20OGC%20API) 
+   
 * [Via announcement](https://www.google.nl/search?q=PDOK+lanceert+de+BRT+TOP10NL+in+OGC+API%E2%80%99s)
 
 ### [OGC API Landingpage](https://docs.ogc.org/is/17-069r4/17-069r4.html#_api_landing_page)
