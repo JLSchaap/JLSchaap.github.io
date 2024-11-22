@@ -1,4 +1,71 @@
 
+#GeoBuzz [match je open PDOK data tot een verrassende combinatie](https://geobuzz.nl/programma/108)
+
+# Kiezen van de ingrediënten (zoeken en vinden)
+
+## Find Landingspage [Open Graph protocol](https://ogp.me/) and [sidemap](https://api.pdok.nl/sitemap.xml)
+
+* [Via Index](https://api.pdok.nl/) -[OGC API - Records](https://ogcapi.ogc.org/records/)  
+  * [PDOK](https://www.pdok.nl/ogc-apis/-/article/basisregistratie-topografie-brt-topnl)  *
+  * [NGR](https://www.nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/search?any=BRT%20TOP10NL%20OGC%20API)  
+* Via Search-engine
+  * [duck duck go](https://duckduckgo.com/?q=ogc+api+top10nl+pdok&t=h_&ia=web)
+  * [Google](https://www.google.nl/search?q=pdok+top10nl+ogc+api)
+* [Via announcement](https://www.google.nl/search?q=PDOK+lanceert+de+BRT+TOP10NL+in+OGC+API%E2%80%99s)
+
+## [OGC API Landingpage](https://docs.ogc.org/is/17-069r4/17-069r4.html#_api_landing_page)
+
+# Kastelen
+[NGR](https://www.nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/search?any=kasteel) 
+[Kastelen RCE](https://services.rce.geovoorziening.nl/landschapsatlas/wfs?SERVICE=WFS&REQUEST=GetCapabilities) 
+
+# Punt
+* [Top10NL gebouw punt](https://api.pdok.nl/brt/top10nl/ogc/v1/collections/gebouw_punt) 
+ 
+
+
+<img src="https://images.memorix.nl/rce/thumb/1600x1600/1d8c0849-7852-21cc-d050-4dd4e9ae4f77.jpg" alt="kasteel ruine wageningen via RCE" width="500" height="400">
+
+* [kasteel ruine wageningen Top10NL Punt](https://api.pdok.nl/brt/top10nl/ogc/v1/collections/gebouw_punt/items?lokaal_id=131688852)
+
+
+# Vlak
+
+<img src="https://images.memorix.nl/rce/thumb/1600x1600/a1337e59-6cbe-aa5c-6ee4-c3f883c4fb0d.jpg" alt="Hoekelum via RCE" width="500" height="400">
+
+* [Hoekelum Top10NL](https://api.pdok.nl/brt/top10nl/ogc/v1/collections/gebouw_vlak/items?lokaal_id=102557439) 
+* [Hoekelum BGT](https://api.pdok.nl/lv/bgt/ogc/v1/collections/pand/items?lokaal_id=G0228.fe246f4964ded6d6e0400a0a35020533)
+
+<img src=" https://images.memorix.nl/rce/thumb/1600x1600/46c097fe-1d9e-d2a8-d96c-061507f3c24e.jpg" alt="Kernhem via RCE" width="500" height="400">
+
+* [Kernhem TOP10nl (overige)](https://api.pdok.nl/brt/top10nl/ogc/v1/collections/gebouw_vlak/items?lokaal_id=101307078)
+* [Kernhem BGT](https://api.pdok.nl/lv/bgt/ogc/v1/collections/pand/items?lokaal_id=G0228.fe246f4955ded6d6e0400a0a35020533)
+
+
+# Camping
+
+
+
+
+# Bepalen van de volgorde en hoeveelheid (informatie analyse)
+* PDOK smaakje (Geen RCE)
+
+* Cool drankje  (WMS of WFS niet cool)
+* Kastelen o.b.v. TOP10NL
+* Download, https://app.pdok.nl/brt/top10nl/download-viewer/
+* OGC API https://api.pdok.nl/brt/top10nl/ogc/v1
+* OGC API Feature 
+* OGC API Vectortile
+* 
+
+
+# Shaken (maken van de combikaart)
+# Zeven (testen van het resultaat)
+# Serveer de cocktail (styleje kaart)
+# Genieten met elkaar van je drankje (Voeg user stories toe)
+
+
+
 # [OGC API Common](https://ogcapi.ogc.org/common/)
 ## Find Landingspage [Open Graph protocol](https://ogp.me/) and [sidemap](https://api.pdok.nl/sitemap.xml)
 
