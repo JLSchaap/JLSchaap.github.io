@@ -1,11 +1,9 @@
 name: Check Markdown links
 
-on: 
-   schedule: 
-    - cron: '30 5 * * *'
-   push:
-    branches:
-      - master
+on:
+  workflow_dispatch: 
+
+
 
 jobs:
   markdown-link-check:
