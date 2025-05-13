@@ -1,3 +1,38 @@
+# Rijkswaterstaat OGC APIs Demo 
+ 
+
+- [RWS Digitaal Topografisch Bestand (DTB)](https://api.pdok.nl/rws/digitaaltopografischbestand/ogc/v1)
+- [RWS NWB Wegen](https://api.pdok.nl/rws/nwbwegen/ogc/v1)
+- [RWS Richtlijn Overstromingsrisico](https://api.pdok.nl/rws/richtlijnoverstromingsrisico/ogc/v1)
+- [RWS Richtlijn Stedelijk Afvalwater](https://api.pdok.nl/rws/richtlijnstedelijkafvalwater/ogc/v1)
+- [RWS Verkeersscheidingsstelsel](https://api.pdok.nl/rws/verkeersscheidingsstelsel/ogc/v1)
+
+# Developer
+
+* [Cloud Native OGC APIs server, written in Go](https://github.com/PDOK/gokoala) with [Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) [for OGC API](https://github.com/PDOK/ogcapi-operator)
+* [PDOK GeoPackage Valdidator](https://github.com/PDOK/geopackage-validator)
+* 
+# [OGC API Common](https://ogcapi.ogc.org/common/)
+## Find Landingspage [Open Graph protocol](https://ogp.me/) and [sidemap](https://api.pdok.nl/sitemap.xml)
+
+* [Via Index](https://api.pdok.nl/) -[OGC API - Records](https://ogcapi.ogc.org/records/)  
+  * [PDOK](https://www.pdok.nl/ogc-apis/-/article/basisregistratie-topografie-brt-topnl)  *
+  * [NGR](https://www.nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/search?any=BRT%20TOP10NL%20OGC%20API)  
+* Via Search-engine
+  * [duck duck go](https://duckduckgo.com/?q=ogc+api+top10nl+pdok&t=h_&ia=web)
+  * [Google](https://www.google.nl/search?q=pdok+top10nl+ogc+api)
+* [Via announcement](https://www.google.nl/search?q=PDOK+lanceert+de+BRT+TOP10NL+in+OGC+API%E2%80%99s)
+* 
+
+# [OGC Api Tiles](https://ogcapi.ogc.org/tiles/)
+
+## [OGC API Mapbox Vector Tiles](https://docs.ogc.org/is/20-057/20-057.html#ats_mvt) and [OGC API - Styles](https://ogcapi.ogc.org/styles/)
+
+* [PDOK vector tile demo](https://pdok.github.io/vectortile-demo-viewer), [sources are available](https://github.com/PDOK/vectortile-demo-viewer)
+* [PDOK Viewer (TOP10NL)](https://app.pdok.nl/viewer/#x=160000.00&y=455000.00&z=9.0145&background=Luchtfoto&layers=a4dde400-00ab-4fc2-9b5d-bba058cac630;BRT%20TOP10NL%20-%20Tiles)
+* [Edit styles in maputnik](https://jlschaap.github.io/maputnik/?layer=298854420%7E0#14.05/52.15531/5.39044)
+* [Legend from style](https://api.pdok.nl/brt/top10nl/ogc/v1/styles/brt_top10nl__webmercatorquad?f=html)
+
 
 # GeoBuzz [match je open PDOK data tot een verrassende combinatie](https://geobuzz.nl/programma/108)
 
@@ -104,16 +139,7 @@
 #
 # Bijlage:  
 
-# [OGC API Common](https://ogcapi.ogc.org/common/)
-## Find Landingspage [Open Graph protocol](https://ogp.me/) and [sidemap](https://api.pdok.nl/sitemap.xml)
 
-* [Via Index](https://api.pdok.nl/) -[OGC API - Records](https://ogcapi.ogc.org/records/)  
-  * [PDOK](https://www.pdok.nl/ogc-apis/-/article/basisregistratie-topografie-brt-topnl)  *
-  * [NGR](https://www.nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/search?any=BRT%20TOP10NL%20OGC%20API)  
-* Via Search-engine
-  * [duck duck go](https://duckduckgo.com/?q=ogc+api+top10nl+pdok&t=h_&ia=web)
-  * [Google](https://www.google.nl/search?q=pdok+top10nl+ogc+api)
-* [Via announcement](https://www.google.nl/search?q=PDOK+lanceert+de+BRT+TOP10NL+in+OGC+API%E2%80%99s)
 
 ## [OGC API Landingpage](https://docs.ogc.org/is/17-069r4/17-069r4.html#_api_landing_page)
 
@@ -156,14 +182,7 @@
 * [building collection (GRID):  '3D Basisvoorziening - 3D Objecten Gebouwen'](https://api.pdok.nl/kadaster/3d-basisvoorziening/ogc/v1/collections/basisbestand_gebouwen)
 
 
-# [OGC Api Tiles](https://ogcapi.ogc.org/tiles/)
 
-## [OGC API Mapbox Vector Tiles](https://docs.ogc.org/is/20-057/20-057.html#ats_mvt) and [OGC API - Styles](https://ogcapi.ogc.org/styles/)
-
-* [PDOK vector tile demo](https://pdok.github.io/vectortile-demo-viewer), [sources are available](https://github.com/PDOK/vectortile-demo-viewer)
-* [PDOK Viewer (TOP10NL)](https://app.pdok.nl/viewer/#x=160000.00&y=455000.00&z=9.0145&background=Luchtfoto&layers=a4dde400-00ab-4fc2-9b5d-bba058cac630;BRT%20TOP10NL%20-%20Tiles)
-* [Edit styles in maputnik](https://jlschaap.github.io/maputnik/?layer=298854420%7E0#14.05/52.15531/5.39044)
-* [Legend from style](https://api.pdok.nl/brt/top10nl/ogc/v1/styles/brt_top10nl__webmercatorquad?f=html)
 
 
 
@@ -173,10 +192,7 @@
 
 * [PDOK 3D - Viewer](https://app.pdok.nl/3d-viewer/#x=186070.65&y=319298.78&alt=131&range=288&heading=200&pitch=-11&roll=360&background=Luchtfoto&layers=)
 
-# Developer
 
-* [Cloud Native OGC APIs server, written in Go](https://github.com/PDOK/gokoala) with [Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) [for OGC API](https://github.com/PDOK/ogcapi-operator)
-* [PDOK GeoPackage Valdidator](https://github.com/PDOK/geopackage-validator)
 
 ___
 
