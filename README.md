@@ -1,10 +1,18 @@
 # Rijkswaterstaat OGC APIs Demo  
 
-- [RWS Digitaal Topografisch Bestand (DTB)](https://api.pdok.nl/rws/digitaaltopografischbestand/ogc/v1)
-- [RWS NWB Wegen](https://api.pdok.nl/rws/nwbwegen/ogc/v1)
-- [RWS Richtlijn Overstromingsrisico](https://api.pdok.nl/rws/richtlijnoverstromingsrisico/ogc/v1)
-- [RWS Richtlijn Stedelijk Afvalwater](https://api.pdok.nl/rws/richtlijnstedelijkafvalwater/ogc/v1)
-- [RWS Verkeersscheidingsstelsel](https://api.pdok.nl/rws/verkeersscheidingsstelsel/ogc/v1)
+* [RWS Digitaal Topografisch Bestand (DTB)](https://api.pdok.nl/rws/digitaaltopografischbestand/ogc/v1)
+    * [RWS DTB Vlakken Item PDOK API Key](https://api.pdok.nl/rws/digitaaltopografischbestand/ogc/v1/collections/vlakken/items/cb39585b-386f-5209-8c2d-a67b65174016)
+    * [RWS DTB Vlakken Items (EPSG:28992, limit 10, dtb_id=44722025)](https://api.pdok.nl/rws/digitaaltopografischbestand/ogc/v1/collections/vlakken/items?crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&limit=10&dtb_id=44722025)
+    * [RWS DTB Vlakken Items (dtb_id=44722025)](https://api.pdok.nl/rws/digitaaltopografischbestand/ogc/v1/collections/vlakken/items?dtb_id=44722025)
+     
+* [RWS NWB Wegen](https://api.pdok.nl/rws/nwbwegen/ogc/v1)
+    * [RWS NWB Wegvakken Item (API Key)](https://api.pdok.nl/rws/nwbwegen/ogc/v1/collections/wegvakken/items/dd0a90db-f962-5a90-b1df-b9e0ffebbb09)
+    * [RWS NWB Wegvakken Items (wvk_id=601259605)](https://api.pdok.nl/rws/nwbwegen/ogc/v1/collections/wegvakken/items?wvk_id=601259605)
+    * [RWS NWB Wegvakken Items (EPSG:28992, limit 10, wvk_id=601259605)](https://api.pdok.nl/rws/nwbwegen/ogc/v1/collections/wegvakken/items?crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&limit=10&wvk_id=601259605)
+ 
+* [RWS Richtlijn Overstromingsrisico](https://api.pdok.nl/rws/richtlijnoverstromingsrisico/ogc/v1)
+* [RWS Richtlijn Stedelijk Afvalwater](https://api.pdok.nl/rws/richtlijnstedelijkafvalwater/ogc/v1)
+* [RWS Verkeersscheidingsstelsel](https://api.pdok.nl/rws/verkeersscheidingsstelsel/ogc/v1)
 
 # Developer
 
