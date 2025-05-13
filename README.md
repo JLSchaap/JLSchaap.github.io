@@ -1,5 +1,4 @@
-# Rijkswaterstaat OGC APIs Demo 
- 
+# Rijkswaterstaat OGC APIs Demo  
 
 - [RWS Digitaal Topografisch Bestand (DTB)](https://api.pdok.nl/rws/digitaaltopografischbestand/ogc/v1)
 - [RWS NWB Wegen](https://api.pdok.nl/rws/nwbwegen/ogc/v1)
