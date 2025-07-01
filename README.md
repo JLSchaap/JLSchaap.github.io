@@ -1,4 +1,4 @@
-# Rijkswaterstaat OGC APIs Demo  
+# Rijkswaterstaat OGC APIs
 
 * [RWS Digitaal Topografisch Bestand (DTB)](https://api.pdok.nl/rws/digitaal-topografisch-bestand/ogc/v1)
   * [RWS DTB Vlakken Item PDOK API Key](https://api.pdok.nl/rws/digitaal-topografisch-bestand/ogc/v1/collections/vlakken/items/cb39585b-386f-5209-8c2d-a67b65174016)
