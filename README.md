@@ -24,7 +24,8 @@
 
 ## Find Landingspage [Open Graph protocol](https://ogp.me/) and [sidemap](https://api.pdok.nl/sitemap.xml)
 
-* [Via Index](https://api.pdok.nl/) -[OGC API - Records](https://ogcapi.ogc.org/records/)  
+* [Via Index](https://api.pdok.nl/) -[OGC API - Records](https://ogcapi.ogc.org/records/) 
+* [PDOK demo records](https://api.pdok.nl/catalogus/collections/metadata:main/items) 
   * [PDOK](https://www.pdok.nl/ogc-apis/-/article/basisregistratie-topografie-brt-topnl)  *
   * [NGR](https://www.nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/search?any=BRT%20TOP10NL%20OGC%20API)  
 * Via Search-engine
