@@ -1,23 +1,13 @@
 # [FOS4G](https://foss4g.nl/)
 
 * [Kadastrale Kaart (OGC API)](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/)
-* [Kadastrale kaart onbewoond eiland in Den Haag,  Perceel GVH03-F-422 alias Perceel 's-Gravenhage (GVH03) F 422 of Perceel den haag F 422](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=10&identificatie_lokaal_id=22250042270000)
+* [Kadastrale kaart onbewoond eiland in Den Haag,  Perceel GVH03-F-422 alias Perceel 's-Gravenhage (GVH03) F 422 of Perceel den haag F 422 via domain keyd](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=10&identificatie_lokaal_id=22250042270000)
+* [item 30055097-28f2-590d-94e3-0fcad842b27c uit perceel collectie van deze API ](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items/30055097-28f2-590d-94e3-0fcad842b27c)
 
-# Rijkswaterstaat OGC APIs
+* [box in RD](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?bbox=4.308353961050413%2C52.07925164212523%2C4.31715816011346%2C52.08206960261779&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&limit=1000)
 
-* [RWS Digitaal Topografisch Bestand (DTB)](https://api.pdok.nl/rws/digitaal-topografisch-bestand/ogc/v1)
-  * [RWS DTB Vlakken Item PDOK API Key](https://api.pdok.nl/rws/digitaal-topografisch-bestand/ogc/v1/collections/vlakken/items/cb39585b-386f-5209-8c2d-a67b65174016)
-  * [RWS DTB Vlakken Items (EPSG:28992, limit 10, dtb_id=44722025)](https://api.pdok.nl/rws/digitaal-topografisch-bestand/ogc/v1/collections/vlakken/items?crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&limit=10&dtb_id=44722025)
-  * [RWS DTB Vlakken Items (dtb_id=44722025)](https://api.pdok.nl/rws/digitaal-topografisch-bestand/ogc/v1/collections/vlakken/items?dtb_id=44722025)
+*[filter in box](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?bbox=4.308353961050413%2C52.07925164212523%2C4.31715816011346%2C52.08206960261779&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&limit=1000&kadastrale_gemeente_code=881&perceelnummer=422)
 
-* [RWS NWB Wegen](https://api.pdok.nl/rws/nationaal-wegenbestand-wegen/ogc/v1)
-  * [RWS NWB Wegvakken Item (API Key)](https://api.pdok.nl/rws/nationaal-wegenbestand-wegen/ogc/v1/collections/wegvakken/items/dd0a90db-f962-5a90-b1df-b9e0ffebbb09)
-  * [RWS NWB Wegvakken Items (wvk_id=601259605)](https://api.pdok.nl/rws/nationaal-wegenbestand-wegen/ogc/v1/collections/wegvakken/items?wvk_id=601259605)
-  * [RWS NWB Wegvakken Items (EPSG:28992, limit 10, wvk_id=601259605)](https://api.pdok.nl/rws/nationaal-wegenbestand-wegen/ogc/v1/collections/wegvakken/items?crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&limit=10&wvk_id=601259605)
-
-* [RWS Richtlijn Overstromingsrisico](https://api.pdok.nl/rws/overstromingen-risicogebied/ogc/v1)
-* [RWS Richtlijn Stedelijk Afvalwater](https://api.pdok.nl/rws/richtlijn-stedelijk-afvalwater/ogc/v1)
-* [RWS Verkeersscheidingsstelsel scheepvaart](https://api.pdok.nl/rws/scheepvaart-verkeersscheidingsstelsel-noordzee/ogc/v1)
 
 # Developer
 
@@ -198,6 +188,25 @@
 
 * [Cloud Native OGC APIs server, written in Go](https://github.com/PDOK/gokoala) with [Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) [for OGC API](https://github.com/PDOK/ogcapi-operator)
 * [PDOK GeoPackage Valdidator](https://github.com/PDOK/geopackage-validator)
+
+# Rijkswaterstaat OGC APIs
+
+* [RWS Digitaal Topografisch Bestand (DTB)](https://api.pdok.nl/rws/digitaal-topografisch-bestand/ogc/v1)
+  * [RWS DTB Vlakken Item PDOK API Key](https://api.pdok.nl/rws/digitaal-topografisch-bestand/ogc/v1/collections/vlakken/items/cb39585b-386f-5209-8c2d-a67b65174016)
+  * [RWS DTB Vlakken Items (EPSG:28992, limit 10, dtb_id=44722025)](https://api.pdok.nl/rws/digitaal-topografisch-bestand/ogc/v1/collections/vlakken/items?crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&limit=10&dtb_id=44722025)
+  * [RWS DTB Vlakken Items (dtb_id=44722025)](https://api.pdok.nl/rws/digitaal-topografisch-bestand/ogc/v1/collections/vlakken/items?dtb_id=44722025)
+
+* [RWS NWB Wegen](https://api.pdok.nl/rws/nationaal-wegenbestand-wegen/ogc/v1)
+  * [RWS NWB Wegvakken Item (API Key)](https://api.pdok.nl/rws/nationaal-wegenbestand-wegen/ogc/v1/collections/wegvakken/items/dd0a90db-f962-5a90-b1df-b9e0ffebbb09)
+  * [RWS NWB Wegvakken Items (wvk_id=601259605)](https://api.pdok.nl/rws/nationaal-wegenbestand-wegen/ogc/v1/collections/wegvakken/items?wvk_id=601259605)
+  * [RWS NWB Wegvakken Items (EPSG:28992, limit 10, wvk_id=601259605)](https://api.pdok.nl/rws/nationaal-wegenbestand-wegen/ogc/v1/collections/wegvakken/items?crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&limit=10&wvk_id=601259605)
+
+* [RWS Richtlijn Overstromingsrisico](https://api.pdok.nl/rws/overstromingen-risicogebied/ogc/v1)
+* [RWS Richtlijn Stedelijk Afvalwater](https://api.pdok.nl/rws/richtlijn-stedelijk-afvalwater/ogc/v1)
+* [RWS Verkeersscheidingsstelsel scheepvaart](https://api.pdok.nl/rws/scheepvaart-verkeersscheidingsstelsel-noordzee/ogc/v1)
+
+
+
 
 # OGC API in ontwikkeling
 
