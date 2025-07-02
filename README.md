@@ -1,3 +1,8 @@
+# [FOS4G](https://foss4g.nl/)
+
+* [Kadastrale Kaart (OGC API)](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/)
+* [Kadastrale kaart onbewoond eiland in Den Haag,  Perceel GVH03-F-422 alias Perceel 's-Gravenhage (GVH03) F 422 of Perceel den haag F 422](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=10&identificatie_lokaal_id=22250042270000)
+
 # Rijkswaterstaat OGC APIs
 
 * [RWS Digitaal Topografisch Bestand (DTB)](https://api.pdok.nl/rws/digitaal-topografisch-bestand/ogc/v1)
@@ -196,7 +201,7 @@
 
 # OGC API in ontwikkeling
 
-*[Kadastrale kaart onbewoond eiland  Perceel GVH03-F-422 alias Perceel 's-Gravenhage (GVH03) F 422 of Perceel den haag F 422](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=10&identificatie_lokaal_id=22250042270000)
+
 
 * [Digitaal topografisch bestand (punt kast/huis)](https://api.pdok.nl/rws/digitaal-topografisch-bestand/ogc/v1/collections/punten/items?omschr=kast%2Fhuis&dtb_id=45783009&objectid=2737903&cte=Q29)
 * fysische geografische regios by objectid 
