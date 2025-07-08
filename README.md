@@ -5,7 +5,7 @@
 # Onbewoond eiland in Den Haag
 
 * [Kadastrale kaart,  Perceel GVH03-F-422 alias Perceel 's-Gravenhage (GVH03) F 422 of Perceel den haag F 422 via lokaal_id (domain uri key)](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=10&identificatie_lokaal_id=22250042270000)
-* [item 30055097-28f2-590d-94e3-0fcad842b27c uit perceel collectie van deze API ](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items/30055097-28f2-590d-94e3-0fcad842b27c)
+* [item 30055097-28f2-590d-94e3-0fcad842b27c uit perceel collectie van deze API](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items/30055097-28f2-590d-94e3-0fcad842b27c)
 
 * [box in RD](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?bbox=4.308353961050413%2C52.07925164212523%2C4.31715816011346%2C52.08206960261779&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&limit=1000)
 
@@ -31,8 +31,8 @@
 
 ## Find Landingspage [Open Graph protocol](https://ogp.me/) and [sidemap](https://api.pdok.nl/sitemap.xml)
 
-* [Via Index](https://api.pdok.nl/) -[OGC API - Records](https://ogcapi.ogc.org/records/) 
-* [PDOK demo records](https://api.pdok.nl/catalogus/collections/metadata:main/items) 
+* [Via Index](https://api.pdok.nl/) -[OGC API - Records](https://ogcapi.ogc.org/records/)
+* [PDOK demo records](https://api.pdok.nl/catalogus/v1-demo/openapi?f=html)
   * [PDOK](https://www.pdok.nl/ogc-apis/-/article/basisregistratie-topografie-brt-topnl)  *
   * [NGR](https://www.nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/search?any=BRT%20TOP10NL%20OGC%20API)  
 * Via Search-engine
@@ -146,7 +146,6 @@
 * Voeg terrassen toe voor een drankje tijdens fietstocht?
 * Tip: Op vakantie doe het analoog: camping gids, kastelen gids en een drankje
 
-
 # Bijlage  
 
 ## [OGC API Landingpage](https://docs.ogc.org/is/17-069r4/17-069r4.html#_api_landing_page)
@@ -217,22 +216,55 @@
 * [RWS Richtlijn Stedelijk Afvalwater](https://api.pdok.nl/rws/richtlijn-stedelijk-afvalwater/ogc/v1)
 * [RWS Verkeersscheidingsstelsel scheepvaart](https://api.pdok.nl/rws/scheepvaart-verkeersscheidingsstelsel-noordzee/ogc/v1)
 
+# Rijksdienst voor Ondernemend Nederland (RVO)
 
+## Beschermde gebieden
 
+* [Nationale Parken](https://api.pdok.nl/rvo/nationale-parken/ogc/v1)
+* [Nationale Parken (INSPIRE geharmoniseerd)](https://api.pdok.nl/rvo/nationale-parken-geharmoniseerd/ogc/v1)
+* [Natura2000](https://api.pdok.nl/rvo/natura2000/ogc/v1)
+* [Natura2000 (INSPIRE geharmoniseerd)](https://api.pdok.nl/rvo/natura2000-geharmoniseerd/ogc/v1)
+* [Wetlands](https://api.pdok.nl/rvo/wetlands/ogc/v1)
+* [Wetlands (INSPIRE geharmoniseerd)](https://api.pdok.nl/rvo/wetlands-geharmoniseerd/ogc/v1)
+* [Nationaal Beschermde Gebieden (CDDA)](https://api.pdok.nl/rvo/nationaal-beschermde-gebieden-cdda/ogc/v1)
+  * [Nationaal Beschermde Gebieden (CDDA) natura200](https://api.pdok.nl/rvo/nationaal-beschermde-gebieden-cdda/ogc/v1/collections/cdda/items/c2f3c8d8-bbe7-551e-8bd8-b28384416e93)
+  * [Nationaal Beschermde Gebieden (CDDA) via id](https://api.pdok.nl/rvo/nationaal-beschermde-gebieden-cdda/ogc/v1/collections/cdda/items?localid=1_NL3009017_)
+  * [Nationaal Beschermde Gebieden (CDDA) ruimtelijke plannen](https://api.pdok.nl/rvo/nationaal-beschermde-gebieden-cdda/ogc/v1/collections/cdda/items/a071a4a0-1583-5a4a-afe0-fb0209943f56)
 
-# OGC API in ontwikkeling
+* [Natuurmeting Op Kaart 2014](https://api.pdok.nl/rvo/natuurmeting-op-kaart-2014/ogc/v1)
 
+## Habitat- en vogelrichtlijn
 
+* [Habitatrichtlijn verspreiding van soorten](https://api.pdok.nl/rvo/habitatrichtlijn-verspreiding-soorten/ogc/v1)
+* [Habitatrichtlijn verspreiding van habitattypen](https://api.pdok.nl/rvo/habitatrichtlijn-verspreiding-typen/ogc/v1)
+* [Vogelrichtlijn verspreidingsgebied van soorten](https://api.pdok.nl/rvo/vogelrichtlijn-verspreidingsgebied-soorten/ogc/v1)
+* [Vogelrichtlijn verspreiding van soorten](https://api.pdok.nl/rvo/vogelrichtlijn-verspreiding-soorten/ogc/v1)
+
+## Flora en fauna
+
+* [Mossel- en oesterhabitats](https://api.pdok.nl/rvo/mossel-en-oesterhabitats/ogc/v1)
+* [Mosselzaadinvanginstallaties](https://api.pdok.nl/rvo/mosselzaad-invanginstallaties/ogc/v1)
+* [Gesloten Gebieden voor Visserij](https://api.pdok.nl/rvo/gesloten-gebieden-visserij/ogc/v1)
+* [Schelpdierpercelen](https://api.pdok.nl/rvo/schelpdierpercelen/ogc/v1)
+* [Schelpdierpercelen (INSPIRE geharmoniseerd)](https://api.pdok.nl/rvo/schelpdierpercelen-geharmoniseerd/ogc/v1)
+* [Invasieve Exoten (INSPIRE geharmoniseerd)](https://api.pdok.nl/rvo/invasieve-exoten-geharmoniseerd/ogc/v1)
+
+## Energie
+
+* [Potentiekaart Omgevingswarmte](https://api.pdok.nl/rvo/potentiekaart-omgevingswarmte/ogc/v1)
+* [Potentiekaart Reststromen](https://api.pdok.nl/rvo/potentiekaart-reststromen/ogc/v1)
+* [Potentiekaart Restwarmte](https://api.pdok.nl/rvo/potentiekaart-restwarmte/ogc/v1)
+* [Potentieel koude en warmte uit open en gesloten WKO systemen](https://api.pdok.nl/rvo/potentieel-warmte-koude-opslagsystemen/ogc/v1)
+* [Windsnelheden 100m hoogte](https://api.pdok.nl/rvo/windsnelheden/ogc/v1)
+
+# OnGC API in ontwikkeling
 
 * [Digitaal topografisch bestand (punt kast/huis)](https://api.pdok.nl/rws/digitaal-topografisch-bestand/ogc/v1/collections/punten/items?omschr=kast%2Fhuis&dtb_id=45783009&objectid=2737903&cte=Q29)
-* fysische geografische regios by objectid 
-* fysische geografische regios by pdokid 
+* fysische geografische regios by objectid
+* fysische geografische regios by pdokid
 
 * Basisregistratie gewaspercelen heeft in registratie geen uniek id
 
-* [Nationaal Beschermde Gebieden (CDDA) natura200](https://api.pdok.nl/rvo/cdda/ogc/v1-preprod/collections/cdda/items/c2f3c8d8-bbe7-551e-8bd8-b28384416e93)
-* [Nationaal Beschermde Gebieden (CDDA) via id](https://api.pdok.nl/rvo/cdda/ogc/v1-preprod/collections/cdda/items?localid=1_NL3009017_)
-* [Nationaal Beschermde Gebieden (CDDA) ruimtelijke plannen](https://api.pdok.nl/rvo/cdda/ogc/v1-preprod/collections/cdda/items/a071a4a0-1583-5a4a-afe0-fb0209943f56)
 
 ___
 
