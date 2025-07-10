@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OGC API Records</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; background: #f9f9f9; }
+    h1 { color: #2c3e50; }
+    table { border-collapse: collapse; width: 100%; background: #fff; }
+    th, td { border: 1px solid #ddd; padding: 8px; }
+    th { background: #f0f0f0; }
+    tr:hover { background: #f5f5f5; }
+    .loading { color: #888; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+  <h1>OGC API Records</h1>
+  <div id="status" class="loading">Loading records...</div>
+  <table id="recordsTable" style="display:none;">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Type</th>
+        <th>Identifier</th>
+        <th>Links</th>
+      </tr>
+    </thead>
+    <tbody id="recordsBody"></tbody>
+  </table>
+    <div>
+      <app-objectinfo-view id="objectinfooutside" > </app-objectinfo-view>
+    </div>
+  <script>
+    let baseUrl = 'https://api.pdok.nl/catalogus/v1-demo/collections/metadata:main/items';
+    let currentQ = '';
+
+    // Create search box and button
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchDiv = document.createElement('div');
+      searchDiv.style.marginBottom = '1em';
+
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.id = 'searchInput';
+      input.placeholder = 'Enter search term...';
+      input.value = currentQ;
+      input.style.marginRight = '0.5em';
+
+      const button = document.createElement('button');
+      button.textContent = 'Search';
+
+      searchDiv.appendChild(input);
+      searchDiv.appendChild(button);
+      document.body.insertBefore(searchDiv, document.body.firstChild);
+
+      button.addEventListener('click', () => {
+      currentQ = input.value.trim();
+      fetchAndRender();
+      });
+
+      input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        currentQ = input.value.trim();
+        fetchAndRender();
+      }
+      });
+    });
+
+    function fetchAndRender() {
+      const apiUrl = `${baseUrl}?q=${encodeURIComponent(currentQ)},f=json`;
+
+      // Update JSON link
+      const jsonLink = document.querySelector('a[href^="https://api.pdok.nl"]');
+      if (jsonLink) jsonLink.href = apiUrl;
+
+      document.getElementById('status').className = 'loading';
+      document.getElementById('status').textContent = 'Loading records...';
+      document.getElementById('status').style.display = '';
+      document.getElementById('recordsTable').style.display = 'none';
+      document.getElementById('recordsBody').innerHTML = '';
+
+      fetch(apiUrl)
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.json();
+      })
+      .then(data => {
+        const records = data.features || [];
+        const tbody = document.getElementById('recordsBody');
+        if (records.length === 0) {
+        document.getElementById('status').textContent = 'No records found.';
+        return;
+        }
+        records.forEach(record => {
+        const props = record.properties || {};
+        const id = record.id || '';
+        const title = props.title || '';
+        const description = props.description || '';
+        const type = props.type || '';
+        const date = props['created'] || props['date'] || '';
+
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>
+          <a title="${title}" href="${baseUrl}/${id}">
+          ${title}</a><br/>
+          ${description}
+          </td>
+          <td>${type}</td>
+          <td>${id}</td>
+          <td>
+          ${(record.links || []).map(link => `<a href="${link.href}" target="_blank">${link.rel || 'link'}</a>`).join(', ')}
+          </td>
+        `;
+        tbody.appendChild(tr);
+        });
+        document.getElementById('status').style.display = 'none';
+        document.getElementById('recordsTable').style.display = '';
+      })
+      .catch(error => {
+        document.getElementById('status').className = 'error';
+        document.getElementById('status').textContent = 'Error loading records: ' + error.message;
+      });
+    }
+
+    // Initial fetch
+    fetchAndRender();
+    //const baseUrl = 'https://catalogue.ejpsoil.eu/collections/metadata:main/items?q=inventaris';
+    const apiUrl = baseUrl + '?q=,f=json';
+
+    // Add JSON link at the top right
+    document.addEventListener('DOMContentLoaded', () => {
+      const jsonLink = document.createElement('a');
+      jsonLink.href = apiUrl;
+      jsonLink.textContent = 'JSON';
+      jsonLink.style.position = 'absolute';
+      jsonLink.style.right = '2em';
+      jsonLink.style.top = '1em';
+      jsonLink.style.fontSize = '1em';
+      jsonLink.style.textDecoration = 'underline';
+      jsonLink.style.color = '#2980b9';
+      jsonLink.target = '_blank';
+      document.body.appendChild(jsonLink);
+    });
+
+
+
+</script>
+</body>
+</html>
