@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>PDOK Metadata Viewer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2em;
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 1em;
+      border: 1px solid #ccc;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>PDOK Metadata Viewer</h1>
+  <div id="output">Laden...</div>
+
+  <script>
+    // Functie om parameter uit URL te halen
+    function getParameterByName(name) {
+      const url = new URL(window.location.href);
+      return url.searchParams.get(name);
+    }
+
+    async function fetchData() {
+      const id = getParameterByName('id');
+      if (!id) {
+        document.getElementById('output').innerText = 'Geen ID opgegeven in de URL. Gebruik ?id=...';
+        return;
+      }
+
+      const apiUrl = `https://api.pdok.nl/catalogus/v1-demo/collections/metadata:main/items/${id}`;
+
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) throw new Error(`Fout bij ophalen: ${response.status}`);
+        const data = await response.json();
+
+        document.getElementById('output').innerHTML = `<h2>Resultaat voor ID: ${id}</h2><pre>${JSON.stringify(data, null, 2)}</pre>`;
+      } catch (error) {
+        document.getElementById('output').innerText = `Fout: ${error.message}`;
+      }
+    }
+
+    fetchData();
+  </script>
+</body>
+</html>
