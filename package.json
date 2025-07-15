@@ -4,7 +4,7 @@
   "version": "1.0.0",
 
   "scripts": {
-    "check": "markdown-link-check ./README.md"
+    "check": "markdown-link-check -c check.cfg ./README.md"
 
   },
 
