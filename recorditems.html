@@ -8,20 +8,21 @@
       font-family: Arial, sans-serif;
       margin: 2em;
     }
-    pre {
-      background-color: #f4f4f4;
-      padding: 1em;
+  
+    img.preview {
+      margin-top: 1em;
+      max-width: 100%;
       border: 1px solid #ccc;
-      overflow-x: auto;
     }
   </style>
 </head>
 <body>
   <h1>PDOK Metadata Viewer</h1>
   <div id="output">Laden...</div>
+   <div id="previewContainer"></div>
 
+ 
   <script>
-    // Functie om parameter uit URL te halen
     function getParameterByName(name) {
       const url = new URL(window.location.href);
       return url.searchParams.get(name);
@@ -41,7 +42,28 @@
         if (!response.ok) throw new Error(`Fout bij ophalen: ${response.status}`);
         const data = await response.json();
 
-        document.getElementById('output').innerHTML = `<h2>Resultaat voor ID: ${id}</h2><pre>${JSON.stringify(data, null, 2)}</pre>`;
+        // Toon metadata
+        document.getElementById('output').innerHTML = `
+          <h2>${data.properties?.title || 'Geen titel'}</h2>
+          <p>${data.properties?.description || 'Geen beschrijving beschikbaar.'}</p>
+        `;
+
+          document.getElementById('output').innerHTML = `<h2>Resultaat voor ID: ${id}</h2><pre>${JSON.stringify(data, null, 2)}</pre>`;
+
+
+       
+
+        const previewLink = data.links?.find(link =>
+          link.protocol === "WWW:LINK-1.0-http--image-thumbnail"
+        );
+        if (previewLink?.href) {
+          const img = document.createElement('img');
+          img.src = previewLink.href;
+          img.alt = "Preview afbeelding";
+          img.className = "preview";
+          document.getElementById('previewContainer').appendChild(img);
+        }
+
       } catch (error) {
         document.getElementById('output').innerText = `Fout: ${error.message}`;
       }
