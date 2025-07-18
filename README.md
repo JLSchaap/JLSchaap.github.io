@@ -13,7 +13,7 @@
 
 # BRT achtergrond vectortiles
 
-* [OGC BRT achtergrondkaart v1-demo](https://api.pdok.nl/brt/achtergrondkaart/ogc/v1-demo/)
+* [OGC BRT achtergrondkaart v1-demo](https://api.pdok.nl/kadaster/brt-achtergrondkaart/ogc/v1/)
 
 * [vectortile BRT achtergrond maputnik](https://jlschaap.github.io/maputnik/?layer=2044384824%7E2&view=inspect#16/52.08063/4.313835)
 
