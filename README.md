@@ -139,6 +139,7 @@
 
 * Voeg terrassen toe voor een drankje tijdens fietstocht?
 * Tip: Op vakantie doe het analoog: camping gids, kastelen gids en een drankje
+* of ga lekker [padelen](https://vanoortsports.nl/) 
 
 # Bijlage  
 
