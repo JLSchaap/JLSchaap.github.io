@@ -78,6 +78,9 @@
 
 <img src="https://images.memorix.nl/rce/thumb/1600x1600/a1337e59-6cbe-aa5c-6ee4-c3f883c4fb0d.jpg" alt="Hoekelum via RCE" width="500" height="400">
 
+[see in google Earth](https://earth.google.com/web/@52.01542337,5.6766148,17.08109167a,137.10380938d,35y,67.83162863h,63.32390382t,0r/data=CgRCAggBQgIIAEoNCP___________wEQAA)
+
+
 * [Hoekelum Top10NL](https://api.pdok.nl/brt/top10nl/ogc/v1/collections/gebouw_vlak/items?lokaal_id=102557439)
 * [Hoekelum BGT](https://api.pdok.nl/lv/bgt/ogc/v1/collections/pand/items?lokaal_id=G0228.fe246f4964ded6d6e0400a0a35020533)
 
