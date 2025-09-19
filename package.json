@@ -4,9 +4,9 @@
   "version": "1.0.0",
 
   "scripts": {
-    "check": "markdown-link-check -c check.cfg ./README.md"
-
-  },
+    "check": "markdown-link-check -c check.cfg ./README.md", 
+    "toc":"./markdown-toc.sh README.md > READMEtoc.md"
+     },
 
   "devDependencies": {
     "markdown-link-check": "3.13.7"

@@ -1,7 +1,9 @@
+[table of content](./READMEtoc.md)
+
 # Standards
 
 
-# [OGC](https://www.ogc.org/standards/) Standards
+## [OGC](https://www.ogc.org/standards/) Standards
 
 | Category       | Description                                                                                     | Examples                        |
 |----------------|-------------------------------------------------------------------------------------------------|---------------------------------|
@@ -9,9 +11,9 @@
 | **OGC APIs**     | RESTful, resource-centric APIs using modern web practices, building on legacy OGC services     | OGC API – Features, Tiles, Records |
 
 
+## Inspire
 
-# Inspire
-
+### Data and Service Model
 * [INSPIRE Legislation](https://knowledge-base.inspire.ec.europa.eu/legislation_en)
 
 | Summary                  | **Regulation (EU) 1089/2010** Data model                            | **Regulation (EC) 976/2009**   Service model                          |
@@ -32,7 +34,7 @@
 * [Data specifications](https://github.com/INSPIRE-MIF/technical-guidelines/tree/main/data)
 * [Overview of the implementation of INSPIRE in the different Member States](https://knowledge-base.inspire.ec.europa.eu/tools/inspire-your-country_en)
 
-# Discovery / Harvesting 
+### Discovery / Harvesting 
  Technical Guidance for the implementation of INSPIRE **Discovery** Services)
 
 [CSW Inspire Netherlands](https://nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/deb81ebe-c7a7-42ba-bc21-f07cd348c3e8)
@@ -40,11 +42,11 @@
 [CSW get record by id](https://nationaalgeoregister.nl/geonetwork/srv/dut/csw-inspire?service=CSW&version=2.0.2&request=GetRecordById&outputschema=http://www.isotc211.org/2005/gmd&elementsetname=full&id=e80ad426-1392-4349-9f80-14dae5f1bf57#MD_DataIdentification)
 
 
-## Dutch Cadastral parcels View Services
+## Dutch Cadastral parcels 
 
 [Cadastral parcels Theme Netherlands](https://inspire-geoportal.ec.europa.eu/srv/eng/catalog.search#/results?country=nl&view=themeOverview&theme=cp&iacs=none&legislation=none&envdomain=none&basedomain=0)
 
-## Kadastrale Percelen (INSPIRE geharmoniseerd) Cadastral Parcels (INSPIRE harmonized)
+### Kadastrale Percelen (INSPIRE geharmoniseerd) Cadastral Parcels (INSPIRE harmonized)
 
 <img src= "https://inspire-mif.github.io/uml-models/approved/html/EARoot/EA2/EA1/EA3/EA1/EA7530.png">
 
@@ -59,13 +61,13 @@ Status: ✅ Pass – Dataset is harmonized according to the INSPIRE regulation.
 Specification: INSPIRE Data Specification on Cadastral Parcels – Guidelines
 Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 
-## Inspire View (WMS)
+#### Inspire View (WMS)
 
 <img src="https://service.pdok.nl/kadaster/cp/wms/v1_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=81107.19656788540306%2C455004.5008309210534%2C81297.87271111604059%2C455112.1505408418016&CRS=EPSG%3A28992&WIDTH=847&HEIGHT=478&LAYERS=CP.CadastralParcel&STYLES=CP.CadastralParcel.Default&FORMAT=image%2Fpng&DPI=96&MAP_RESOLUTION=96&FORMAT_OPTIONS=dpi%3A96&TRANSPARENT=TRUE">
 
 [feature info](https://service.pdok.nl/kadaster/cp/wms/v1_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&BBOX=81181.3688522478332743%2C455047.25335909030400217%2C81181.79916609986685216%2C455047.67003244906663895&CRS=EPSG%3A28992&WIDTH=2&HEIGHT=2&LAYERS=CP.CadastralParcel&STYLES=CP.CadastralParcel.Default&FORMAT=image%2Fpng&QUERY_LAYERS=CP.CadastralParcel&INFO_FORMAT=text%2Fhtml&I=0&J=1)
 
-## Inspire download
+#### Inspire download
 
 * [Atom full download](https://service.pdok.nl/kadaster/cp/atom/v1_0/index.xml)
 
@@ -75,8 +77,11 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 | **Specification** | Technical Guidance for INSPIRE **Download** Services  
 | **Explanation**    | Conformant with the technical specification, validated using the ETF Validator for INSPIRE view and download services version 1.4.1           |
 
-
+#### Inspire other
 * [WFS other](https://service.pdok.nl/kadaster/cp/wfs/v1_0?request=GetCapabilities&service=WFS)
+
+#### OGC API
+* [OGC API]() 
 
 | Field             | Value                                                                                                                                                     |
 |------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -101,22 +106,11 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 * Technical Guidelines: INSPIRE Data Specification on Cadastral Parcels
 ❌ Pass: False (Content and structure deviate from INSPIRE spec; uses Dutch model)
 
-## As is View (WMS)
+### Inspire As is View (WMS)
 
 <img src="https://service.pdok.nl/kadaster/kadastralekaart/wms/v5_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=81107.19656788540306%2C455004.5008309210534%2C81297.87271111604059%2C455112.1505408418016&CRS=EPSG%3A28992&WIDTH=847&HEIGHT=478&LAYERS=Kadastralekaart&STYLES=Default&FORMAT=image%2Fpng&DPI=96&MAP_RESOLUTION=96&FORMAT_OPTIONS=dpi%3A96&TRANSPARENT=TRUE">
 
 [feature info](https://service.pdok.nl/kadaster/kadastralekaart/wms/v5_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&BBOX=81181.3688522478332743%2C455047.25335909030400217%2C81181.79916609986685216%2C455047.67003244906663895&CRS=EPSG%3A28992&WIDTH=2&HEIGHT=2&LAYERS=Kadastralekaart&STYLES=Default&FORMAT=image%2Fpng&QUERY_LAYERS=Kadastralekaart&INFO_FORMAT=text%2Fhtml&I=0&J=1)
-
-## OGC API
-
-* [Kadastrale Kaart (OGC API)](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/)
-
-* [Kadastrale kaart,  Perceel GVH03-F-422 alias Perceel 's-Gravenhage (GVH03) F 422 of Perceel den haag F 422 via lokaal_id (domain uri key)](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=10&identificatie_lokaal_id=22250042270000)
-* [item 30055097-28f2-590d-94e3-0fcad842b27c uit perceel collectie van deze API](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items/30055097-28f2-590d-94e3-0fcad842b27c)
-
-* [box in RD](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?bbox=4.308353961050413%2C52.07925164212523%2C4.31715816011346%2C52.08206960261779&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&limit=1000)
-
-* [filter in box](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?bbox=4.308353961050413%2C52.07925164212523%2C4.31715816011346%2C52.08206960261779&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&limit=1000&kadastrale_gemeente_code=881&perceelnummer=422)
 
 
 ## Inspire validation
@@ -146,23 +140,37 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 * [xml schema validation CP](https://github.com/inspire-eu-validation/data-cp/blob/3.1/cp-gml/official-schema-validation.md)
 * [PDOK geopackage validator](https://github.com/PDOK/geopackage-validator)
 
-# BRT achtergrond vectortiles
+
+## OGC API
+
+* [Kadastrale Kaart (OGC API)](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/)
+
+* [Kadastrale kaart,  Perceel GVH03-F-422 alias Perceel 's-Gravenhage (GVH03) F 422 of Perceel den haag F 422 via lokaal_id (domain uri key)](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=10&identificatie_lokaal_id=22250042270000)
+* [item 30055097-28f2-590d-94e3-0fcad842b27c uit perceel collectie van deze API](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items/30055097-28f2-590d-94e3-0fcad842b27c)
+
+* [box in RD](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?bbox=4.308353961050413%2C52.07925164212523%2C4.31715816011346%2C52.08206960261779&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&limit=1000)
+
+* [filter in box](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?bbox=4.308353961050413%2C52.07925164212523%2C4.31715816011346%2C52.08206960261779&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&limit=1000&kadastrale_gemeente_code=881&perceelnummer=422)
+
+
+
+### BRT achtergrond vectortiles
 
 * [OGC BRT achtergrondkaart v1-demo](https://api.pdok.nl/kadaster/brt-achtergrondkaart/ogc/v1/)
 
 * [vectortile BRT achtergrond maputnik](https://jlschaap.github.io/maputnik/?layer=2044384824%7E2&view=inspect#16/52.08063/4.313835)
 
-# RDInfo
+### RDInfo
 
 * [RDinfo](https://api.pdok.nl/kadaster/rdinfo/ogc/v1/)
 
-# Developer
+### Developer
 
 * [Cloud Native OGC APIs server, written in Go](https://github.com/PDOK/gokoala) with [Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) [for OGC API](https://github.com/PDOK/ogcapi-operator)
 * [PDOK GeoPackage Valdidator](https://github.com/PDOK/geopackage-validator)
 *
 
-# [OGC API Common](https://ogcapi.ogc.org/common/)
+### [OGC API Common](https://ogcapi.ogc.org/common/)
 
 ### Find Landingspage [Open Graph protocol](https://ogp.me/) and [sidemap](https://api.pdok.nl/sitemap.xml)
 
@@ -397,5 +405,6 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 
 
 ___
+
 
 [![check markdown links](https://github.com/JLSchaap/JLSchaap.github.io/actions/workflows/checkMarkdown.yml/badge.svg)](https://github.com/JLSchaap/JLSchaap.github.io/actions/workflows/checkMarkdown.yml)
