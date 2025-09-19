@@ -1,21 +1,35 @@
-# Inspire documentation
+# Inspire
 
 * [INSPIRE Legislation](https://knowledge-base.inspire.ec.europa.eu/legislation_en)
+
+| Summary                  | **Regulation (EU) 1089/2010** Data model                            | **Regulation (EC) 976/2009**   Service model                          |
+|-------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------|
+| **Full Title**                      | Interoperability of spatial datasets and services         | Network services for spatial data                         |
+| **Focus Area**                      | Data content and structure                                | Access and delivery of data via services                  |
+| **Purpose**                         | Ensure harmonized data models across Member States        | Define how services like WMS, WFS, and discovery work     |
+| **Applies To**                      | Spatial datasets (Annex I, II, III themes)                | Discovery, view, download, transformation, invoke services |
+| **Examples**                        | How a cadastral parcel or road is modeled                 | How a WMS responds to a GetMap request                    |
+| **Technical Scope**                 | Data schemas, code lists, feature types                   | Service interfaces, protocols, metadata accessibility standards   |
+| **Target Audience**                 | Data producers, harmonization experts                     | IT service providers, geoportal developers                |
+| **INSPIRE Annex Coverage**          | Annex I, II, III themes                                   | All services supporting INSPIRE datasets                  |
+| **Legal Basis**                     | Commission Regulation (EU) No. 1089/2010                  | Commission Regulation (EC) No. 976/2009                   |
+
 * [Implementing rules](https://knowledge-base.inspire.ec.europa.eu/legislation/implementing-rules_en)
-* [INSPIRE Technische guidelines](https://inspire-mif.github.io/technical-guidelines/)* 
+* [INSPIRE Technische guidelines](https://inspire-mif.github.io/technical-guidelines/)
 * [Conceptual UML datamodel](https://inspire-mif.github.io/uml-models/approved/html/index.htm)
 * [Data specifications](https://github.com/INSPIRE-MIF/technical-guidelines/tree/main/data)
 * [Overview of the implementation of INSPIRE in the different Member States](https://knowledge-base.inspire.ec.europa.eu/tools/inspire-your-country_en)
 
 ## Dutch Cadastral parcels View Services
 
-[Cadastral parcels](https://inspire-geoportal.ec.europa.eu/srv/eng/catalog.search#/results?country=nl&view=themeOverview&theme=cp&iacs=none&legislation=none&envdomain=none&basedomain=0)
+[Cadastral parcels Theme Netherlands](https://inspire-geoportal.ec.europa.eu/srv/eng/catalog.search#/results?country=nl&view=themeOverview&theme=cp&iacs=none&legislation=none&envdomain=none&basedomain=0)
 
 ## Kadastrale Percelen (INSPIRE geharmoniseerd) Cadastral Parcels (INSPIRE harmonized)
-<img src= https://inspire-mif.github.io/uml-models/approved/html/EARoot/EA2/EA1/EA3/EA1/EA7530.png>
 
- * [Dataset Cadastral Parcels (INSPIRE harmonized PDOK Portal)](https://www.pdok.nl/atom-downloadservices/-/article/kadastrale-percelen-inspire-geharmoniseerd-)
- * [Dataset Cadastral Parcels (INSPIRE harmonized NGR)](https://www.nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/e80ad426-1392-4349-9f80-14dae5f1bf57)
+<img src= "https://inspire-mif.github.io/uml-models/approved/html/EARoot/EA2/EA1/EA3/EA1/EA7530.png">
+
+* [Dataset Cadastral Parcels (INSPIRE harmonized PDOK Portal)](https://www.pdok.nl/atom-downloadservices/-/article/kadastrale-percelen-inspire-geharmoniseerd-)
+* [Dataset Cadastral Parcels (INSPIRE harmonized NGR)](https://www.nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/e80ad426-1392-4349-9f80-14dae5f1bf57)
 
 Conformance to INSPIRE Legislation
 
@@ -25,21 +39,37 @@ Status: ✅ Pass – Dataset is harmonized according to the INSPIRE regulation.
 Specification: INSPIRE Data Specification on Cadastral Parcels – Guidelines
 Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 
-
 ## Inspire View (WMS)
 
 <img src="https://service.pdok.nl/kadaster/cp/wms/v1_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=81107.19656788540306%2C455004.5008309210534%2C81297.87271111604059%2C455112.1505408418016&CRS=EPSG%3A28992&WIDTH=847&HEIGHT=478&LAYERS=CP.CadastralParcel&STYLES=CP.CadastralParcel.Default&FORMAT=image%2Fpng&DPI=96&MAP_RESOLUTION=96&FORMAT_OPTIONS=dpi%3A96&TRANSPARENT=TRUE">
 
 [feature info](https://service.pdok.nl/kadaster/cp/wms/v1_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&BBOX=81181.3688522478332743%2C455047.25335909030400217%2C81181.79916609986685216%2C455047.67003244906663895&CRS=EPSG%3A28992&WIDTH=2&HEIGHT=2&LAYERS=CP.CadastralParcel&STYLES=CP.CadastralParcel.Default&FORMAT=image%2Fpng&QUERY_LAYERS=CP.CadastralParcel&INFO_FORMAT=text%2Fhtml&I=0&J=1)
 
+## Inspire download
 
+* [Atom full download](https://service.pdok.nl/kadaster/cp/atom/v1_0/index.xml)
+
+| Field           | Value                                                                                                                                            |
+|----------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Specification** | Commission Regulation (EC) No. 976/2009 – implementing Directive 2007/2/EC as regards network services |         |
+| **Specification** | Technical Guidance for INSPIRE **Download** Services  
+| **Explanation**    | Conformant with the technical specification, validated using the ETF Validator for INSPIRE view and download services version 1.4.1           |
+
+
+* [WFS other](https://service.pdok.nl/kadaster/cp/wfs/v1_0?request=GetCapabilities&service=WFS)
+
+| Field             | Value                                                                                                                                                     |
+|------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Specification** | [Commission Regulation (EU) No. 1089/2010](https://eur-lex.europa.eu/eli/reg/2010/1089/oj/eng) – implementing Directive 2007/2/EC on interoperability of spatial datasets and services |
+| **Specification** | *Interoperable* conformance class                                                                                        |
+| **Explanation**   | The service complies with the requirements of the **interoperable** conformance class   -|
+| **Specification** | *WFS 2.0* conformance class
+| **Explanation**   | The service complies with the requirements of the WFS 2.0 conformance class                                                                                                              |
 
 
 ## Kadastrale kaart (Cadastral map)
 
-<img src="https://developer.kadaster.nl/schemas/brkkadastralekaart/documentatie/v5/cat/Images/EAID_24A0C4C4_BE15_4d25_900C_B3AD76E03CEA.png"> 
-
-
+<img src="https://developer.kadaster.nl/schemas/brkkadastralekaart/documentatie/v5/cat/Images/EAID_24A0C4C4_BE15_4d25_900C_B3AD76E03CEA.png">
 
 * [Dataset Cadastral Map PDOK Portal](https://www.pdok.nl/introductie/-/article/kadastrale-kaart)
 * [Dataset Cadastral Map NGR](https://www.nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/a29917b9-3426-4041-a11b-69bcb2256904)
@@ -51,8 +81,7 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 * Technical Guidelines: INSPIRE Data Specification on Cadastral Parcels
 ❌ Pass: False (Content and structure deviate from INSPIRE spec; uses Dutch model)
 
-
-## As is View (WMS) 
+## As is View (WMS)
 
 <img src="https://service.pdok.nl/kadaster/kadastralekaart/wms/v5_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=81107.19656788540306%2C455004.5008309210534%2C81297.87271111604059%2C455112.1505408418016&CRS=EPSG%3A28992&WIDTH=847&HEIGHT=478&LAYERS=Kadastralekaart&STYLES=Default&FORMAT=image%2Fpng&DPI=96&MAP_RESOLUTION=96&FORMAT_OPTIONS=dpi%3A96&TRANSPARENT=TRUE">
 
