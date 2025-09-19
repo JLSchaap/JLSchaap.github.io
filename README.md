@@ -257,7 +257,14 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 
 * [RWS Richtlijn Overstromingsrisico](https://api.pdok.nl/rws/overstromingen-risicogebied/ogc/v1)
 * [RWS Richtlijn Stedelijk Afvalwater](https://api.pdok.nl/rws/richtlijn-stedelijk-afvalwater/ogc/v1)
-* [RWS Verkeersscheidingsstelsel scheepvaart](https://api.pdok.nl/rws/scheepvaart-verkeersscheidingsstelsel-noordzee/ogc/v1)
+
+*  [RWS Verkeersscheidingsstelsel scheepvaart](https://api.pdok.nl/rws/scheepvaart-verkeersscheidingsstelsel-noordzee/ogc/v1)
+* [NWB - Vaarwegen](https://api.pdok.nl/rws/nationaal-wegenbestand-vaarwegen/ogc/v1)
+* [Vaarweg Netwerk Data Services (VNDS) - bevaarbaarheid](https://api.pdok.nl/rws/vaarweg-netwerk-data-service-bevaarbaarheid/ogc/v1)
+* [Vaarwegmarkeringen Nederland](https://api.pdok.nl/rws/vaarwegmarkeringen-nederland/ogc/v1)
+* [Weggegevens](https://api.pdok.nl/rws/weggegevens/ogc/v1)
+* [Kaderrichtlijn Mariene Strategie](https://api.pdok.nl/rws/kaderrichtlijn-mariene-strategie/ogc/v1)
+ * [Nationaal Hydrologisch Instrumentarium (NHI)](https://api.pdok.nl/rws/nationaal-hydrologisch-instrumentarium-netwerkschematisatie/ogc/v1)
 
 # Rijksdienst voor Ondernemend Nederland (RVO)
 
