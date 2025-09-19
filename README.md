@@ -32,11 +32,12 @@
 * [Data specifications](https://github.com/INSPIRE-MIF/technical-guidelines/tree/main/data)
 * [Overview of the implementation of INSPIRE in the different Member States](https://knowledge-base.inspire.ec.europa.eu/tools/inspire-your-country_en)
 
-# Discovery () 
-Specificatie: Technical Guidance for the implementation of INSPIRE Discovery Services
-Date:(2011-11-07)
+# Discovery / Harvesting 
+ Technical Guidance for the implementation of INSPIRE **Discovery** Services)
 
-https://nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/deb81ebe-c7a7-42ba-bc21-f07cd348c3e8
+[CSW Inspire Netherlands](https://nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/deb81ebe-c7a7-42ba-bc21-f07cd348c3e8)
+[CSW Capabilities](https://nationaalgeoregister.nl/geonetwork/srv/dut/csw-inspire?request=GetCapabilities&Service=CSW&Version=2.0.1)
+[CSW get record by id](https://nationaalgeoregister.nl/geonetwork/srv/dut/csw-inspire?service=CSW&version=2.0.2&request=GetRecordById&outputschema=http://www.isotc211.org/2005/gmd&elementsetname=full&id=e80ad426-1392-4349-9f80-14dae5f1bf57#MD_DataIdentification)
 
 
 ## Dutch Cadastral parcels View Services
@@ -128,7 +129,7 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 
 | **Conformance Class**                  | **Description**                                              | **Abstract test**                                                                 |
 |---------------------------------------|--------------------------------------------------------------|----------------------------------------------------------------------------------|
-| **Metadata – Baseline**               | Metadata for datasets and dataset series                    | [Metadata](https://github.com/inspire-eu-validation/metadata/blob/master)              | Metadata for network services                               | [ats-invocable-sds](https://github.com/inspire-eu-validation/ats-invocable-sds) |
+| **Metadata – Baseline**               | Metadata for datasets and dataset series                    | [Metadata](https://github.com/inspire-eu-validation/metadata/blob/master) [(TG)](https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/metadata/metadata-iso19139/metadata-iso19139.pdf)            | Metadata for network services                               | [ats-invocable-sds](https://github.com/inspire-eu-validation/ats-invocable-sds) |
 | **Data – Interoperability**           | Harmonized data models for Annex I–III themes               | [Interoperability-metadata](https://github.com/inspire-eu-validation/data/blob/master/interoperability-metadata/README.md) |
 | **Network Services – View**           | WMS services conforming to INSPIRE requirements             | [View-service](https://github.com/inspire-eu-validation/view-service/blob/master/iso-19128/README.md) |
 | **Network Services – Download**       | WFS/ATOM services for data access                           | [Download](https://github.com/inspire-eu-validation/download-atom)                                                                                |
@@ -139,6 +140,11 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 | **Registers – Automatic Harvesting**  | Descriptor rules for automated register updates             |                                                                                  |
 | **Registers – Content**               | Validation of register content and structure                |                                                                                  |
 
+
+### data model validation 
+
+* [xml schema validation CP](https://github.com/inspire-eu-validation/data-cp/blob/3.1/cp-gml/official-schema-validation.md)
+* [PDOK geopackage validator](https://github.com/PDOK/geopackage-validator)
 
 # BRT achtergrond vectortiles
 
