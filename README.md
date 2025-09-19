@@ -2,15 +2,20 @@
 
 * [INSPIRE Legislation](https://knowledge-base.inspire.ec.europa.eu/legislation_en)
 * [Implementing rules](https://knowledge-base.inspire.ec.europa.eu/legislation/implementing-rules_en)
-* [INSPIRE dataspecificaties Technische guidelines](https://inspire-mif.github.io/technical-guidelines/)
+* [INSPIRE Technische guidelines](https://inspire-mif.github.io/technical-guidelines/)* 
+* [Conceptual UML datamodel](https://inspire-mif.github.io/uml-models/approved/html/index.htm)
 * [Data specifications](https://github.com/INSPIRE-MIF/technical-guidelines/tree/main/data)
 * [Overview of the implementation of INSPIRE in the different Member States](https://knowledge-base.inspire.ec.europa.eu/tools/inspire-your-country_en)
 
-## Dutch Cadastral parcels 
+## Dutch Cadastral parcels View Services
 
 [Cadastral parcels](https://inspire-geoportal.ec.europa.eu/srv/eng/catalog.search#/results?country=nl&view=themeOverview&theme=cp&iacs=none&legislation=none&envdomain=none&basedomain=0)
 
 ## Kadastrale Percelen (INSPIRE geharmoniseerd) Cadastral Parcels (INSPIRE harmonized)
+<img src= https://inspire-mif.github.io/uml-models/approved/html/EARoot/EA2/EA1/EA3/EA1/EA7530.png>
+
+ * [Dataset Cadastral Parcels (INSPIRE harmonized PDOK Portal)](https://www.pdok.nl/atom-downloadservices/-/article/kadastrale-percelen-inspire-geharmoniseerd-)
+ * [Dataset Cadastral Parcels (INSPIRE harmonized NGR)](https://www.nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/e80ad426-1392-4349-9f80-14dae5f1bf57)
 
 Conformance to INSPIRE Legislation
 
@@ -20,9 +25,24 @@ Status: ✅ Pass – Dataset is harmonized according to the INSPIRE regulation.
 Specification: INSPIRE Data Specification on Cadastral Parcels – Guidelines
 Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 
- [Dataset Cadastral Parcels (INSPIRE harmonized)](https://www.pdok.nl/atom-downloadservices/-/article/kadastrale-percelen-inspire-geharmoniseerd-)
+
+## Inspire View (WMS)
+
+<img src="https://service.pdok.nl/kadaster/cp/wms/v1_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=81107.19656788540306%2C455004.5008309210534%2C81297.87271111604059%2C455112.1505408418016&CRS=EPSG%3A28992&WIDTH=847&HEIGHT=478&LAYERS=CP.CadastralParcel&STYLES=CP.CadastralParcel.Default&FORMAT=image%2Fpng&DPI=96&MAP_RESOLUTION=96&FORMAT_OPTIONS=dpi%3A96&TRANSPARENT=TRUE">
+
+[feature info](https://service.pdok.nl/kadaster/cp/wms/v1_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&BBOX=81181.3688522478332743%2C455047.25335909030400217%2C81181.79916609986685216%2C455047.67003244906663895&CRS=EPSG%3A28992&WIDTH=2&HEIGHT=2&LAYERS=CP.CadastralParcel&STYLES=CP.CadastralParcel.Default&FORMAT=image%2Fpng&QUERY_LAYERS=CP.CadastralParcel&INFO_FORMAT=text%2Fhtml&I=0&J=1)
+
+
+
 
 ## Kadastrale kaart (Cadastral map)
+
+<img src="https://developer.kadaster.nl/schemas/brkkadastralekaart/documentatie/v5/cat/Images/EAID_24A0C4C4_BE15_4d25_900C_B3AD76E03CEA.png"> 
+
+
+
+* [Dataset Cadastral Map PDOK Portal](https://www.pdok.nl/introductie/-/article/kadastrale-kaart)
+* [Dataset Cadastral Map NGR](https://www.nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/a29917b9-3426-4041-a11b-69bcb2256904)
 
  Conformance to INSPIRE
 
@@ -31,26 +51,16 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 * Technical Guidelines: INSPIRE Data Specification on Cadastral Parcels
 ❌ Pass: False (Content and structure deviate from INSPIRE spec; uses Dutch model)
 
-[Dataset Cadastral Map](https://www.pdok.nl/introductie/-/article/kadastrale-kaart)
 
+## As is View (WMS) 
 
-
-
-* [Kadastrale Kaart (OGC API)](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/)
-
-# Onbewoond eiland in Den Haag
-
-<img src="https://service.pdok.nl/kadaster/cp/wms/v1_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=81107.19656788540306%2C455004.5008309210534%2C81297.87271111604059%2C455112.1505408418016&CRS=EPSG%3A28992&WIDTH=847&HEIGHT=478&LAYERS=CP.CadastralParcel&STYLES=CP.CadastralParcel.Default&FORMAT=image%2Fpng&DPI=96&MAP_RESOLUTION=96&FORMAT_OPTIONS=dpi%3A96&TRANSPARENT=TRUE alt="WMS Cadastral parcels" >
-
-[feature info](https://service.pdok.nl/kadaster/cp/wms/v1_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&BBOX=81181.3688522478332743%2C455047.25335909030400217%2C81181.79916609986685216%2C455047.67003244906663895&CRS=EPSG%3A28992&WIDTH=2&HEIGHT=2&LAYERS=CP.CadastralParcel&STYLES=CP.CadastralParcel.Default&FORMAT=image%2Fpng&QUERY_LAYERS=CP.CadastralParcel&INFO_FORMAT=text%2Fhtml&I=0&J=1)
-
-
-<img src="https://service.pdok.nl/kadaster/kadastralekaart/wms/v5_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=81107.19656788540306%2C455004.5008309210534%2C81297.87271111604059%2C455112.1505408418016&CRS=EPSG%3A28992&WIDTH=847&HEIGHT=478&LAYERS=Kadastralekaart&STYLES=Default&FORMAT=image%2Fpng&DPI=96&MAP_RESOLUTION=96&FORMAT_OPTIONS=dpi%3A96&TRANSPARENT=TRUE alt="WMS Cadastral parcels" >
+<img src="https://service.pdok.nl/kadaster/kadastralekaart/wms/v5_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=81107.19656788540306%2C455004.5008309210534%2C81297.87271111604059%2C455112.1505408418016&CRS=EPSG%3A28992&WIDTH=847&HEIGHT=478&LAYERS=Kadastralekaart&STYLES=Default&FORMAT=image%2Fpng&DPI=96&MAP_RESOLUTION=96&FORMAT_OPTIONS=dpi%3A96&TRANSPARENT=TRUE">
 
 [feature info](https://service.pdok.nl/kadaster/kadastralekaart/wms/v5_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&BBOX=81181.3688522478332743%2C455047.25335909030400217%2C81181.79916609986685216%2C455047.67003244906663895&CRS=EPSG%3A28992&WIDTH=2&HEIGHT=2&LAYERS=Kadastralekaart&STYLES=Default&FORMAT=image%2Fpng&QUERY_LAYERS=Kadastralekaart&INFO_FORMAT=text%2Fhtml&I=0&J=1)
 
+## OGC API
 
-## OGC API 
+* [Kadastrale Kaart (OGC API)](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/)
 
 * [Kadastrale kaart,  Perceel GVH03-F-422 alias Perceel 's-Gravenhage (GVH03) F 422 of Perceel den haag F 422 via lokaal_id (domain uri key)](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=10&identificatie_lokaal_id=22250042270000)
 * [item 30055097-28f2-590d-94e3-0fcad842b27c uit perceel collectie van deze API](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items/30055097-28f2-590d-94e3-0fcad842b27c)
@@ -258,13 +268,13 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 * [RWS Richtlijn Overstromingsrisico](https://api.pdok.nl/rws/overstromingen-risicogebied/ogc/v1)
 * [RWS Richtlijn Stedelijk Afvalwater](https://api.pdok.nl/rws/richtlijn-stedelijk-afvalwater/ogc/v1)
 
-*  [RWS Verkeersscheidingsstelsel scheepvaart](https://api.pdok.nl/rws/scheepvaart-verkeersscheidingsstelsel-noordzee/ogc/v1)
+* [RWS Verkeersscheidingsstelsel scheepvaart](https://api.pdok.nl/rws/scheepvaart-verkeersscheidingsstelsel-noordzee/ogc/v1)
 * [NWB - Vaarwegen](https://api.pdok.nl/rws/nationaal-wegenbestand-vaarwegen/ogc/v1)
 * [Vaarweg Netwerk Data Services (VNDS) - bevaarbaarheid](https://api.pdok.nl/rws/vaarweg-netwerk-data-service-bevaarbaarheid/ogc/v1)
 * [Vaarwegmarkeringen Nederland](https://api.pdok.nl/rws/vaarwegmarkeringen-nederland/ogc/v1)
 * [Weggegevens](https://api.pdok.nl/rws/weggegevens/ogc/v1)
 * [Kaderrichtlijn Mariene Strategie](https://api.pdok.nl/rws/kaderrichtlijn-mariene-strategie/ogc/v1)
- * [Nationaal Hydrologisch Instrumentarium (NHI)](https://api.pdok.nl/rws/nationaal-hydrologisch-instrumentarium-netwerkschematisatie/ogc/v1)
+* [Nationaal Hydrologisch Instrumentarium (NHI)](https://api.pdok.nl/rws/nationaal-hydrologisch-instrumentarium-netwerkschematisatie/ogc/v1)
 
 # Rijksdienst voor Ondernemend Nederland (RVO)
 
