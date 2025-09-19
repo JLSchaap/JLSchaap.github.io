@@ -1,3 +1,15 @@
+# Standards
+
+
+# [OGC](https://www.ogc.org/standards/) Standards
+
+| Category       | Description                                                                                     | Examples                        |
+|----------------|-------------------------------------------------------------------------------------------------|---------------------------------|
+| **OGC Services** | XML-based standards using HTTP for remote procedure calls                                      | WMS, WFS, CSW                   |
+| **OGC APIs**     | RESTful, resource-centric APIs using modern web practices, building on legacy OGC services     | OGC API – Features, Tiles, Records |
+
+
+
 # Inspire
 
 * [INSPIRE Legislation](https://knowledge-base.inspire.ec.europa.eu/legislation_en)
@@ -6,8 +18,8 @@
 |-------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------|
 | **Full Title**                      | Interoperability of spatial datasets and services         | Network services for spatial data                         |
 | **Focus Area**                      | Data content and structure                                | Access and delivery of data via services                  |
-| **Purpose**                         | Ensure harmonized data models across Member States        | Define how services like WMS, WFS, and discovery work     |
-| **Applies To**                      | Spatial datasets (Annex I, II, III themes)                | Discovery, view, download, transformation, invoke services |
+| **Purpose**                         | Ensure **harmonized data models** across Member States        | Define how services like WMS, WFS, and discovery work     |
+| **Applies To**                      | Spatial datasets (Annex I, II, III themes)                | **Discovery**, **view**, **download**, transformation, **invoke services** |
 | **Examples**                        | How a cadastral parcel or road is modeled                 | How a WMS responds to a GetMap request                    |
 | **Technical Scope**                 | Data schemas, code lists, feature types                   | Service interfaces, protocols, metadata accessibility standards   |
 | **Target Audience**                 | Data producers, harmonization experts                     | IT service providers, geoportal developers                |
@@ -19,6 +31,13 @@
 * [Conceptual UML datamodel](https://inspire-mif.github.io/uml-models/approved/html/index.htm)
 * [Data specifications](https://github.com/INSPIRE-MIF/technical-guidelines/tree/main/data)
 * [Overview of the implementation of INSPIRE in the different Member States](https://knowledge-base.inspire.ec.europa.eu/tools/inspire-your-country_en)
+
+# Discovery () 
+Specificatie: Technical Guidance for the implementation of INSPIRE Discovery Services
+Date:(2011-11-07)
+
+https://nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/deb81ebe-c7a7-42ba-bc21-f07cd348c3e8
+
 
 ## Dutch Cadastral parcels View Services
 
@@ -97,6 +116,29 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 * [box in RD](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?bbox=4.308353961050413%2C52.07925164212523%2C4.31715816011346%2C52.08206960261779&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&limit=1000)
 
 * [filter in box](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?bbox=4.308353961050413%2C52.07925164212523%2C4.31715816011346%2C52.08206960261779&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&limit=1000&kadastrale_gemeente_code=881&perceelnummer=422)
+
+
+## Inspire validation
+* [Online Inspire validator](https://inspire.ec.europa.eu/validator/home/index.html)
+
+### dataset metadata 
+* [Dataset Cadastral Parcels (INSPIRE harmonized NGR)](https://www.nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/e80ad426-1392-4349-9f80-14dae5f1bf57)
+* [Abstract Test Suites Metadata](https://github.com/inspire-eu-validation/metadata)
+* [Inspire theme keyword check ](https://github.com/inspire-eu-validation/metadata/blob/2.0/datasets-and-series/inspire-theme-keyword.md)
+
+| **Conformance Class**                  | **Description**                                              | **Abstract test**                                                                 |
+|---------------------------------------|--------------------------------------------------------------|----------------------------------------------------------------------------------|
+| **Metadata – Baseline**               | Metadata for datasets and dataset series                    | [Metadata](https://github.com/inspire-eu-validation/metadata/blob/master)              | Metadata for network services                               | [ats-invocable-sds](https://github.com/inspire-eu-validation/ats-invocable-sds) |
+| **Data – Interoperability**           | Harmonized data models for Annex I–III themes               | [Interoperability-metadata](https://github.com/inspire-eu-validation/data/blob/master/interoperability-metadata/README.md) |
+| **Network Services – View**           | WMS services conforming to INSPIRE requirements             | [View-service](https://github.com/inspire-eu-validation/view-service/blob/master/iso-19128/README.md) |
+| **Network Services – Download**       | WFS/ATOM services for data access                           | [Download](https://github.com/inspire-eu-validation/download-atom)                                                                                |
+| **Network Services – Discovery**      | CSW services for metadata search                            | [Discovery-service](https://github.com/inspire-eu-validation/discovery-service/blob/master/README.md) |
+| **Network Services – Transformation** | Services for schema transformation                          |                                                                                  |
+| **Data-Service Linking**              | Linking datasets to services in metadata                    |                                                                                  |
+| **Registers – Core**                  | Basic structure and descriptors for INSPIRE registers       |                                                                                  |
+| **Registers – Automatic Harvesting**  | Descriptor rules for automated register updates             |                                                                                  |
+| **Registers – Content**               | Validation of register content and structure                |                                                                                  |
+
 
 # BRT achtergrond vectortiles
 
@@ -346,13 +388,7 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 * [Potentieel koude en warmte uit open en gesloten WKO systemen](https://api.pdok.nl/rvo/potentieel-warmte-koude-opslagsystemen/ogc/v1)
 * [Windsnelheden 100m hoogte](https://api.pdok.nl/rvo/windsnelheden/ogc/v1)
 
-# OnGC API in ontwikkeling
 
-* [Digitaal topografisch bestand (punt kast/huis)](https://api.pdok.nl/rws/digitaal-topografisch-bestand/ogc/v1/collections/punten/items?omschr=kast%2Fhuis&dtb_id=45783009&objectid=2737903&cte=Q29)
-* fysische geografische regios by objectid
-* fysische geografische regios by pdokid
-
-* Basisregistratie gewaspercelen heeft in registratie geen uniek id
 
 ___
 
