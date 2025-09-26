@@ -41,6 +41,13 @@
 [CSW Capabilities](https://nationaalgeoregister.nl/geonetwork/srv/dut/csw-inspire?request=GetCapabilities&Service=CSW&Version=2.0.1)
 [CSW get record by id](https://nationaalgeoregister.nl/geonetwork/srv/dut/csw-inspire?service=CSW&version=2.0.2&request=GetRecordById&outputschema=http://www.isotc211.org/2005/gmd&elementsetname=full&id=e80ad426-1392-4349-9f80-14dae5f1bf57#MD_DataIdentification)
 
+## Dataset Designation Process in the Netherlands
+The [Aanmerkingsregister](https://www.aanmerking.nl/aanmerkingsregiste) is a Dutch national register that tracks dataset designations related to various European data obligations, primarily:
+
+* The INSPIRE Directive, which aims to make spatial data interoperable and accessible across Europe.
+& The Open Data Directive, specifically its High Value Datasets (HVD) implementation regulation.
+
+[Aanmerkingsregister CP](https://www.aanmerking.nl/aanmerkingsregister?decision_policy_manager=noted&priority=483&provider=63&policy_manager=All&data_owner=All&dataset__theme_target_id=99&hvd-theme=All&inspire_link__type_value=All&hvd_link__type_value=All&items_per_page=10)
 
 ## Dutch Cadastral parcels 
 
