@@ -54,7 +54,7 @@ Harvesters:
 
 ## Dataset Designation Process in the Netherlands
 
-The [Aanmerkingsregister](https://www.aanmerking.nl/aanmerkingsregiste) is a Dutch national register that tracks dataset designations related to various European data obligations, primarily:
+The [Aanmerkingsregister](https://www.aanmerking.nl/aanmerkingsregister) is a Dutch national register that tracks dataset designations related to various European data obligations, primarily:
 
 * The INSPIRE Directive, which aims to make spatial data interoperable and accessible across Europe.
 & The Open Data Directive, specifically its High Value Datasets (HVD) implementation regulation.
