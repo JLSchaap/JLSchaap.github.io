@@ -61,9 +61,10 @@ The [Aanmerkingsregister](https://www.aanmerking.nl/aanmerkingsregiste) is a Dut
 
 # Cadastral parcels
 
-<https://defs.opengis.net/prez/search?q=cadastral+parcel>
-<https://inspire.ec.europa.eu/registry/search?q=cadastral%20parcel>
-<https://catalogus.kadaster.nl/brk/nl/page/Perceel>
+Definition CP:
+* [OGC Rainbow](https://defs.opengis.net/prez/search?q=cadastral+parcel)
+* [Inspire Catalog](https://inspire.ec.europa.eu/registry/search?q=cadastral%20parcel)
+* [Dutch Kadaster Catalog](https://catalogus.kadaster.nl/brk/nl/page/Perceel)
 
 ## Dutch Cadastral parcels
 
