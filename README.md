@@ -1,7 +1,6 @@
-[table of content](./READMEtoc.md)
+[Table of content](./READMEtoc.md)
 
 # Standards
-
 
 ## [OGC](https://www.ogc.org/standards/) Standards
 
@@ -12,10 +11,10 @@
 
 [OGC Catalog](https://defs.opengis.net/prez/catalogs)
 
-
 ## Inspire
 
 ### Data and Service Model
+
 * [INSPIRE Legislation](https://knowledge-base.inspire.ec.europa.eu/legislation_en)
 
 | Summary                  | **Regulation (EU) 1089/2010** Data model                            | **Regulation (EC) 976/2009**   Service model                          |
@@ -38,33 +37,39 @@
 
 [inspire Registry](https://inspire.ec.europa.eu/registry/)
 
-### Discovery / Harvesting 
- Technical Guidance for the implementation of INSPIRE **Discovery** Services)
+### Discovery / Harvesting
 
-[CSW Inspire Netherlands](https://nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/deb81ebe-c7a7-42ba-bc21-f07cd348c3e8)
-[CSW Capabilities](https://nationaalgeoregister.nl/geonetwork/srv/dut/csw-inspire?request=GetCapabilities&Service=CSW&Version=2.0.1)
-[CSW get record by id](https://nationaalgeoregister.nl/geonetwork/srv/dut/csw-inspire?service=CSW&version=2.0.2&request=GetRecordById&outputschema=http://www.isotc211.org/2005/gmd&elementsetname=full&id=e80ad426-1392-4349-9f80-14dae5f1bf57#MD_DataIdentification)
+ Technical Guidance for the implementation of INSPIRE **Discovery** Services)
+Source:
+
+* [CSW Inspire Netherlands](https://nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/deb81ebe-c7a7-42ba-bc21-f07cd348c3e8)
+* [CSW Capabilities](https://nationaalgeoregister.nl/geonetwork/srv/dut/csw-inspire?request=GetCapabilities&Service=CSW&Version=2.0.1)
+* [CSW get record by id](https://nationaalgeoregister.nl/geonetwork/srv/dut/csw-inspire?service=CSW&version=2.0.2&request=GetRecordById&outputschema=http://www.isotc211.org/2005/gmd&elementsetname=full&id=e80ad426-1392-4349-9f80-14dae5f1bf57#MD_DataIdentification)
+
+Harvesters:
+
+* [NL Data portal](https://data.overheid.nl/)
+* [EU Inspire](https://inspire-geoportal.ec.europa.eu/)
+* [EU Data portal](https://data.europa.eu/)
 
 ## Dataset Designation Process in the Netherlands
+
 The [Aanmerkingsregister](https://www.aanmerking.nl/aanmerkingsregiste) is a Dutch national register that tracks dataset designations related to various European data obligations, primarily:
 
 * The INSPIRE Directive, which aims to make spatial data interoperable and accessible across Europe.
 & The Open Data Directive, specifically its High Value Datasets (HVD) implementation regulation.
 
-## Cadastral parcels 
+# Cadastral parcels
 
-https://defs.opengis.net/prez/search?q=cadastral+parcel
-https://inspire.ec.europa.eu/registry/search?q=cadastral%20parcel
-https://catalogus.kadaster.nl/brk/nl/page/Perceel
+<https://defs.opengis.net/prez/search?q=cadastral+parcel>
+<https://inspire.ec.europa.eu/registry/search?q=cadastral%20parcel>
+<https://catalogus.kadaster.nl/brk/nl/page/Perceel>
 
-
-## Dutch Cadastral parcels 
+## Dutch Cadastral parcels
 
 [Aanmerkingsregister CP](https://www.aanmerking.nl/aanmerkingsregister?decision_policy_manager=noted&priority=483&provider=63&policy_manager=All&data_owner=All&dataset__theme_target_id=99&hvd-theme=All&inspire_link__type_value=All&hvd_link__type_value=All&items_per_page=10)
 
 [Cadastral parcels Theme Netherlands](https://inspire-geoportal.ec.europa.eu/srv/eng/catalog.search#/results?country=nl&view=themeOverview&theme=cp&iacs=none&legislation=none&envdomain=none&basedomain=0)
-
-
 
 ### Kadastrale Percelen (INSPIRE geharmoniseerd) Cadastral Parcels (INSPIRE harmonized)
 
@@ -100,10 +105,12 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 | **Explanation**    | Conformant with the technical specification, validated using the ETF Validator for INSPIRE view and download services version 1.4.1           |
 
 #### Inspire other
+
 * [WFS other](https://service.pdok.nl/kadaster/cp/wfs/v1_0?request=GetCapabilities&service=WFS)
 
 #### OGC API
-* [OGC API]() 
+
+* [OGC API]()
 
 | Field             | Value                                                                                                                                                     |
 |------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -112,7 +119,6 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 | **Explanation**   | The service complies with the requirements of the **interoperable** conformance class   -|
 | **Specification** | *WFS 2.0* conformance class
 | **Explanation**   | The service complies with the requirements of the WFS 2.0 conformance class                                                                                                              |
-
 
 ## Kadastrale kaart (Cadastral map)
 
@@ -134,14 +140,15 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 
 [feature info](https://service.pdok.nl/kadaster/kadastralekaart/wms/v5_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&BBOX=81181.3688522478332743%2C455047.25335909030400217%2C81181.79916609986685216%2C455047.67003244906663895&CRS=EPSG%3A28992&WIDTH=2&HEIGHT=2&LAYERS=Kadastralekaart&STYLES=Default&FORMAT=image%2Fpng&QUERY_LAYERS=Kadastralekaart&INFO_FORMAT=text%2Fhtml&I=0&J=1)
 
+# Inspire validation
 
-## Inspire validation
 * [Online Inspire validator](https://inspire.ec.europa.eu/validator/home/index.html)
 
-### dataset metadata 
+### dataset metadata
+
 * [Dataset Cadastral Parcels (INSPIRE harmonized NGR)](https://www.nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/e80ad426-1392-4349-9f80-14dae5f1bf57)
 * [Abstract Test Suites Metadata](https://github.com/inspire-eu-validation/metadata)
-* [Inspire theme keyword check ](https://github.com/inspire-eu-validation/metadata/blob/2.0/datasets-and-series/inspire-theme-keyword.md)
+* [Inspire theme keyword check](https://github.com/inspire-eu-validation/metadata/blob/2.0/datasets-and-series/inspire-theme-keyword.md)
 
 | **Conformance Class**                  | **Description**                                              | **Abstract test**                                                                 |
 |---------------------------------------|--------------------------------------------------------------|----------------------------------------------------------------------------------|
@@ -156,16 +163,16 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 | **Registers – Automatic Harvesting**  | Descriptor rules for automated register updates             |                                                                                  |
 | **Registers – Content**               | Validation of register content and structure                |                                                                                  |
 
-
-### data model validation 
+### data model validation
 
 * [xml schema validation CP](https://github.com/inspire-eu-validation/data-cp/blob/3.1/cp-gml/official-schema-validation.md)
 * [PDOK geopackage validator](https://github.com/PDOK/geopackage-validator)
 
 ### Monitoring
+
 [Service status](https://www.pdok.nl/status-overzicht)
 
-## OGC API
+# OGC API
 
 * [Kadastrale Kaart (OGC API)](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/)
 
@@ -175,8 +182,6 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 * [box in RD](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?bbox=4.308353961050413%2C52.07925164212523%2C4.31715816011346%2C52.08206960261779&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&limit=1000)
 
 * [filter in box](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?bbox=4.308353961050413%2C52.07925164212523%2C4.31715816011346%2C52.08206960261779&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&limit=1000&kadastrale_gemeente_code=881&perceelnummer=422)
-
-
 
 ### BRT achtergrond vectortiles
 
@@ -426,9 +431,6 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 * [Potentieel koude en warmte uit open en gesloten WKO systemen](https://api.pdok.nl/rvo/potentieel-warmte-koude-opslagsystemen/ogc/v1)
 * [Windsnelheden 100m hoogte](https://api.pdok.nl/rvo/windsnelheden/ogc/v1)
 
-
-
 ___
-
 
 [![check markdown links](https://github.com/JLSchaap/JLSchaap.github.io/actions/workflows/checkMarkdown.yml/badge.svg)](https://github.com/JLSchaap/JLSchaap.github.io/actions/workflows/checkMarkdown.yml)
