@@ -173,6 +173,10 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 
 [Service status](https://www.pdok.nl/status-overzicht)
 
+
+
+<hr style="height:3px; background-color:black; border:none;" />
+
 # OGC API
 
 * [Kadastrale Kaart (OGC API)](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/)
