@@ -10,6 +10,8 @@
 | **OGC Services** | XML-based standards using HTTP for remote procedure calls                                      | WMS, WFS, CSW                   |
 | **OGC APIs**     | RESTful, resource-centric APIs using modern web practices, building on legacy OGC services     | OGC API – Features, Tiles, Records |
 
+[OGC Catalog](https://defs.opengis.net/prez/catalogs)
+
 
 ## Inspire
 
@@ -34,6 +36,8 @@
 * [Data specifications](https://github.com/INSPIRE-MIF/technical-guidelines/tree/main/data)
 * [Overview of the implementation of INSPIRE in the different Member States](https://knowledge-base.inspire.ec.europa.eu/tools/inspire-your-country_en)
 
+[inspire Registry](https://inspire.ec.europa.eu/registry/)
+
 ### Discovery / Harvesting 
  Technical Guidance for the implementation of INSPIRE **Discovery** Services)
 
@@ -47,11 +51,20 @@ The [Aanmerkingsregister](https://www.aanmerking.nl/aanmerkingsregiste) is a Dut
 * The INSPIRE Directive, which aims to make spatial data interoperable and accessible across Europe.
 & The Open Data Directive, specifically its High Value Datasets (HVD) implementation regulation.
 
-[Aanmerkingsregister CP](https://www.aanmerking.nl/aanmerkingsregister?decision_policy_manager=noted&priority=483&provider=63&policy_manager=All&data_owner=All&dataset__theme_target_id=99&hvd-theme=All&inspire_link__type_value=All&hvd_link__type_value=All&items_per_page=10)
+## Cadastral parcels 
+
+https://defs.opengis.net/prez/search?q=cadastral+parcel
+https://inspire.ec.europa.eu/registry/search?q=cadastral%20parcel
+https://catalogus.kadaster.nl/brk/nl/page/Perceel
+
 
 ## Dutch Cadastral parcels 
 
+[Aanmerkingsregister CP](https://www.aanmerking.nl/aanmerkingsregister?decision_policy_manager=noted&priority=483&provider=63&policy_manager=All&data_owner=All&dataset__theme_target_id=99&hvd-theme=All&inspire_link__type_value=All&hvd_link__type_value=All&items_per_page=10)
+
 [Cadastral parcels Theme Netherlands](https://inspire-geoportal.ec.europa.eu/srv/eng/catalog.search#/results?country=nl&view=themeOverview&theme=cp&iacs=none&legislation=none&envdomain=none&basedomain=0)
+
+
 
 ### Kadastrale Percelen (INSPIRE geharmoniseerd) Cadastral Parcels (INSPIRE harmonized)
 
@@ -73,6 +86,8 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 <img src="https://service.pdok.nl/kadaster/cp/wms/v1_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=81107.19656788540306%2C455004.5008309210534%2C81297.87271111604059%2C455112.1505408418016&CRS=EPSG%3A28992&WIDTH=847&HEIGHT=478&LAYERS=CP.CadastralParcel&STYLES=CP.CadastralParcel.Default&FORMAT=image%2Fpng&DPI=96&MAP_RESOLUTION=96&FORMAT_OPTIONS=dpi%3A96&TRANSPARENT=TRUE">
 
 [feature info](https://service.pdok.nl/kadaster/cp/wms/v1_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&BBOX=81181.3688522478332743%2C455047.25335909030400217%2C81181.79916609986685216%2C455047.67003244906663895&CRS=EPSG%3A28992&WIDTH=2&HEIGHT=2&LAYERS=CP.CadastralParcel&STYLES=CP.CadastralParcel.Default&FORMAT=image%2Fpng&QUERY_LAYERS=CP.CadastralParcel&INFO_FORMAT=text%2Fhtml&I=0&J=1)
+
+[Monitoring status](https://www.pdok.nl/status-detail/-/service/13761162/KADASTER-cp-v1-0-INSPIRE-WMS)
 
 #### Inspire download
 
@@ -147,6 +162,8 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 * [xml schema validation CP](https://github.com/inspire-eu-validation/data-cp/blob/3.1/cp-gml/official-schema-validation.md)
 * [PDOK geopackage validator](https://github.com/PDOK/geopackage-validator)
 
+### Monitoring
+[Service status](https://www.pdok.nl/status-overzicht)
 
 ## OGC API
 
