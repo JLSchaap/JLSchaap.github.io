@@ -343,7 +343,18 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 * [BGT item](https://api.pdok.nl/lv/bgt/ogc/v1/collections/pand/items?lokaal_id=G0307.b94c2bd2f8f44429a23bb46202b1627b)
 * [BAG Item](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?identificatie=0307100000333887)
 
+
 ##
+
+## BAG relations
+[BAG Item ](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?identificatie=0307100000333887)
+[BAG Item ](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?identificatie=0599100000602583)
+[BAG Item ](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?identificatie=0518100001775034)
+
+[Bag verblijfsobject meerdere panden](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/verblijfsobject/items?identificatie=1724010000794211)
+[Bag verblijfsobject meerdere panden](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/verblijfsobject/items?identificatie=0358010019049858)
+
+
 
 * [filter bestuurlijke gebieden](https://api.pdok.nl/kadaster/bestuurlijkegebieden/ogc/v1/collections/gemeentegebied/items?crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=10&naam=Ede&identificatie=GM0228&ligt_in_provincie_naam=Gelderland)
 
@@ -433,5 +444,20 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 * [Windsnelheden 100m hoogte](https://api.pdok.nl/rvo/windsnelheden/ogc/v1)
 
 ___
+# Twin testbed
 
+# viewer 
+
+[3d NL TWIN](https://netherlands3d.eu/twin/)
+
+# catalogy
+
+* [Clearly](https://ogc-demo.clearly.app/v2)
+* 
+
+* 
+
+
+__
 [![check markdown links](https://github.com/JLSchaap/JLSchaap.github.io/actions/workflows/checkMarkdown.yml/badge.svg)](https://github.com/JLSchaap/JLSchaap.github.io/actions/workflows/checkMarkdown.yml)
+mobilitytwin.
