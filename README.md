@@ -62,6 +62,7 @@ The [Aanmerkingsregister](https://www.aanmerking.nl/aanmerkingsregister) is a Du
 # Cadastral parcels
 
 Definition CP:
+
 * [OGC Rainbow](https://defs.opengis.net/prez/search?q=cadastral+parcel)
 * [Inspire Catalog](https://inspire.ec.europa.eu/registry/search?q=cadastral%20parcel)
 * [Dutch Kadaster Catalog](https://catalogus.kadaster.nl/brk/nl/page/Perceel)
@@ -172,8 +173,6 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 ### Monitoring
 
 [Service status](https://www.pdok.nl/status-overzicht)
-
-
 
 <hr style="height:3px; background-color:black; border:none;" />
 
@@ -347,18 +346,16 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 * [BGT item](https://api.pdok.nl/lv/bgt/ogc/v1/collections/pand/items?lokaal_id=G0307.b94c2bd2f8f44429a23bb46202b1627b)
 * [BAG Item](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?identificatie=0307100000333887)
 
-
 ##
 
 ## BAG relations
-[BAG Item ](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?identificatie=0307100000333887)
-[BAG Item ](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?identificatie=0599100000602583)
-[BAG Item ](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?identificatie=0518100001775034)
 
-[Bag verblijfsobject meerdere panden](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/verblijfsobject/items?identificatie=1724010000794211)
-[Bag verblijfsobject meerdere panden](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/verblijfsobject/items?identificatie=0358010019049858)
+* [BAG Item](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?identificatie=0307100000333887)
+* [BAG Item](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?identificatie=0599100000602583)
+* [BAG Item](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?identificatie=0518100001775034)
 
-
+* [Bag verblijfsobject meerdere panden](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/verblijfsobject/items?identificatie=1724010000794211)
+* [Bag verblijfsobject meerdere panden](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/verblijfsobject/items?identificatie=0358010019049858)
 
 * [filter bestuurlijke gebieden](https://api.pdok.nl/kadaster/bestuurlijkegebieden/ogc/v1/collections/gemeentegebied/items?crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=10&naam=Ede&identificatie=GM0228&ligt_in_provincie_naam=Gelderland)
 
@@ -448,16 +445,18 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 * [Windsnelheden 100m hoogte](https://api.pdok.nl/rvo/windsnelheden/ogc/v1)
 
 ___
+
 # Twin testbed
 
-# viewer 
+# viewer
+
 * [3d NL TWIN](https://netherlands3d.eu/twin/)
 * [Johns OGC-API records demo](./records.html)
 
-# catalogy
+# catalog
 
 * [https://api.pdok.nl](https://api.pdok.nl/)
-* [PDOK demo](https://api.pdok.nl/catalogus/v1-demo/collections/metadata:main/)
+* [PDOK OGC API records demo](https://api.pdok.nl/catalogus/v1-demo/collections/metadata:main/)
 * [Clearly](https://ogc-demo.clearly.app/v2)
 
 __
