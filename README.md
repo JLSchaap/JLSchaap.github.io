@@ -447,16 +447,14 @@ ___
 # Twin testbed
 
 # viewer 
-
-[3d NL TWIN](https://netherlands3d.eu/twin/)
+* [3d NL TWIN](https://netherlands3d.eu/twin/)
+* [Johns OGC-API records demo](./records.html)
 
 # catalogy
 
+* [https://api.pdok.nl](https://api.pdok.nl/)
+* [PDOK demo](https://api.pdok.nl/catalogus/v1-demo/collections/metadata:main/)
 * [Clearly](https://ogc-demo.clearly.app/v2)
-* 
-
-* 
-
 
 __
 [![check markdown links](https://github.com/JLSchaap/JLSchaap.github.io/actions/workflows/checkMarkdown.yml/badge.svg)](https://github.com/JLSchaap/JLSchaap.github.io/actions/workflows/checkMarkdown.yml)
