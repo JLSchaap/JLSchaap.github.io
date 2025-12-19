@@ -383,6 +383,7 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 
 * [Cloud Native OGC APIs server, written in Go](https://github.com/PDOK/gokoala) with [Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) [for OGC API](https://github.com/PDOK/ogcapi-operator)
 * [PDOK GeoPackage Valdidator](https://github.com/PDOK/geopackage-validator)
+* [Learn to use PDOK](https://pdok.github.io/leermodule-ogc-api/)
 
 # Rijkswaterstaat OGC APIs
 
