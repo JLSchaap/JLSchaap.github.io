@@ -19,7 +19,7 @@ EPSG_CODE=28992
 # Basis (Amersfoort, OLV-toren) + polygon/lijn grootte
 BASE_X=155000
 BASE_Y=463000
-D=50            # half-omvang voor voorbeelden (lijnen/vlakken)
+D=5            # half-omvang voor voorbeelden (lijnen/vlakken)
 
 # Z en M voorbeeld
 ZVAL=10         # hoogte (Z)
@@ -27,7 +27,7 @@ M0=0            # maat 0
 M1=1            # maat 1
 
 # Grid celgrootte (meters)
-CELL=3000
+CELL=30
 M_OFF_X_NULL=0
 M_OFF_X_0=$((CELL/5))     # 600 m bij CELL=3000
 M_OFF_X_1=$((2*CELL/5))   # 1200 m
@@ -188,7 +188,7 @@ make_tmp_geojson() {
   local lname="${fam,,}" ; [[ -n "$var" ]] && lname="${lname}_$(echo "${var,,}")"
   local geom="$(geom_json "$fam" "$var" "$mflag")"
   local geom_str="${geom//\"/\\\"}"   # escape quotes voor json_src string
-  local descr="Voorbeeld ${fam}${var} (RD grid offset) M=${mflag}"
+  local descr="Voorbeeld ${fam}${var} M=${mflag} RD New met offsets"
   local m_val_json; [[ "$mflag" == "null" ]] && m_val_json="null" || m_val_json="$mflag"
 
   local tmp="$(mktemp --suffix=.geojson)"
@@ -200,7 +200,7 @@ make_tmp_geojson() {
     "type": "Feature",
     "geometry": $geom,
     "properties": {
-      "name": "voorbeeld",
+      "name": "${lname}_${mflag}",
       "descr": "$descr",
       "m_value": $m_val_json,
       "json_src": "$geom_str"
