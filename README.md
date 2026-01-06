@@ -348,14 +348,18 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 
 ##
 
-## BAG relations
+## BAG relations N:M
 
-* [BAG Item](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?identificatie=0307100000333887)
-* [BAG Item](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?identificatie=0599100000602583)
-* [BAG Item](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?identificatie=0518100001775034)
+* [BAG Pand met een verblijfsobject](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?identificatie=0307100000333887)
+* [Bag verblijfsobject bij pand](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/verblijfsobject/items?identificatie=0307010000507344)
+* 
+* [BAG pand met meerdere verblijfsobjecten](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?identificatie=0599100000602583)
+* [BAG pand met meerdere verblijfsobjecten](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?identificatie=0518100001775034)
 
 * [Bag verblijfsobject meerdere panden](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/verblijfsobject/items?identificatie=1724010000794211)
 * [Bag verblijfsobject meerdere panden](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/verblijfsobject/items?identificatie=0358010019049858)
+
+## filter
 
 * [filter bestuurlijke gebieden](https://api.pdok.nl/kadaster/bestuurlijkegebieden/ogc/v1/collections/gemeentegebied/items?crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=10&naam=Ede&identificatie=GM0228&ligt_in_provincie_naam=Gelderland)
 
