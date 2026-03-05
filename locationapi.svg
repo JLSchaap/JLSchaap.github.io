@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1600" height="700" viewBox="0 0 1600 700" xmlns="http://www.w3.org/2000/svg">
+  <title>Sequence Diagram - PDOK Location API /search flow</title>
+  <defs>
+    <!-- Pijl-markers -->
+    <marker id="arrowHead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1f2937"/>
+    </marker>
+    <marker id="arrowHeadGray" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"/>
+    </marker>
+
+    <!-- Stijlen -->
+    <style><![CDATA[
+      .lane-title { font: 700 18px/1.2 "Segoe UI", Roboto, Arial, sans-serif; fill:#0f172a; }
+      .lane-sub   { font: 400 12px/1.2 "Segoe UI", Roboto, Arial, sans-serif; fill:#475569; }
+      .note       { font: 400 14px/1.4 "Segoe UI", Roboto, Arial, sans-serif; fill:#111827; }
+      .msg        { font: 500 14px/1.2 "Segoe UI", Roboto, Arial, sans-serif; fill:#111827; }
+      .caption    { font: 400 12px/1.2 "Segoe UI", Roboto, Arial, sans-serif; fill:#6b7280; }
+      .lane-rect  { fill:#f8fafc; stroke:#e5e7eb; stroke-width:1; }
+      .lifeline   { stroke:#94a3b8; stroke-dasharray:6 6; stroke-width:2; }
+      .arrow      { stroke:#1f2937; stroke-width:2.2; fill:none; }
+      .arrow2     { stroke:#6b7280; stroke-width:2.2; fill:none; }
+      .bubble     { fill:#ffffff; stroke:#e5e7eb; stroke-width:1; rx:8; }
+      .legend     { font: 400 12px/1.2 "Segoe UI", Roboto, Arial, sans-serif; fill:#374151; }
+      .kbd        { font: 600 12px/1 "Cascadia Mono", Consolas, "Courier New", monospace; fill:#111827; }
+      .kbdbox     { fill:#eef2ff; stroke:#c7d2fe; stroke-width:1; rx:4; }
+    ]]></style>
+  </defs>
+
+  <!-- Lanes achtergrond -->
+  <rect class="lane-rect" x="40" y="30"  width="480" height="640" />
+  <rect class="lane-rect" x="560" y="30" width="480" height="640" />
+  <rect class="lane-rect" x="1080" y="30" width="480" height="640" />
+
+  <!-- Lane headers -->
+  <text class="lane-title" x="60"  y="58">Client</text>
+  <text class="lane-title" x="580" y="58">Location API</text>
+  <text class="lane-sub"   x="580" y="78">(preprod)</text>
+  <text class="lane-title" x="1100" y="58">OGC API</text>
+  <text class="lane-sub"   x="1100" y="78">(bron-collectie)</text>
+
+  <!-- Lifelines -->
+  <line class="lifeline" x1="280" y1="100" x2="280" y2="660"/>
+  <line class="lifeline" x1="800" y1="100" x2="800" y2="660"/>
+  <line class="lifeline" x1="1320" y1="100" x2="1320" y2="660"/>
+
+  <!-- 1) Client -> Location API: GET /search -->
+  <path class="arrow" d="M 300 150 L 780 150" marker-end="url(#arrowHead)"/>
+  <rect class="bubble" x="360" y="118" width="360" height="28" />
+  <text class="msg" x="370" y="137">GET /search?q=Stations&amp;adres[version]=1</text>
+
+  <!-- subtitel bij stap 1 -->
+  <text class="caption" x="820" y="145">Zoekt in geconfigureerde collecties (adres, perceel, woonplaats, ...)</text>
+
+  <!-- 2) Location API -> Client: 200 FeatureCollection (lightweight) -->
+  <path class="arrow2" d="M 780 220 L 300 220" marker-end="url(#arrowHeadGray)"/>
+  <rect class="bubble" x="360" y="188" width="360" height="28" />
+  <text class="msg" x="370" y="207">200 FeatureCollection (lightweight)</text>
+
+  <!-- Lichte feature details -->
+  <rect class="bubble" x="70" y="245" width="420" height="110"/>
+  <text class="note" x="85" y="270">features[n]:</text>
+  <text class="note" x="100" y="292">• id, bbox, (mini)geometry</text>
+  <text class="note" x="100" y="314">• properties: display_name, highlight, score</text>
+  <text class="note" x="100" y="336">• properties.href[] → URL(s) naar volledige feature</text>
+
+  <!-- 3) Client -> OGC API: GET {href[0]} -->
+  <path class="arrow" d="M 300 400 L 1300 400" marker-end="url(#arrowHead)"/>
+  <rect class="bubble" x="580" y="368" width="460" height="28" />
+  <text class="msg" x="590" y="387">GET {href[0]}  (bv. /ogc/v1/collections/adres/items/{id})</text>
+
+  <!-- 4) OGC API -> Client: 200 Feature (full) -->
+  <path class="arrow2" d="M 1300 470 L 300 470" marker-end="url(#arrowHeadGray)"/>
+  <rect class="bubble" x="560" y="438" width="500" height="28" />
+  <text class="msg" x="570" y="457">200 Feature (volledige properties + volledige geometrie)</text>
+
+  <!-- Eindgebruik door client -->
+  <rect class="bubble" x="70" y="530" width="420" height="60"/>
+  <text class="note" x="85" y="566">[Client gebruikt nu de volledige feature in eigen UI/kaart]</text>
+
+  <!-- Legenda / tips -->
+  <rect class="kbdbox" x="560" y="530" width="460" height="60"/>
+  <text class="legend" x="575" y="552">Formaat:</text>
+  <text class="kbd" x="635" y="552">f=json | jsonfg | html</text>
+  <text class="legend" x="575" y="572">Ruimtelijk filter (optioneel):</text>
+  <text class="kbd" x="780" y="572">bbox=... ; bbox-crs=...;  crs=...</text>
+
+  <!-- Footer -->
+  <text class="caption" x="40" y="690">PDOK Location API – /search → volg href naar OGC API – diagram (SVG)</text>
+</svg>

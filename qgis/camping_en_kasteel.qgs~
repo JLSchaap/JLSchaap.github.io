@@ -99,7 +99,7 @@
       <customproperties>
         <Option/>
       </customproperties>
-      <layer-tree-layer id="Pand_BAG_OAF_7d327751_4ebc_4c5f_98bc_d77b45ead27a" providerKey="OAPIF" patch_size="-1,-1" checked="Qt::Checked" expanded="1" source=" pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:3857' typename='pand' url='https://api.pdok.nl/lv/bag/ogc/v1-demo' version='auto'" legend_split_behavior="0" legend_exp="" name="Pand BAG OAF bouwjaar">
+      <layer-tree-layer id="Pand_BAG_OAF_7d327751_4ebc_4c5f_98bc_d77b45ead27a" providerKey="OAPIF" patch_size="-1,-1" checked="Qt::Checked" expanded="1" source=" pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:3857' typename='pand' url='https://api.pdok.nl/kadaster/bag/ogc/v2' version='auto'" legend_split_behavior="0" legend_exp="" name="Pand BAG OAF bouwjaar">
         <customproperties>
           <Option/>
         </customproperties>
@@ -47943,7 +47943,7 @@ control = dialog.findChild(QWidget, "MyLineEdit")
     </maplayer>
     <maplayer refreshOnNotifyMessage="" simplifyLocal="1" symbologyReferenceScale="-1" geometry="Polygon" legendPlaceholderImage="" readOnly="0" autoRefreshMode="Disabled" minScale="100000000" simplifyAlgorithm="0" type="vector" maxScale="0" simplifyDrawingTol="1" autoRefreshTime="0" hasScaleBasedVisibilityFlag="0" simplifyMaxScale="1" labelsEnabled="1" styleCategories="AllStyleCategories" wkbType="Polygon" simplifyDrawingHints="1" refreshOnNotifyEnabled="0">
       <id>Pand_BAG_OAF_7d327751_4ebc_4c5f_98bc_d77b45ead27a</id>
-      <datasource> pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:3857' typename='pand' url='https://api.pdok.nl/lv/bag/ogc/v1-demo' version='auto'</datasource>
+      <datasource> pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:3857' typename='pand' url='https://api.pdok.nl/kadaster/bag/ogc/v2' version='auto'</datasource>
       <keywordList>
         <value></value>
       </keywordList>
@@ -47962,7 +47962,7 @@ control = dialog.findChild(QWidget, "MyLineEdit")
         </spatialrefsys>
       </srs>
       <resourceMetadata>
-        <identifier>https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand?f=json</identifier>
+        <identifier>https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand?f=json</identifier>
         <parentidentifier></parentidentifier>
         <language></language>
         <type>dataset</type>
@@ -47978,12 +47978,12 @@ control = dialog.findChild(QWidget, "MyLineEdit")
           <role></role>
         </contact>
         <links>
-          <link format="" size="" url="https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand?f=json" mimeType="application/json" name="self" type="WWW:LINK" description="This document as JSON"/>
-          <link format="" size="" url="https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand?f=html" mimeType="text/html" name="alternate" type="WWW:LINK" description="This document as HTML"/>
-          <link format="" size="" url="https://api.pdok.nl/lv/bag/ogc/v1-demo/resources/Pand.png" mimeType="image/png" name="preview" type="WWW:LINK" description="Thumbnail for pand"/>
-          <link format="" size="" url="https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?f=json" mimeType="application/geo+json" name="items" type="WWW:LINK" description="The JSON representation of the pand features served from this endpoint"/>
-          <link format="" size="" url="https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?f=jsonfg" mimeType="application/vnd.ogc.fg+json" name="items" type="WWW:LINK" description="The JSON-FG representation of the pand features served from this endpoint"/>
-          <link format="" size="" url="https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?f=html" mimeType="text/html" name="items" type="WWW:LINK" description="The HTML representation of the pand features served from this endpoint"/>
+          <link format="" size="" url="https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand?f=json" mimeType="application/json" name="self" type="WWW:LINK" description="This document as JSON"/>
+          <link format="" size="" url="https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand?f=html" mimeType="text/html" name="alternate" type="WWW:LINK" description="This document as HTML"/>
+          <link format="" size="" url="https://api.pdok.nl/kadaster/bag/ogc/v2/resources/Pand.png" mimeType="image/png" name="preview" type="WWW:LINK" description="Thumbnail for pand"/>
+          <link format="" size="" url="https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?f=json" mimeType="application/geo+json" name="items" type="WWW:LINK" description="The JSON representation of the pand features served from this endpoint"/>
+          <link format="" size="" url="https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?f=jsonfg" mimeType="application/vnd.ogc.fg+json" name="items" type="WWW:LINK" description="The JSON-FG representation of the pand features served from this endpoint"/>
+          <link format="" size="" url="https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?f=html" mimeType="text/html" name="items" type="WWW:LINK" description="The HTML representation of the pand features served from this endpoint"/>
         </links>
         <dates/>
         <fees></fees>
@@ -48605,7 +48605,7 @@ control = dialog.findChild(QWidget, "MyLineEdit")
       <expressionfields/>
       <attributeactions>
         <defaultAction value="{00000000-0000-0000-0000-000000000000}" key="Canvas"/>
-        <actionsetting id="{251f925a-4ea8-44ff-96c6-49e9cfb3f734}" notificationMessage="" capture="0" name="BAG OAF" icon="" action="https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?identificatie=[%identificatie%]" shortTitle="" type="5" isEnabledOnlyWhenEditable="0">
+        <actionsetting id="{251f925a-4ea8-44ff-96c6-49e9cfb3f734}" notificationMessage="" capture="0" name="BAG OAF" icon="" action="https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=[%identificatie%]" shortTitle="" type="5" isEnabledOnlyWhenEditable="0">
           <actionScope id="Feature"/>
           <actionScope id="Canvas"/>
         </actionsetting>

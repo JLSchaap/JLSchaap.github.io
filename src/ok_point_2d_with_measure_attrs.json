@@ -1,0 +1,65 @@
+{
+  "type": "FeatureCollection",
+  "conformsTo": ["http://www.opengis.net/spec/json-fg-1/0.3/core"],
+  "features": [
+    {
+      "type": "Feature",
+      "id": "ok2d-0",
+      "place": { "type": "Point", "coordinates": [155001.667, 463001.667] },
+      "coordRefSys": { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/28992" },
+      "properties": {
+        "measure_value": 0.42,
+        "measure_unit": "m",
+        "observed_property": "waterLevel",
+        "note": "M als attribuut met eenheid/semantiek"
+      }
+    ,
+    {
+      "type": "Feature",
+      "id": "ok2d-1",
+      "place": { "type": "Point", "coordinates": [155003.333, 462998.333] },
+      "coordRefSys": { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/28992" },
+      "properties": {
+        "measure_value": 0.43,
+        "measure_unit": "m",
+        "observed_property": "waterLevel",
+        "note": "M als attribuut met eenheid/semantiek"
+      }
+    ,
+    {
+      "type": "Feature",
+      "id": "ok2d-2",
+      "place": { "type": "Point", "coordinates": [154995.000, 463004.000] },
+      "coordRefSys": { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/28992" },
+      "properties": {
+        "measure_value": 0.44,
+        "measure_unit": "m",
+        "observed_property": "waterLevel",
+        "note": "M als attribuut met eenheid/semantiek"
+      }
+    ,
+    {
+      "type": "Feature",
+      "id": "ok2d-3",
+      "place": { "type": "Point", "coordinates": [155006.667, 462993.333] },
+      "coordRefSys": { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/28992" },
+      "properties": {
+        "measure_value": 0.45,
+        "measure_unit": "m",
+        "observed_property": "waterLevel",
+        "note": "M als attribuut met eenheid/semantiek"
+      }
+    ,
+    {
+      "type": "Feature",
+      "id": "ok2d-4",
+      "place": { "type": "Point", "coordinates": [154991.667, 462996.667] },
+      "coordRefSys": { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/28992" },
+      "properties": {
+        "measure_value": 0.46,
+        "measure_unit": "m",
+        "observed_property": "waterLevel",
+        "note": "M als attribuut met eenheid/semantiek"
+      }
+    
+  ] }

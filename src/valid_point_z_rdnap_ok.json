@@ -1,0 +1,70 @@
+{
+  "type": "FeatureCollection",
+  "conformsTo": ["http://www.opengis.net/spec/json-fg-1/0.3/core"],
+  "features": [
+    {
+      "type": "Feature",
+      "id": "v1-0",
+      "place": { "type": "Point", "coordinates": [155005.000, 463005.000, 1.230] },
+      "coordRefSys": {
+        "type": "CompoundCRS",
+        "components": [
+          { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/28992" },
+          { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/5709" }
+        ]
+      },
+      "properties": { "note": "Z=hoogte t.o.v. NAP, compound CRS RD+NAP" }
+    ,
+    {
+      "type": "Feature",
+      "id": "v1-1",
+      "place": { "type": "Point", "coordinates": [155010.000, 462995.000, 1.230] },
+      "coordRefSys": {
+        "type": "CompoundCRS",
+        "components": [
+          { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/28992" },
+          { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/5709" }
+        ]
+      },
+      "properties": { "note": "Z=hoogte t.o.v. NAP, compound CRS RD+NAP" }
+    ,
+    {
+      "type": "Feature",
+      "id": "v1-2",
+      "place": { "type": "Point", "coordinates": [154985.000, 463012.000, 1.230] },
+      "coordRefSys": {
+        "type": "CompoundCRS",
+        "components": [
+          { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/28992" },
+          { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/5709" }
+        ]
+      },
+      "properties": { "note": "Z=hoogte t.o.v. NAP, compound CRS RD+NAP" }
+    ,
+    {
+      "type": "Feature",
+      "id": "v1-3",
+      "place": { "type": "Point", "coordinates": [155020.000, 462980.000, 1.230] },
+      "coordRefSys": {
+        "type": "CompoundCRS",
+        "components": [
+          { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/28992" },
+          { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/5709" }
+        ]
+      },
+      "properties": { "note": "Z=hoogte t.o.v. NAP, compound CRS RD+NAP" }
+    ,
+    {
+      "type": "Feature",
+      "id": "v1-4",
+      "place": { "type": "Point", "coordinates": [154975.000, 462990.000, 1.230] },
+      "coordRefSys": {
+        "type": "CompoundCRS",
+        "components": [
+          { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/28992" },
+          { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/5709" }
+        ]
+      },
+      "properties": { "note": "Z=hoogte t.o.v. NAP, compound CRS RD+NAP" }
+    
+  ] }

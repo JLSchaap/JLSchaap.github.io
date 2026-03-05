@@ -1,0 +1,40 @@
+{
+  "type": "FeatureCollection",
+  "conformsTo": ["http://www.opengis.net/spec/json-fg-1/0.3/core"],
+  "features": [
+    {
+      "type": "Feature",
+      "id": "mix-0",
+      "place": { "type": "Point", "coordinates": [155005.000, 463005.000] },
+      "coordRefSys": { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/28992" },
+      "properties": { "note": "2D point" }
+    ,
+    {
+      "type": "Feature",
+      "id": "mix-1",
+      "place": { "type": "Point", "coordinates": [155010.000, 462995.000, 0.900] },
+      "coordRefSys": { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/28992" },
+      "properties": { "note": "3D point (Z)" }
+    ,
+    {
+      "type": "Feature",
+      "id": "mix-2",
+      "place": { "type": "Point", "coordinates": [154985.000, 463012.000] },
+      "coordRefSys": { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/28992" },
+      "properties": { "note": "2D point" }
+    ,
+    {
+      "type": "Feature",
+      "id": "mix-3",
+      "place": { "type": "Point", "coordinates": [155020.000, 462980.000, 0.900] },
+      "coordRefSys": { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/28992" },
+      "properties": { "note": "3D point (Z)" }
+    ,
+    {
+      "type": "Feature",
+      "id": "mix-4",
+      "place": { "type": "Point", "coordinates": [154975.000, 462990.000] },
+      "coordRefSys": { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/28992" },
+      "properties": { "note": "2D point" }
+    
+  ] }

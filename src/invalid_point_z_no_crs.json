@@ -1,0 +1,40 @@
+{
+  "type": "FeatureCollection",
+  "conformsTo": ["http://www.opengis.net/spec/json-fg-1/0.3/core"],
+  "features": [
+    {
+      "type": "Feature",
+      "id": "i1-0",
+      "place": { "type": "Point", "coordinates": [155002.500, 463002.500, 0.750] },
+      "coordRefSys": { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/28992" },
+      "properties": { "note": "Z zonder verticaal CRS (alleen RD)" }
+    ,
+    {
+      "type": "Feature",
+      "id": "i1-1",
+      "place": { "type": "Point", "coordinates": [155005.000, 462997.500, 0.750] },
+      "coordRefSys": { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/28992" },
+      "properties": { "note": "Z zonder verticaal CRS (alleen RD)" }
+    ,
+    {
+      "type": "Feature",
+      "id": "i1-2",
+      "place": { "type": "Point", "coordinates": [154992.500, 463006.000, 0.750] },
+      "coordRefSys": { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/28992" },
+      "properties": { "note": "Z zonder verticaal CRS (alleen RD)" }
+    ,
+    {
+      "type": "Feature",
+      "id": "i1-3",
+      "place": { "type": "Point", "coordinates": [155010.000, 462990.000, 0.750] },
+      "coordRefSys": { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/28992" },
+      "properties": { "note": "Z zonder verticaal CRS (alleen RD)" }
+    ,
+    {
+      "type": "Feature",
+      "id": "i1-4",
+      "place": { "type": "Point", "coordinates": [154987.500, 462995.000, 0.750] },
+      "coordRefSys": { "type": "OGC", "id": "http://www.opengis.net/def/crs/EPSG/0/28992" },
+      "properties": { "note": "Z zonder verticaal CRS (alleen RD)" }
+    
+  ] }

@@ -52,9 +52,9 @@ Harvesters CSW:
 * [EU Inspire](https://inspire-geoportal.ec.europa.eu/)
 * [EU Data portal](https://data.europa.eu/)
 
-Non Inspire Dutch API harvest: 
-* [developer.overheid.nl (developer for the government)](https://apis.developer.overheid.nl/apis/?organisation=https://www.pdok.nl)
+Non Inspire Dutch API harvest:
 
+* [developer.overheid.nl (developer for the government)](https://apis.developer.overheid.nl/apis/?organisation=https://www.pdok.nl)
 
 ## Dataset Designation Process in the Netherlands
 
@@ -342,26 +342,26 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 
 * [building items BBOX: 'BRT TOP10NL - Gebouw vlak'](https://api.pdok.nl/brt/top10nl/ogc/v1/collections/gebouw_vlak/items?bbox=5.3865794432391585%2C52.15474153635583%2C5.388280713000618%2C52.1555578885615&limit=1000&f=html)
 * [BGT - building items BBOX:Basisregistratie Grootschalige Topografie - Pand (PND)](https://api.pdok.nl/lv/bgt/ogc/v1/collections/pand/items?bbox=5.3865794432391585%2C52.15474153635583%2C5.388280713000618%2C52.1555578885615&limit=1000)
-* [BAG - building items BBOX:Basisregistratie Adressen en Gebouwen - Pand (demo))](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?bbox=5.3865794432391585%2C52.15474153635583%2C5.388280713000618%2C52.1555578885615&limit=1000)
+* [BAG - building items BBOX:Basisregistratie Adressen en Gebouwen - Pand (demo))](https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=5.3865794432391585%2C52.15474153635583%2C5.388280713000618%2C52.1555578885615&limit=1000)
 
 ## [Item Feature by id](https://docs.ogc.org/is/17-069r4/17-069r4.html#_features_rootcollectionscollectioniditems)
 
 * [TOP10NL Item](https://api.pdok.nl/brt/top10nl/ogc/v1/collections/gebouw_vlak/items?lokaal_id=103018712)
 * [BGT item](https://api.pdok.nl/lv/bgt/ogc/v1/collections/pand/items?lokaal_id=G0307.b94c2bd2f8f44429a23bb46202b1627b)
-* [BAG Item](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?identificatie=0307100000333887)
+* [BAG Item](https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0307100000333887)
 
 ##
 
 ## BAG relations N:M
 
-* [BAG Pand met een verblijfsobject](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?identificatie=0307100000333887)
-* [Bag verblijfsobject bij pand](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/verblijfsobject/items?identificatie=0307010000507344)
-* 
-* [BAG pand met meerdere verblijfsobjecten](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?identificatie=0599100000602583)
-* [BAG pand met meerdere verblijfsobjecten](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items?identificatie=0518100001775034)
+* [BAG Pand met een verblijfsobject](https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0307100000333887)
+* [Bag verblijfsobject bij pand](https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?identificatie=0307010000507344)
+*
+* [BAG pand met meerdere verblijfsobjecten](https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0599100000602583)
+* [BAG pand met meerdere verblijfsobjecten](https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0518100001775034)
 
-* [Bag verblijfsobject meerdere panden](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/verblijfsobject/items?identificatie=1724010000794211)
-* [Bag verblijfsobject meerdere panden](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/verblijfsobject/items?identificatie=0358010019049858)
+* [Bag verblijfsobject meerdere panden](https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?identificatie=1724010000794211)
+* [Bag verblijfsobject meerdere panden](https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?identificatie=0358010019049858)
 
 ## filter
 
@@ -371,7 +371,7 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 
 * [TOP10NL](https://api.pdok.nl/brt/top10nl/ogc/v1/collections/gebouw_vlak/items/bffedb27-48f8-50d9-a725-66f6024ec569)
 * [BGT](https://api.pdok.nl/lv/bgt/ogc/v1/collections/pand/items/6f694250-fbb5-52f3-8761-3cf564846700)
-* [BAG](https://api.pdok.nl/lv/bag/ogc/v1-demo/collections/pand/items/67b6065c-b9d5-5fce-9b8f-bd12336acf0f)
+* [BAG](https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/67b6065c-b9d5-5fce-9b8f-bd12336acf0f)
 
 ## [OGC Api features](https://ogcapi.ogc.org/features/) Download Grid for [Cityjson](https://www.cityjson.org/) Zip
 
@@ -468,6 +468,76 @@ ___
 * [PDOK OGC API records demo](https://api.pdok.nl/catalogus/v1-demo/collections/metadata:main/)
 * [Clearly](https://ogc-demo.clearly.app/v2)
 
+##  PDOK Location API
+
+### 🔹 Landing page
+
+- <https://api.pdok.nl/kadaster/location-api/v1-demo/>
+
+### 🔹 OpenAPI-documentatie
+
+- JSON: <https://api.pdok.nl/kadaster/location-api/v1-demo/api?f=json>
+* HTML: <https://api.pdok.nl/kadaster/location-api/v1-demo/api?f=html>
+
+### 🔹 Conformance
+
+- <https://api.pdok.nl/kadaster/location-api/v1-demo/conformance>
+
+### 🔹 Collections
+
+- Alle collecties:  
+  <https://api.pdok.nl/kadaster/location-api/v1-demo/collections>
+
+* Specifieke collection (generiek endpoint):  
+  <https://api.pdok.nl/kadaster/location-api/v1-demo/collections/{collectionId}>
+
+Voorbeelden:
+* Adres: <https://api.pdok.nl/kadaster/location-api/v1-demo/collections/adres>  
+* Woonplaats: <https://api.pdok.nl/kadaster/location-api/v1-demo/collections/woonplaats>  
+* Perceel: <https://api.pdok.nl/kadaster/location-api/v1-demo/collections/perceel>  
+
+---
+
+## 🔍 Search API demo’s
+
+### 1️⃣ Basiszoekopdracht
+
+- <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damrak>
+- https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damrak&adres[version]=1&adres[relevance]=0.5
+- https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damrak&adres[version]=1&adres[relevance]=0.5&f=json
+
+### 2️⃣ Autocomplete (gedeeltelijke input)
+- https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damr&adres[version]=1&adres[relevance]=0.5&limit=5>
+- https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damr&adres[version]=1&adres[relevance]=0.5&&limit=5&f=json>
+
+### 3️⃣ Zoeken in specifieke collecties (deepObject)
+
+- <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=dam&adres[version]=1&f=json>>
+* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=dama&woonplaats[version]=1&woonplaats[relevance]=0.5&f=json>
+
+### 4️⃣ Zoekopdracht met relevance‑weging
+
+- <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=utrecht&adres[version]=1&adres[relevance]=0.8>
+
+### 5️⃣ Zoekopdracht met BBOX‑filter
+
+- <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=rotter&bbox=4.4,51.8,5.0,52.0>
+
+### 6️⃣ Resultaat ophalen als JSON-FG
+
+- <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=amsterdam&f=jsonfg>
+
+### 7️⃣ Resultaat ophalen als HTML
+
+- <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=den%20haag&f=html>
+
+---
+
+## 🔗 Link naar volledige feature (voor demo-stap 4)
+
+*(Deze URL komt uit een zoekresultaat — pas het ID aan naar je demo-resultaat)*
+
+* <https://api.pdok.nl/kadaster/location-api/v1-demo/collections/woonplaats/items/GM0766>
 __
 [![check markdown links](https://github.com/JLSchaap/JLSchaap.github.io/actions/workflows/checkMarkdown.yml/badge.svg)](https://github.com/JLSchaap/JLSchaap.github.io/actions/workflows/checkMarkdown.yml)
 mobilitytwin.

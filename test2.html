@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <title>NL Adres Testset (BAG/PDOK geïnspireerde cases) – incl. PDOK Location API Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root{
+      --bg:#0b1220; --ink:#e5edf6; --muted:#93a4bf; --ok:#16a34a; --warn:#f59e0b; --bad:#ef4444;
+      --card:#0e1628; --line:#1f2a44; --row:#0b1324; --row2:#0d182e;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,Segoe UI,Roboto,Arial}
+    header{padding:16px 18px;border-bottom:1px solid var(--line);background:#0a1020}
+    h1{margin:0;font-size:18px}
+    main{padding:16px 18px;display:grid;grid-template-columns: 360px 1fr;gap:14px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:10px}
+    .card header{padding:12px 12px 0;border:none;background:transparent}
+    .card .content{padding:12px}
+    textarea{width:100%;min-height:220px;background:var(--row);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px;resize:vertical}
+    input[type="text"],input[type="number"]{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--row);color:var(--ink)}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .controls{display:flex;flex-wrap:wrap;gap:8px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;border:1px solid #2b3a5f;background:#101a31;color:var(--ink);cursor:pointer}
+    .btn:hover{background:#12203f}
+    .btn.primary{background:#0f3321;border-color:#14532d}
+    .btn.primary:hover{background:#14532d}
+    .btn.warn{background:#3a2b08;border-color:#a16207}
+    .btn.warn:hover{background:#4d3609}
+    .btn:disabled{opacity:.5;cursor:not-allowed}
+    .small{font-size:12px;color:var(--muted)}
+    .progress{height:10px;background:var(--row);border:1px solid var(--line);border-radius:999px;overflow:hidden}
+    .bar{height:100%;width:0;background:linear-gradient(90deg,#22c55e,#16a34a);transition:width .2s}
+    table{width:100%;border-collapse:collapse;font-size:13px}
+    th,td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+    th{position:sticky;top:0;background:#0e1a3a;z-index:1}
+    tr:nth-child(odd){background:var(--row)}
+    tr:nth-child(even){background:var(--row2)}
+    .mono{font-family:ui-monospace,SFMono-Regular,Consolas,Monaco,monospace}
+    .pill{display:inline-block;padding:.1rem .5rem;border-radius:999px;font-size:12px;border:1px solid #0003}
+    .ok{background:#0e3a22;color:#b9f7c7;border-color:#14532d}
+    .bad{background:#3b0c0c;color:#fecaca;border-color:#7f1d1d}
+    .warnpill{background:#3b2a05;color:#fde68a;border-color:#a16207}
+    details summary{cursor:pointer;color:#d1d9e6}
+    .foot{color:#93a4bf}
+    a.pdok{color:#93c5fd;text-decoration:none;border-bottom:1px dashed #375b93}
+    a.pdok:hover{border-bottom-style:solid}
+  </style>
+</head>
+
+<body>
+<header>
+  <h1>NL Adres Testset – synthetische BAG/PDOK‑cases + PDOK API test</h1>
+</header>
+
+<main>
+  <section class="card">
+    <header><h2>Testinvoer</h2></header>
+    <div class="content">
+
+      <textarea id="input" placeholder="Plak hier adressen…"></textarea>
+      <div class="controls" style="margin-top:8px">
+        <button class="btn" id="loadPreset">Preset laden</button>
+        <button class="btn" id="clear">Wissen</button>
+      </div>
+
+      <details style="margin-top:10px">
+        <summary>Wat test dit?</summary>
+        <div class="small">
+          • Plein + jaartal/range<br>
+          • Apostrof/diacritics varianten<br>
+          • Postcodevormen<br>
+          • Huisnummertoevoegingen<br>
+          • Optioneel: live check via PDOK Location API (preprod)
+        </div>
+      </details>
+
+      <div class="card" style="margin-top:12px">
+        <div class="content">
+
+          <div class="row">
+            <div>
+              <label class="small">Max. items per seconde</label>
+              <input id="rps" type="number" min="1" step="1" value="20" />
+            </div>
+
+            <div>
+              <label class="small">‘Complex’ bij ≥ flags</label>
+              <input id="complexFlags" type="number" min="1" step="1" value="2" />
+            </div>
+          </div>
+
+          <label style="font-size:12px;display:flex;gap:6px;align-items:center;margin-top:8px;">
+            <input type="checkbox" id="useApi" style="transform:scale(1.2)">
+            Test ook via PDOK Location API (preprod)
+          </label>
+
+          <div class="controls" style="margin-top:10px">
+            <button class="btn primary" id="start">▶ Start</button>
+            <button class="btn warn" id="cancel" disabled>■ Annuleren</button>
+          </div>
+
+          <div class="small" style="margin-top:6px">Voortgang</div>
+          <div class="progress"><div class="bar" id="bar"></div></div>
+          <div class="small" id="progressLabel">Gereed: 0 / 0</div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" style="grid-column:2 / -1">
+    <header><h2>Resultaten</h2></header>
+    <div class="content">
+
+      <table id="results">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Invoer</th>
+            <th>Herkenning</th>
+            <th>Flags</th>
+            <th>Status / API</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+    </div>
+  </section>
+</main>
+
+
+<script>
+// === PRESET DATA ===
+const PRESET = [
+  "Plein 1813 5, 's-Gravenhage",
+  "Plein 1945 12, Velsen",
+  "Plein 1953 7, Zeeland",
+  "Plein 1940-1945 10, Rotterdam",
+  "Plein ’40–’45 3, Amsterdam",
+  "Plein '40-'45 22, Amsterdam",
+  "Plein 19-45 1A, Utrecht",
+  "Plein 2000 9, Zoetermeer",
+  "Plein 1 Mei 4, Eindhoven",
+  "5 Mei-plein 6, Wageningen",
+
+  "'s-Gravenhageplein 8, Den Haag",
+  "’s-Hertogenboschplein 14, 's-Hertogenbosch",
+  "Sint-Jansplein 2, Maastricht",
+  "St.-Jansplein 2, Maastricht",
+  "César Franckplein 11, Arnhem",
+  "G.C. van Prinstererplein 4, Leiden",
+  "Ds. Kuyperplein 3, Barneveld",
+  "Prof. Lorentzplein 1, Haarlem",
+
+  "Plein 1945 1, 1971GC, Velsen",
+  "Plein 1945 1, 1971 GC, Velsen",
+  "Plein 1813 5, 2514 JH, 's-Gravenhage",
+  "Plein '40-'45 22, 1064 PP, Amsterdam",
+
+  "Plein 1940-1945 10-III, Rotterdam",
+  "Plein 1813 5 hs, 's-Gravenhage",
+  "Plein '40-'45 22-A, Amsterdam",
+  "Plein 2000 9 zwart, Zoetermeer",
+  "Plein 19-45 1 bis, Utrecht",
+
+  "Julianaplein 1, 's-Gravenhage",
+  "Koningin Emmaplein 2, 's-Hertogenbosch",
+  "Burgemeester Reigerplein 70, Utrecht",
+
+  "Plein 1813, 's-Gravenhage",
+  "Plein '40-'45, Amsterdam",
+  "Plein 1945, Velsen",
+  "5 Mei-plein, Wageningen"
+];
+
+
+// === REGEX HERKENNER ===
+const rx = {
+  plein: /\bplein\b/i,
+  jaar4: /\b(1[5-9]\d{2}|20\d{2})\b/,
+  range2: /\b'\d{2}\s?[-–]\s?'\d{2}\b/,
+  range4: /\b(1[5-9]\d{2}|20\d{2})\s?[-–]\s?(1[5-9]\d{2}|20\d{2})\b/,
+  dagMaand: /\b(\d{1,2})\s?(januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december)\b/i,
+  apostrof: /['’]\s?[-a-z]/i,
+  diacritics: /[áàäâéèëêíìïîóòöôúùüûçñÁÀÄÂÉÈËÊÍÌÏÎÓÒÖÔÚÙÜÛÇÑ]/,
+  postcode: /\b[1-9]\d{3}\s?[A-Z]{2}\b/,
+  toevoeging: /\b(HS|hs|bis|III|IV|[A-Z]-?\d*|zwart)\b/,
+  initialen: /\b([A-Z]\.){1,3}\s/,
+  sintAfk: /\b(St\.?|Sint-)\b/,
+  sApostrofPlaats: /(^|[\s,])['’]s-?[-A-Za-z]/,
+};
+
+
+// === Analysefunctie ===
+function analyze(input){
+  const found = {
+    plein: rx.plein.test(input),
+    jaar4: rx.jaar4.test(input),
+    range2: rx.range2.test(input),
+    range4: rx.range4.test(input),
+    dagMaand: rx.dagMaand.test(input),
+    apostrof: rx.apostrof.test(input) || rx.sApostrofPlaats.test(input),
+    diacritics: rx.diacritics.test(input),
+    postcode: rx.postcode.test(input),
+    toevoeging: rx.toevoeging.test(input),
+    initialen: rx.initialen.test(input),
+    sintAfk: rx.sintAfk.test(input),
+  };
+
+  const flags = [];
+  const parts = [];
+
+  if(found.plein){ flags.push("plein"); parts.push("plein"); }
+  if(found.jaar4){ flags.push("jaar"); parts.push("jaar"); }
+  if(found.range2){ flags.push("jaar/range"); parts.push("range 'YY-'YY"); }
+  if(found.range4){ flags.push("jaar/range"); parts.push("range YYYY-YYYY"); }
+  if(found.dagMaand){ parts.push("dag‑maand"); }
+  if(found.apostrof){ flags.push("apostrof"); parts.push("apostrof"); }
+  if(found.diacritics){ flags.push("diacritics"); parts.push("diacritics"); }
+  if(found.postcode){ flags.push("postcode"); parts.push("postcode"); }
+  if(found.toevoeging){ flags.push("toevoeging"); parts.push("toevoeging"); }
+  if(found.initialen){ flags.push("initialen"); parts.push("initialen"); }
+  if(found.sintAfk){ flags.push("Sint/St."); parts.push("Sint/St."); }
+
+  return {found, flags, parts};
+}
+
+
+// === API call ===
+async function callPdokLocation(query) {
+  const url = `https://api.pdok.nl/kadaster/location-api/v1-preprod/api?f=json&q=${encodeURIComponent(query)}`;
+
+  try {
+    const r = await fetch(url);
+    if(!r.ok) return {ok:false, url, error:`HTTP ${r.status}`};
+    const json = await r.json();
+    return {ok:true, url, json};
+  } catch(e){
+    return {ok:false, url, error:String(e)};
+  }
+}
+
+
+// === UI refs ===
+const $ta = document.getElementById("input");
+const $load = document.getElementById("loadPreset");
+const $clear = document.getElementById("clear");
+const $start = document.getElementById("start");
+const $cancel = document.getElementById("cancel");
+const $rps = document.getElementById("rps");
+const $complex = document.getElementById("complexFlags");
+const $apiToggle = document.getElementById("useApi");
+const $bar = document.getElementById("bar");
+const $prog = document.getElementById("progressLabel");
+const $tbody = document.querySelector("#results tbody");
+
+let cancelFlag = false;
+
+$load.onclick=()=> $ta.value = PRESET.join("\n");
+$clear.onclick=()=>{ $ta.value=""; $tbody.innerHTML=""; updateProgress(0,0); };
+
+function sleep(ms){ return new Promise(r=>setTimeout(r, ms)); }
+function escapeHtml(s){ return String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;"); }
+
+function updateProgress(done,total){
+  const pct = total? Math.round(100*done/total):0;
+  $bar.style.width = pct+"%";
+  $prog.textContent = `Gereed: ${done} / ${total}`;
+}
+
+
+// === START BUTTON ===
+$start.onclick = async () => {
+  const lines = $ta.value.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+  if(!lines.length) return alert("Geen regels om te testen.");
+
+  cancelFlag = false;
+  $start.disabled=true;
+  $cancel.disabled=true;
+  $tbody.innerHTML="";
+  updateProgress(0, lines.length);
+
+  const per = Math.max(1, Number($rps.value)||20);
+  const complexMin = Math.max(1, Number($complex.value)||2);
+  const doApi = $apiToggle.checked;
+
+  $cancel.disabled=false;
+  let done = 0;
+
+  for(let i=0;i<lines.length;i++){
+    if(cancelFlag) break;
+
+    const input = lines[i];
+    const {found, flags, parts} = analyze(input);
+    const isComplex = flags.length >= complexMin;
+
+    let apiLink = "";
+    if(doApi){
+      const result = await callPdokLocation(input);
+      apiLink = `<a href="${result.url}" target="_blank" style="color:#93c5fdElement("tr");
+    tr.innerHTML = `
+      <td class="mono">${i+1}</td>
+      <td>${escapeHtml(input)}</td>
+      <td>${parts.length? escapeHtml(parts.join(", ")) : '<span class="small" style="color:#93a4bf">—</span>'}</td>
+      <td class="mono">${flags.length}</td>
+      <td>
+        ${isComplex
+            ? '<span class="pill warnpill">complex</span>'
+            : (found.plein ? '<span class="pill ok">ok</span>' : '<span class="pill bad">geen plein</span>')}
+        ${apiLink ? `<div class="small">${apiLink}</div>` : ""}
+      </td>
+    `;
+    $tbody.appendChild(tr);
+
+    done++;
+    updateProgress(done, lines.length);
+
+    await sleep(1000/per);
+  }
+
+  $start.disabled=false;
+  $cancel.disabled=true;
+  cancelFlag=false;
+};
+
+$cancel.onclick = () => cancelFlag = true;
+
+</script>
+</body>
+</html>

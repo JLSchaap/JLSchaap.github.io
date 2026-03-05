@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <title>PDOK Location API – Combinatie & Edgecase Test Runner (preprod) met voortgang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root { --pdok:#0057b8; --ok:#17863a; --warn:#9aa4b2; --err:#cc1f1a; --panel:#f6f8fb; }
+    body { font-family: Arial, system-ui, -apple-system, Segoe UI, Roboto; margin: 28px; }
+    h1 { margin: 0 0 12px 0; font-size: 20px; }
+    .btn { padding: 10px 14px; background: var(--pdok); color:#fff; border:0; border-radius:6px; cursor:pointer; }
+    .btn[disabled] { opacity:.6; cursor:not-allowed; }
+    .panel { background:var(--panel); border:1px solid #d0d7e1; border-radius:8px; padding:14px; }
+    .results { margin-top:16px; }
+    .item { border:1px solid #e2e7ef; border-left:6px solid var(--warn); border-radius:6px; padding:10px 12px; margin:10px 0; background:#fff; }
+    .ok { border-left-color: var(--ok); }
+    .err { border-left-color: var(--err); }
+    .title { font-weight:600; margin-bottom:4px; }
+    .meta { font-size:12px; color:#555; margin-top:6px; }
+    .links a { margin-right:10px; font-size:12px; }
+    .kbd { font-family: ui-monospace, Menlo, Consolas, "Liberation Mono", monospace; background:#f7f7f7; border:1px solid #ddd; border-radius:4px; padding:0 4px; }
+    .summary { background:#f0f4fa; border:1px solid #d6dbe3; border-radius:6px; padding:10px 12px; margin-top:8px; }
+    .small { font-size: 12px; color:#444; }
+    progress { width: 100%; height: 12px; }
+  </style>
+</head>
+<body>
+  <h1>PDOK Location API – Combinatie & Edgecase Test Runner (preprod)</h1>
+
+  <div class="panel">
+    <button id="runBtn" class="btn">Run alle combinaties & edgecases</button>
+    <div id="progressText" class="small" style="margin-top:8px;">Nog niet gestart.</div>
+    <progress id="progressBar" value="0" max="100"></progress>
+    <div id="configInfo" class="small" style="margin-top:6px;"></div>
+  </div>
+
+  <div class="results" id="results"></div>
+
+  <script>
+    // =========================
+    // CONFIG
+    // =========================
+    const BASE_PREFIX = "https://api.pdok.nl/kadaster/location-api/v1-preprod";
+    const OPENAPI_URL = BASE_PREFIX + "/api?f=json";
+    const SEARCH_PATH_FALLBACK = "/search";
+
+    // Belastingskeuze
+    const CONCURRENCY = 5;            // max gelijktijdige requests
+    const MAX_TESTS   = 240;          // verhoogd om extra edgecases mee te nemen
+    const BATCH_SLEEP = 120;          // ms pauze tussen batches
+
+    // =========================
+    // HULP & STATE
+    // =========================
+    let SEARCH_PATH = SEARCH_PATH_FALLBACK;
+
+    //const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+    const esc = (s) => String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+    function makeAbsoluteUrl(pathOrAbsolute) {
+      if (/^https?:\/\//i.test(pathOrAbsolute)) return pathOrAbsolute;
+      const left = BASE_PREFIX.replace(/\/+$/,"");
+      const right = String(pathOrAbsolute).replace(/^\/+/,"");
+      return left + "/" + right;
+    }
+
+    function setProgress(done, total) {
+      const pct = total ? Math.floor((done/total)*100) : 0;
+      document.getElementById("progressText").textContent =
+        `Voortgang: ${done} / ${total} (${pct}%)`;
+      const bar = document.getElementById("progressBar");
+      bar.value = pct; bar.max = 100;
+    }
+
+    function buildUrl(params) {
+      // params: { q, limit, f, collections: [{name,version,relevance?}], bbox?, bboxCrs?, crs?, extras?: [{k,v,append?}] }
+      const absSearch = makeAbsoluteUrl(SEARCH_PATH || SEARCH_PATH_FALLBACK);
+      const url = new URL(absSearch);
+      const qp = new URLSearchParams();
+
+      if (params.q !== undefined) qp.set("q", params.q);
+      if (params.limit != null)  qp.set("limit", String(params.limit));
+      if (params.f)              qp.set("f", params.f);
+      if (params.crs)            qp.set("crs", params.crs);
+      if (params.bbox != null) {
+        const val = Array.isArray(params.bbox) ? params.bbox.join(",") : String(params.bbox);
+        qp.set("bbox", val);
+      }
+      if (params.bboxCrs)        qp.set("bbox-crs", params.bboxCrs);
+
+      if (Array.isArray(params.collections)) {
+        for (const c of params.collections) {
+          if (!c || !c.name) continue;
+          if (c.version != null)   qp.set(`${c.name}[version]`, String(c.version));
+          if (c.relevance != null) qp.set(`${c.name}[relevance]`, String(c.relevance));
+        }
+      }
+
+      if (Array.isArray(params.extras)) {
+        for (const kv of params.extras) {
+          if (!kv || kv.k == null) continue;
+          if (kv.append) qp.append(kv.k, kv.v ?? "");
+          else qp.set(kv.k, kv.v ?? "");
+        }
+      }
+
+      url.search = qp.toString();
+      return url.toString();
+    }
+
+    async function fetchOpenApi() {
+      const resp = await fetch(OPENAPI_URL, { method:"GET" });
+      if (!resp.ok) throw new Error(`OpenAPI HTTP ${resp.status}`);
+      const ct = resp.headers.get("content-type") || "";
+      if (!ct.includes("json")) throw new Error(`OpenAPI verwacht JSON, kreeg: ${ct}`);
+      return await resp.json();
+    }
+
+    async function ensureSearchPath() {
+      try {
+        const oas = await fetchOpenApi();
+        if (oas.paths && typeof oas.paths === "object") {
+          const paths = Object.keys(oas.paths);
+          SEARCH_PATH = paths.find(p => /\/search\/?$/.test(p))
+                      || paths.find(p => p.toLowerCase().includes("search"))
+                      || SEARCH_PATH_FALLBACK;
+        }
+      } catch (e) {
+        SEARCH_PATH = SEARCH_PATH_FALLBACK;
+      }
+    }
+
+    // =========================
+    // RENDER HELPERS
+    // =========================
+    function renderResult(container, idx, total, {name, status, details, links, ms}) {
+      const div = document.createElement("div");
+      div.className = "item " + (status === "pass" ? "ok" : status === "fail" ? "err" : "");
+      const title = document.createElement("div");
+      title.className = "title";
+      title.textContent = `[${idx}/${total}] ${status.toUpperCase()} • ${name}`;
+      const body = document.createElement("div");
+      body.innerHTML = details || "";
+      const linkDiv = document.createElement("div");
+      linkDiv.className = "links";
+      if (Array.isArray(links)) {
+        for (const l of links) {
+          if (!l || !l.href) continue;
+          const a = document.createElement("a");
+          a.href = l.href; a.textContent = l.label || l.href;
+          a.target = "_blank"; a.rel = "noopener noreferrer";
+          linkDiv.appendChild(a);
+        }
+      }
+      const meta = document.createElement("div");
+      meta.className = "meta";
+      meta.textContent = `Duur: ${ms != null ? ms.toFixed(1) : 0} ms`;
+      div.appendChild(title); div.appendChild(body); div.appendChild(linkDiv); div.appendChild(meta);
+      container.appendChild(div);
+    }
+
+    // =========================
+    // TESTLOADER + PROGRESS
+    // =========================
+    async function runOne(container, testDef, index, total, progress) {
+      const t1 = performance.now();
+      let url = "";
+      try {
+        url = buildUrl(testDef.params);
+        const headers = { "Accept": testDef.accept || "application/geo+json, application/vnd.ogc.fg+json;q=0.9, application/json;q=0.8, text/html;q=0.7" };
+        const resp = await fetch(url, { method:"GET", headers });
+        const ms = performance.now() - t1;
+
+        if (testDef.expectStatus && resp.status !== testDef.expectStatus) {
+          throw new Error(`Verwacht HTTP ${testDef.expectStatus}, kreeg HTTP ${resp.status}`);
+        }
+
+        const ct = resp.headers.get("content-type") || "";
+
+        if (ct.includes("application/problem+json")) {
+          const payload = await resp.json();
+          if (testDef.expectStatus && testDef.expectStatus >= 400) {
+            renderResult(container, index, total, {
+              name: testDef.name,
+              status: "pass",
+              details: `Ontving ${resp.status} met problem+json: <span class="kbd">${esc(payload.detail || payload.title || "n.v.t.")}</span>`,
+              links: [{href:url, label:"GET (check)"}],
+              ms
+            });
+          } else {
+            throw new Error(`Problem+json: ${payload.title || "error"} • ${payload.detail || ""}`);
+          }
+        } else if (ct.includes("application/geo+json") || ct.includes("application/json") || ct.includes("application/vnd.ogc.fg+json")) {
+          const payload = await resp.json();
+          if (typeof testDef.assert === "function") await testDef.assert(payload, {url, ct, resp});
+          const n = Array.isArray(payload?.features) ? payload.features.length : (payload?.numberReturned ?? "n/b");
+          renderResult(container, index, total, {
+            name: testDef.name,
+            status: "pass",
+            details: `OK • type: <span class="kbd">${esc(ct)}</span> • features: <span class="kbd">${esc(n)}</span>`,
+            links: [{href:url, label:"GET (check)"}],
+            ms
+          });
+        } else if (ct.includes("text/html")) {
+          renderResult(container, index, total, {
+            name: testDef.name,
+            status: "pass",
+            details: `OK • type: <span class="kbd">${esc(ct)}</span>`,
+            links: [{href:url, label:"GET (check)"}],
+            ms
+          });
+        } else {
+          if (testDef.allowUnknownContentType) {
+            renderResult(container, index, total, {
+              name: testDef.name,
+              status: "pass",
+              details: `Onverwacht content-type maar toegestaan: <span class="kbd">${esc(ct)}</span>`,
+              links: [{href:url, label:"GET (check)"}],
+              ms
+            });
+          } else {
+            throw new Error(`Onbekend content-type: ${ct}`);
+          }
+        }
+      } catch (e) {
+        const ms = performance.now() - t1;
+        renderResult(container, index, total, {
+          name: testDef.name,
+          status: "fail",
+          details: esc(e.message || String(e)),
+          links: url ? [{href:url, label:"GET (check)"}] : [],
+          ms
+        });
+      } finally {
+        progress.done++;
+        setProgress(progress.done, progress.total);
+      }
+    }
+
+    async function runPool(container, tests, concurrency, progress) {
+      let idx = 0;
+      const workers = new Array(concurrency).fill(0).map(async () => {
+        while (true) {
+          let current;
+          if (idx < tests.length) current = idx++;
+          else break;
+          const testDef = tests[current];
+          await runOne(container, testDef, current+1, tests.length, progress);
+         // await sleep(10);
+        }
+      });
+      await Promise.all(workers);
+    }
+
+    // =========================
+    // TESTSETS
+    // =========================
+
+    // (1) q-varianten (uitgebreid met rare tekens)
+    const Qs = [
+      "Amersfoort", "Utrecht",
+      "1012 AB", "3811 CK",
+      "Kalverstraat 1 Amsterdam",
+      "’s-Hertogenbosch", "IJmuiden",
+      "A+B & C/D?E=F", "🏠 huis",
+      "a",                                    // te kort
+      " ".repeat(2) + "Gouda",                // leading spaces
+      "X".repeat(200),                        // max
+      "X".repeat(205),                        // > max
+      "    ",                                 // whitespace only
+      "Den Haag", "’S-GRAVENHAGE",            // casing/diacritics
+      "Eindhoven\tCentrum",                   // tab
+      "Rotterdam\n",                          // newline
+      "Meppel%20",                            // encoded space artefact
+      "DROP TABLE; --",                       // SQL-ish
+      "..//..//",                             // path-ish
+    ];
+
+    // (2) collectiesets (deepObject)
+    const COLS_VALID = [
+      [{name:"adres", version:1, relevance:0.5}],
+      [{name:"woonplaats", version:1, relevance:0.5}],
+      [{name:"gemeentegebied", version:1, relevance:0.5}],
+    ];
+    const COLS_EDGE = [
+      [],                                                     // geen collecties -> 400
+      [{name:"adres", version:""}],                           // version mist -> 400
+      [{name:"adres", version:"abc"}],                        // non-numeric -> 400 (waarschijnlijk)
+      [{name:"adres", version:0}],                            // 0 -> fout
+      [{name:"adres", version:-1}],                           // negatief
+      [{name:"adres", version:1, relevance:-0.1}],            // relevance negatief
+      [{name:"adres", version:1, relevance:2}],               // relevance > 1
+      [{name:"onbekend", version:1}],                         // niet-bestaande collectie
+    ];
+
+
+    // (1b) EXTRA: synthetische BAG/PDOK-geïnspireerde adres-edgecases (uit jouw eerdere testharnas)
+const Q_EDGECASES = [
+"amsterdam", "amsterdam", 
+  // --- PLEIN + JAAR / JAARRANGE ---
+  "Plein 1813 5, 's-Gravenhage",
+  "Plein 1945 12, Velsen",
+  "Plein 1953 7, Zeeland",
+  "Plein 1940-1945 10, Rotterdam",
+  "Plein ’40–’45 3, Amsterdam",
+  "Plein '40-'45 22, Amsterdam",
+  "Plein 19-45 1A, Utrecht",
+  "Plein 2000 9, Zoetermeer",
+  "Plein 1 Mei 4, Eindhoven",
+  "5 Mei-plein 6, Wageningen",
+
+  // --- APOSTROF / DIACRITICS / AFKORTINGEN ---
+  "'s-Gravenhageplein 8, Den Haag",
+  "’s-Hertogenboschplein 14, 's-Hertogenbosch",
+  "Sint-Jansplein 2, Maastricht",
+  "St.-Jansplein 2, Maastricht",
+  "César Franckplein 11, Arnhem",
+  "G.C. van Prinstererplein 4, Leiden",
+  "Ds. Kuyperplein 3, Barneveld",
+  "Prof. Lorentzplein 1, Haarlem",
+
+  // --- POSTCODEVARIANTEN ---
+  "Plein 1945 1, 1971GC, Velsen",
+  "Plein 1945 1, 1971 GC, Velsen",
+  "Plein 1813 5, 2514 JH, 's-Gravenhage",
+  "Plein '40-'45 22, 1064 PP, Amsterdam",
+
+  // --- TOEVOEGINGEN ---
+  "Plein 1940-1945 10-III, Rotterdam",
+  "Plein 1813 5 hs, 's-Gravenhage",
+  "Plein '40-'45 22-A, Amsterdam",
+  "Plein 2000 9 zwart, Zoetermeer",
+  "Plein 19-45 1 bis, Utrecht",
+
+  // --- GEMEENTEN / PLAATSEN ---
+  "Julianaplein 1, 's-Gravenhage",
+  "Koningin Emmaplein 2, 's-Hertogenbosch",
+  "Burgemeester Reigerplein 70, Utrecht",
+
+  // --- MINIMALE / AMBIGUE ---
+  "Plein 1813, 's-Gravenhage",
+  "Plein '40-'45, Amsterdam",
+  "Plein 1945, Velsen",
+  "5 Mei-plein, Wageningen"
+];
+    // (3) limits
+    const LIMITS = [1, 5, 10, 50, 0, 51, -5, "abc", "5 ", null];
+
+    // (4) formats / Accept
+    const FORMATS = ["json","jsonfg","html"];
+    const ACCEPT_ONLY_XML = "application/xml"; // vaak 406
+
+    // (5) bbox/crs
+    const BBOXES = [
+      { bbox: [3.3,50.7,7.2,53.6], bboxCrs: "http://www.opengis.net/def/crs/OGC/1.3/CRS84" },
+      { bbox: [155000,450000,170000,470000], bboxCrs: "http://www.opengis.net/def/crs/EPSG/0/28992", crs: "http://www.opengis.net/def/crs/EPSG/0/28992" },
+      { bbox: [-179,10,179,20], bboxCrs: "http://www.opengis.net/def/crs/OGC/1.3/CRS84" },
+      { bbox: [3.3,50.7,7.2], bboxCrs: "http://www.opengis.net/def/crs/OGC/1.3/CRS84" }, // te kort -> 400
+      { bbox: "a,b,c,d", bboxCrs: "http://www.opengis.net/def/crs/OGC/1.3/CRS84" },     // niet numeriek -> 400
+      { bbox: [3.3,50.7,7.2,53.6, 0, 100], bboxCrs: "http://www.opengis.net/def/crs/OGC/1.3/CRS84" }, // 6 waarden
+      { bbox: [999999999,999999999, 1000000000,1000000000], bboxCrs: "http://www.opengis.net/def/crs/OGC/1.3/CRS84" }, // huge
+    ];
+
+    // =========================
+    // ASSERT‑helpers
+    // =========================
+    function baseAssertJson(json) {
+      if (!Array.isArray(json?.features)) throw new Error("features ontbreekt");
+    }
+    function assertAnyNameContains(json, needles=[]) {
+      const feats = Array.isArray(json?.features) ? json.features : [];
+      if (feats.length === 0) throw new Error("Geen resultaten");
+      const lc = (s)=>String(s||"").toLowerCase();
+      const any = feats.some(f => needles.some(n => lc(f?.properties?.display_name||"").includes(lc(n))));
+      if (!any) throw new Error(`Geen display_name met een van: ${needles.join(", ")}`);
+    }
+
+    // =========================
+    // TESTCASE GENERATIE
+    // =========================
+    function toTestName(parts) { return parts.filter(Boolean).join(" • "); }
+
+    function buildTestCases() {
+      const tests = [];
+
+      // ── A) Minimale serverregel ─────────────────────────────
+      tests.push({
+        name: "Regel: ten minste één collectie vereist",
+        params: { q:"Amersfoort", limit:3, f:"json", collections:[] },
+        expectStatus: 400
+      });
+
+      // ── B) q-varianten × (adres|woonplaats) × formats × limit ─
+     for (const q of  [...Q_EDGECASES, ...Qs]) {
+        for (const cols of [[{name:"adres", version:1, relevance:0.5}], [{name:"woonplaats", version:1, relevance:0.5}]]) {
+          for (const f of FORMATS) {
+            for (const limit of [1,10,50]) {
+              const invalidQ = (typeof q === "string" && q.trim().length < 2) || (q.length > 200);
+              const expected400 = invalidQ || cols.length===0;
+              tests.push({
+                name: toTestName(["Zoek", q, `f=${f}`, `limit=${limit}`, cols.map(c=>c.name).join("+")]),
+                params: { q, limit, f, collections: cols },
+                expectStatus: expected400 ? 400 : undefined,
+                assert: baseAssertJson
+              });
+            }
+          }
+        }
+      }
+
+      // ── C) Collectie-edgecases ───────────────────────────────
+      for (const cols of COLS_EDGE) {
+        const nm = cols.length ? cols.map(c => `${c.name}[v=${c.version}|r=${c.relevance}]`).join(",") : "GEEN";
+        const expect400 = (!cols.length) || cols.some(c => c.version === "" || isNaN(Number(c.version)) || Number(c.version) <= 0) || cols.some(c => typeof c.relevance==="number" && (c.relevance<0 || c.relevance>1));
+        tests.push({
+          name: toTestName(["Collecties", nm]),
+          params: { q:"Amersfoort", limit:5, f:"json", collections: cols },
+          expectStatus: expect400 ? 400 : undefined,
+          assert: baseAssertJson
+        });
+      }
+
+      // ── D) Duplicaat/malforme parameters ─────────────────────
+      tests.push({
+        name: "Dubbele q-parameters",
+        params: {
+          q: "Amersfoort", limit: 5, f:"json",
+          collections: [{name:"woonplaats", version:1}],
+          extras: [{k:"q", v:"Utrecht", append:true}]
+        },
+        assert: baseAssertJson
+      });
+      tests.push({
+        name: "Dubbele adres[version]",
+        params: {
+          q:"Kalverstraat", limit:5, f:"json",
+          collections: [{name:"adres", version:1}],
+          extras: [{k:"adres[version]", v:"2", append:true}]
+        },
+        assert: baseAssertJson
+      });
+      tests.push({
+        name: "Malformed deepObject key (adres [version])",
+        params: {
+          q:"Amsterdam", limit:5, f:"json",
+          collections: [{name:"adres", version:1}],
+          extras: [{k:"adres [version]", v:"1", append:true}]
+        },
+        expectStatus: 400
+      });
+      tests.push({
+        name: "Onbekende parameter foo=bar",
+        params: {
+          q:"Amersfoort", limit:5, f:"json",
+          collections: [{name:"woonplaats", version:1}],
+          extras: [{k:"foo", v:"bar"}]
+        },
+        assert: baseAssertJson
+      });
+      tests.push({
+        name: "Ontbrekende q (required)",
+        params: { limit:5, f:"json", collections: [{name:"woonplaats", version:1}] },
+        expectStatus: 400
+      });
+
+      // ── E) Limit-randen ──────────────────────────────────────
+      for (const limit of LIMITS) {
+        const expect400 = (limit !== null && (isNaN(Number(limit)) || Number(limit) < 1 || Number(limit) > 50));
+        tests.push({
+          name: toTestName([`Limit=${String(limit)}`,"adres"]),
+          params: { q:"Kalverstraat Amsterdam", limit, f:"json", collections:[{name:"adres", version:1, relevance:0.5}] },
+          expectStatus: expect400 ? 400 : undefined,
+          assert: baseAssertJson
+        });
+      }
+
+      // ── F) Formats / Negotiation ─────────────────────────────
+      tests.push({
+        name: "Accept: application/xml (verwacht 406)",
+        params: { q:"Amersfoort", limit:5, f:"json", collections:[{name:"woonplaats", version:1}] },
+        accept: "application/xml",
+        expectStatus: 406
+      });
+      tests.push({
+        name: "f=xml (ongeldig formaat)",
+        params: { q:"Amersfoort", limit:5, f:"xml", collections:[{name:"woonplaats", version:1}] },
+        expectStatus: 400
+      });
+      tests.push({
+        name: "f=JSON (uppercase)",
+        params: { q:"Amersfoort", limit:5, f:"JSON", collections:[{name:"woonplaats", version:1}] },
+        assert: baseAssertJson
+      });
+
+      // ── G) BBOX/CRS varianten ────────────────────────────────
+      for (const bb of BBOXES) {
+        const cols = [{name:"woonplaats", version:1, relevance:0.5}];
+        const nm = `bbox=${Array.isArray(bb.bbox)?bb.bbox.join(","):bb.bbox} ${bb.bboxCrs || ""} ${bb.crs ? ("crs="+bb.crs):""}`;
+        const isBad = (typeof bb.bbox === "string") || (Array.isArray(bb.bbox) && bb.bbox.length<4);
+        tests.push({
+          name: toTestName(["BBOX", nm]),
+          params: { q:"Amersfoort", limit:5, f:"json", collections: cols, bbox: bb.bbox, bboxCrs: bb.bboxCrs, crs: bb.crs },
+          expectStatus: isBad ? 400 : undefined,
+          assert: baseAssertJson
+        });
+      }
+
+      // ── H) Combinaties ───────────────────────────────────────
+      tests.push({
+        name: "Combinatie: adres + woonplaats",
+        params: {
+          q:"Utrecht 3511", limit:5, f:"json",
+          collections: [
+            {name:"adres", version:1, relevance:0.5},
+            {name:"woonplaats", version:1, relevance:0.5}
+          ]
+        },
+        assert: baseAssertJson
+      });
+
+      // ── I) JSON‑FG expliciet ─────────────────────────────────
+      tests.push({
+        name: "JSON-FG (f=jsonfg)",
+        params: { q:"Amersfoort", limit:5, f:"jsonfg", collections:[{name:"woonplaats", version:1, relevance:0.5}] },
+        accept: "application/vnd.ogc.fg+json, application/json;q=0.8",
+        assert: (json)=>{ if (!Array.isArray(json?.features)) throw new Error("JSON-FG: features ontbreekt"); }
+      });
+
+      // ── J) Grotere combinator (kleine subset) ────────────────
+      const BIG_Q = ["Amsterdam", "Amersfoort", "Utrecht"];
+      const BIG_COLS = [
+        [{name:"adres", version:1, relevance:0.5}],
+        [{name:"woonplaats", version:1, relevance:0.5}],
+        [{name:"gemeentegebied", version:1, relevance:0.5}],
+        [{name:"adres", version:1, relevance:0.5}, {name:"woonplaats", version:1, relevance:0.5}],
+      ];
+      for (const q of BIG_Q) {
+        for (const cols of BIG_COLS) {
+          for (const limit of [1,10]) {
+            tests.push({
+              name: toTestName(["Combi", q, cols.map(c=>c.name).join("+"), `limit=${limit}`]),
+              params: { q, limit, f:"json", collections: cols },
+              assert: baseAssertJson
+            });
+          }
+        }
+      }
+
+      // ── K) Historische faalgevallen uit community ────────────
+      // K1: NL postcodes met/zonder spatie (Nominatim #1027 + Geoforum topic)
+      tests.push({
+        name: "Historisch: NL postcode met spatie — 1012 AB (adres)",
+        params: { q:"1012 AB", limit:5, f:"json", collections:[{name:"adres", version:1, relevance:0.5}] },
+        assert: baseAssertJson
+      });
+      tests.push({
+        name: "Historisch: NL postcode zonder spatie — 1012AB (adres)",
+        params: { q:"1012AB", limit:5, f:"json", collections:[{name:"adres", version:1, relevance:0.5}] },
+        assert: baseAssertJson
+      });
+
+      // K2: Alleen 4-cijferige postcode (geen letters) — gedrag verschilt per geocoder
+      tests.push({
+        name: "Edge: 4-cijferige postcode zonder letters — 1012",
+        params: { q:"1012", limit:5, f:"json", collections:[{name:"adres", version:1, relevance:0.5}] },
+        // geen harde verwachting; rapporteren wat de service doet
+        assert: baseAssertJson
+      });
+
+      // K3: Alternatieve/Friese/Nederlandse namen
+      tests.push({
+        name: "Aliasnamen: Fryslân (woonplaats)",
+        params: { q:"Fryslân", limit:5, f:"json", collections:[{name:"woonplaats", version:1, relevance:0.5}] },
+        assert: (json)=>assertAnyNameContains(json, ["Fryslân","Friesland"])
+      });
+      tests.push({
+        name: "Aliasnamen: Friesland (woonplaats)",
+        params: { q:"Friesland", limit:5, f:"json", collections:[{name:"woonplaats", version:1, relevance:0.5}] },
+        assert: (json)=>assertAnyNameContains(json, ["Friesland","Fryslân"])
+      });
+      tests.push({
+        name: "Aliasnamen: ’s‑Gravenhage / Den Haag",
+        params: { q:"’s‑Gravenhage", limit:5, f:"json", collections:[{name:"woonplaats", version:1, relevance:0.5}] },
+        assert: (json)=>assertAnyNameContains(json, ["’s‑Gravenhage","Den Haag"])
+      });
+      tests.push({
+        name: "Aliasnamen: Den Haag / ’s‑Gravenhage",
+        params: { q:"Den Haag", limit:5, f:"json", collections:[{name:"woonplaats", version:1, relevance:0.5}] },
+        assert: (json)=>assertAnyNameContains(json, ["Den Haag","’s‑Gravenhage"])
+      });
+      tests.push({
+        name: "Aliasnamen: Leeuwarden / Ljouwert",
+        params: { q:"Ljouwert", limit:5, f:"json", collections:[{name:"woonplaats", version:1, relevance:0.5}] },
+        assert: (json)=>assertAnyNameContains(json, ["Ljouwert","Leeuwarden"])
+      });
+
+      // K4: Apostrof-varianten ’s-Hertogenbosch
+      tests.push({
+        name: "Apostrof: ’s‑Hertogenbosch (typografisch)",
+        params: { q:"’s-Hertogenbosch", limit:5, f:"json", collections:[{name:"woonplaats", version:1, relevance:0.5}] },
+        assert: baseAssertJson
+      });
+      tests.push({
+        name: "Apostrof: 's-Hertogenbosch (ASCII)",
+        params: { q:"'s-Hertogenbosch", limit:5, f:"json", collections:[{name:"woonplaats", version:1, relevance:0.5}] },
+        assert: baseAssertJson
+      });
+      tests.push({
+        name: "Apostrof: s-Hertogenbosch (zonder apostrof)",
+        params: { q:"s-Hertogenbosch", limit:5, f:"json", collections:[{name:"woonplaats", version:1, relevance:0.5}] },
+        assert: baseAssertJson
+      });
+
+      // Cap
+      return tests.slice(0, MAX_TESTS);
+    }
+
+    // =========================
+    // RUNNER ENTRY
+    // =========================
+    async function runAll() {
+      const btn = document.getElementById("runBtn");
+      const resultsEl = document.getElementById("results");
+      const progressText = document.getElementById("progressText");
+      const configInfo = document.getElementById("configInfo");
+      btn.disabled = true;
+      resultsEl.innerHTML = "";
+      progressText.textContent = "OpenAPI laden…";
+      document.getElementById("progressBar").value = 0;
+
+      const t0 = performance.now();
+      await ensureSearchPath();
+
+      const tests = buildTestCases();
+      const total = tests.length;
+      const progress = { done: 0, total };
+
+      setProgress(0, total);
+      configInfo.textContent = `Tests: ${total} • Concurrency: ${CONCURRENCY} • Max cap: ${MAX_TESTS} • SEARCH_PATH: ${SEARCH_PATH}`;
+
+      // Batches via pool
+      const chunkSize = Math.ceil(tests.length / Math.ceil(tests.length / (CONCURRENCY*5)));
+      for (let i=0;i<tests.length;i+=chunkSize) {
+        const batch = tests.slice(i, i+chunkSize);
+        progressText.textContent = `Batch ${(i/chunkSize)+1} / ${Math.ceil(tests.length/chunkSize)} — cases ${i+1}..${Math.min(i+batch.length,tests.length)} • ${progress.done}/${progress.total}`;
+        await runPool(resultsEl, batch, CONCURRENCY, progress);
+       // await sleep(BATCH_SLEEP);
+      }
+
+      const duration = (performance.now() - t0).toFixed(1);
+      const summary = document.createElement("div");
+      summary.className = "summary";
+      const passed = [...resultsEl.querySelectorAll(".item.ok")].length;
+      const failed = [...resultsEl.querySelectorAll(".item.err")].length;
+      summary.innerHTML = `
+        <strong>Samenvatting</strong><br>
+        Geslaagd: <span class="kbd">${passed}</span> &nbsp;|&nbsp;
+        Gefaald: <span class="kbd">${failed}</span> &nbsp;|&nbsp;
+        Totaal: <span class="kbd">${total}</span> &nbsp;|&nbsp;
+        Duur: <span class="kbd">${duration} ms</span><br>
+        <span class="small">Prefix: <span class="kbd">${esc(BASE_PREFIX)}</span> • SEARCH_PATH: <span class="kbd">${esc(SEARCH_PATH)}</span></span>
+      `;
+      resultsEl.prepend(summary);
+
+      progressText.textContent = `Klaar: ${progress.done}/${progress.total} (100%).`;
+      document.getElementById("progressBar").value = 100;
+      btn.disabled = false;
+    }
+
+    document.getElementById("runBtn").addEventListener("click", () => { void runAll(); });
+  </script>
+</body>
+</html>

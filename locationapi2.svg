@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1600"
+   height="980"
+   viewBox="0 0 1600 980"
+   version="1.1"
+   id="svg1720"
+   sodipodi:docname="locationapi2.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <sodipodi:namedview
+     id="namedview1722"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="0.78265306"
+     inkscape:cx="800.4824"
+     inkscape:cy="490"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1720" />
+  <title
+     id="title1530">Client → Location API (preprod) → OGC API (bron-collectie) – 3D Sequence Visual</title>
+  <!-- ====== Definities: schaduwen, pijlen, gradients ====== -->
+  <defs
+     id="defs1576">
+    <!-- zachte schaduw -->
+    <filter
+       id="softShadow"
+       x="-0.0125"
+       y="-0.0093023256"
+       width="1.025"
+       height="1.0224578">
+      <feDropShadow
+         dx="0"
+         dy="6"
+         stdDeviation="10"
+         flood-color="#0b1220"
+         flood-opacity="0.25" />
+    </filter>
+    <!-- pijlpunten -->
+    <marker
+       id="arrowDark"
+       markerWidth="14"
+       markerHeight="10"
+       refX="12"
+       refY="5"
+       orient="auto">
+      <polygon
+         points="0,0 14,5 0,10"
+         fill="#0f2a3a"
+         id="polygon1533" />
+    </marker>
+    <marker
+       id="arrowLight"
+       markerWidth="14"
+       markerHeight="10"
+       refX="12"
+       refY="5"
+       orient="auto">
+      <polygon
+         points="0,0 14,5 0,10"
+         fill="#51647a"
+         id="polygon1536" />
+    </marker>
+    <!-- isometrische sokkel -->
+    <linearGradient
+       id="plinthTop"
+       x1="0"
+       y1="0"
+       x2="0"
+       y2="1">
+      <stop
+         offset="0%"
+         stop-color="#f9f7f2"
+         id="stop1539" />
+      <stop
+         offset="100%"
+         stop-color="#e7e1d5"
+         id="stop1541" />
+    </linearGradient>
+    <linearGradient
+       id="plinthSide"
+       x1="0"
+       y1="0"
+       x2="0"
+       y2="1">
+      <stop
+         offset="0%"
+         stop-color="#e6dfd2"
+         id="stop1544" />
+      <stop
+         offset="100%"
+         stop-color="#cdc6b6"
+         id="stop1546" />
+    </linearGradient>
+    <!-- kleuren voor iconen -->
+    <linearGradient
+       id="panelGrad"
+       x1="0"
+       y1="0"
+       x2="1"
+       y2="1">
+      <stop
+         offset="0%"
+         stop-color="#223649"
+         id="stop1549" />
+      <stop
+         offset="100%"
+         stop-color="#0f2230"
+         id="stop1551" />
+    </linearGradient>
+    <linearGradient
+       id="screenGrad"
+       x1="0"
+       y1="0"
+       x2="1"
+       y2="0">
+      <stop
+         offset="0%"
+         stop-color="#3a6a82"
+         id="stop1554" />
+      <stop
+         offset="100%"
+         stop-color="#7fb2c8"
+         id="stop1556" />
+    </linearGradient>
+    <linearGradient
+       id="pinOuter"
+       x1="0"
+       y1="0"
+       x2="0"
+       y2="1">
+      <stop
+         offset="0%"
+         stop-color="#2a6f79"
+         id="stop1559" />
+      <stop
+         offset="100%"
+         stop-color="#184b52"
+         id="stop1561" />
+    </linearGradient>
+    <linearGradient
+       id="pinInner"
+       x1="0"
+       y1="0"
+       x2="0"
+       y2="1">
+      <stop
+         offset="0%"
+         stop-color="#ffffff"
+         id="stop1564" />
+      <stop
+         offset="100%"
+         stop-color="#e9f4f6"
+         id="stop1566" />
+    </linearGradient>
+    <linearGradient
+       id="tabGrad"
+       x1="0"
+       y1="0"
+       x2="0"
+       y2="82.462113"
+       gradientTransform="scale(2.4253563,0.41231056)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0%"
+         stop-color="#8aa2b8"
+         id="stop1569" />
+      <stop
+         offset="100%"
+         stop-color="#6b879e"
+         id="stop1571" />
+    </linearGradient>
+    <!-- stijl -->
+    <style
+       id="style1574"><![CDATA[
+      .title      { font: 700 26px/1.2 "Segoe UI", Roboto, Arial, sans-serif; fill:#0b1b2a; }
+      .label      { font: 600 22px/1.2 "Segoe UI", Roboto, Arial, sans-serif; fill:#0b1b2a; }
+      .mono       { font: 600 16px/1 "Cascadia Mono", Consolas, "Courier New", monospace; fill:#0f2a3a; }
+      .monoSmall  { font: 500 14px/1.3 "Cascadia Mono", Consolas, "Courier New", monospace; fill:#0f2a3a; }
+      .note       { font: 400 15px/1.35 "Segoe UI", Roboto, Arial, sans-serif; fill:#0e1726; }
+      .noteDim    { fill:#51647a; }
+      .badge      { font: 700 12px/1 "Segoe UI", Roboto, Arial, sans-serif; fill:#0f2a3a; }
+      .pill       { fill:#eef2ff; stroke:#c7d2fe; stroke-width:1; rx:6; }
+      .box        { fill:#ffffff; stroke:#e5e7eb; stroke-width:1.2; rx:10; }
+      .arrow      { stroke:#0f2a3a; stroke-width:6; fill:none; }
+      .arrowRev   { stroke:#51647a; stroke-width:6; fill:none; }
+      .laneHdr    { font: 700 20px/1.2 "Segoe UI", Roboto, Arial, sans-serif; fill:#0b1b2a; }
+      .laneSub    { font: 500 14px/1.2 "Segoe UI", Roboto, Arial, sans-serif; fill:#51647a; }
+    ]]></style>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#plinthSide"
+       id="linearGradient1967"
+       x1="0"
+       y1="353.27043"
+       x2="0"
+       y2="441.58804"
+       gradientTransform="scale(2.9439203,0.33968311)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#plinthTop"
+       id="linearGradient1969"
+       x1="0"
+       y1="243.72115"
+       x2="0"
+       y2="324.96154"
+       gradientTransform="scale(2.7080128,0.36927447)"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <!-- ====== Achtergrond ====== -->
+  <rect
+     x="0"
+     y="0"
+     width="1600"
+     height="980"
+     fill="#ecf2f6"
+     id="rect1578" />
+  <!-- ====== Lane titels ====== -->
+  <text
+     class="title"
+     x="80"
+     y="90"
+     id="text1582">Client</text>
+  <text
+     class="title"
+     x="640"
+     y="90"
+     id="text1584">Location API</text>
+  <text
+     class="laneSub"
+     x="640"
+     y="112"
+     id="text1586">(preprod)</text>
+  <text
+     class="title"
+     x="1170"
+     y="90"
+     id="text1588">OGC API</text>
+  <text
+     class="laneSub"
+     x="1170"
+     y="112"
+     id="text1590">(bron-collectie)</text>
+  <!-- ====== 3D sokkels ====== -->
+  <!-- Client plinth -->
+  <g
+     transform="translate(78,144)"
+     id="g1596">
+    <path
+       d="m 0,120 h 220 l 40,30 H 40 Z"
+       fill="url(#plinthSide)"
+       id="path1592"
+       style="fill:url(#linearGradient1967)" />
+    <rect
+       x="0"
+       y="90"
+       width="220"
+       height="30"
+       fill="url(#plinthTop)"
+       id="rect1594"
+       style="fill:url(#linearGradient1969)" />
+  </g>
+  <!-- Location plinth -->
+  <g
+     transform="translate(640,140)"
+     id="g1602">
+    <path
+       d="M0,120 L220,120 L260,150 L40,150 Z"
+       fill="url(#plinthSide)"
+       id="path1598" />
+    <rect
+       x="0"
+       y="90"
+       width="220"
+       height="30"
+       fill="url(#plinthTop)"
+       id="rect1600" />
+  </g>
+  <!-- OGC plinth -->
+  <g
+     transform="translate(1120,140)"
+     id="g1608">
+    <path
+       d="M0,120 L220,120 L260,150 L40,150 Z"
+       fill="url(#plinthSide)"
+       id="path1604" />
+    <rect
+       x="0"
+       y="90"
+       width="220"
+       height="30"
+       fill="url(#plinthTop)"
+       id="rect1606" />
+  </g>
+  <!-- ====== Iconen ====== -->
+  <!-- Client: 3D webpagina -->
+  <g
+     transform="translate(98,134)"
+     filter="url(#softShadow)"
+     id="g1624">
+    <rect
+       x="0"
+       y="0"
+       width="200"
+       height="130"
+       rx="16"
+       fill="#dfe7ef"
+       stroke="#8aa2b8"
+       stroke-width="4"
+       id="rect1610" />
+    <rect
+       x="0"
+       y="0"
+       width="200"
+       height="34"
+       rx="10"
+       fill="url(#tabGrad)"
+       id="rect1612"
+       style="fill:url(#tabGrad)" />
+    <circle
+       cx="18"
+       cy="17"
+       r="5"
+       fill="#eef2ff"
+       id="circle1614" />
+    <circle
+       cx="38"
+       cy="17"
+       r="5"
+       fill="#eef2ff"
+       id="circle1616" />
+    <circle
+       cx="58"
+       cy="17"
+       r="5"
+       fill="#eef2ff"
+       id="circle1618" />
+    <rect
+       x="22"
+       y="60"
+       width="156"
+       height="12"
+       rx="6"
+       fill="#7ea6c2"
+       id="rect1620" />
+    <rect
+       x="22"
+       y="84"
+       width="130"
+       height="12"
+       rx="6"
+       fill="#7ea6c2"
+       id="rect1622" />
+  </g>
+  <!-- Location API: geocoder pin + loep -->
+  <g
+     transform="translate(690,110)"
+     filter="url(#softShadow)"
+     id="g1636">
+    <path
+       d="M100,0 C55,0 20,35 20,80 c0,55 80,135 80,135 s80,-80 80,-135 C180,35 145,0 100,0 Z"
+       fill="url(#pinOuter)"
+       stroke="#123b41"
+       stroke-width="4"
+       id="path1626" />
+    <circle
+       cx="100"
+       cy="78"
+       r="38"
+       fill="url(#pinInner)"
+       stroke="#2a6f79"
+       stroke-width="4"
+       id="circle1628" />
+    <g
+       transform="rotate(35,140,115)"
+       id="g1634">
+      <rect
+         x="134"
+         y="107"
+         width="70"
+         height="16"
+         rx="8"
+         fill="#1d5b63"
+         id="rect1630" />
+      <circle
+         cx="134"
+         cy="115"
+         r="16"
+         fill="#2a6f79"
+         stroke="#123b41"
+         stroke-width="4"
+         id="circle1632" />
+    </g>
+  </g>
+  <!-- OGC API: datavenster met codekaart -->
+  <g
+     transform="translate(1140,110)"
+     filter="url(#softShadow)"
+     id="g1654">
+    <rect
+       x="0"
+       y="0"
+       width="240"
+       height="140"
+       rx="12"
+       fill="url(#panelGrad)"
+       stroke="#091621"
+       stroke-width="4"
+       id="rect1638" />
+    <rect
+       x="0"
+       y="0"
+       width="240"
+       height="26"
+       rx="12"
+       fill="#102131"
+       id="rect1640" />
+    <rect
+       x="16"
+       y="48"
+       width="120"
+       height="70"
+       rx="6"
+       fill="url(#screenGrad)"
+       id="rect1642" />
+    <g
+       transform="translate(140,36)"
+       id="g1652">
+      <rect
+         x="0"
+         y="0"
+         width="180"
+         height="90"
+         rx="8"
+         fill="#0f2230"
+         stroke="#243b4d"
+         id="rect1644" />
+      <text
+         x="10"
+         y="22"
+         font-family="Consolas"
+         font-size="16"
+         fill="#ffcb65"
+         id="text1646">1 &quot;name&quot;: &quot;vector&quot;</text>
+      <text
+         x="10"
+         y="44"
+         font-family="Consolas"
+         font-size="16"
+         fill="#cbe2ff"
+         id="text1648">2 &quot;description&quot;: &quot;data&quot;</text>
+      <text
+         x="10"
+         y="66"
+         font-family="Consolas"
+         font-size="16"
+         fill="#9ee06b"
+         id="text1650">3 &quot;version&quot;: &quot;0.0.1&quot;</text>
+    </g>
+  </g>
+  <!-- ====== Pijlen + labels (volgens jouw tekst) ====== -->
+  <!-- 1) Client -> Location API -->
+  <path
+     class="arrow"
+     d="m 340,230 c 160,0 200,-40 360,-40"
+     marker-end="url(#arrowDark)"
+     id="path1656" />
+  <rect
+     x="420"
+     y="150"
+     width="520"
+     height="34"
+     class="pill"
+     id="rect1658" />
+  <text
+     x="524.43939"
+     y="164.61148"
+     class="mono"
+     id="text1660"
+     style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:16px;line-height:1;font-family:'Cascadia Mono', Consolas, 'Courier New', monospace">GET /search?q=Stations&amp;adres[version]=1</text>
+  <!-- Subnotes bij Location API -->
+  <text
+     x="640"
+     y="210"
+     class="note noteDim"
+     id="text1662">Zoekt in geconfigureerde collecties</text>
+  <text
+     x="640"
+     y="232"
+     class="note noteDim"
+     id="text1664">(adres, perceel, woonplaats, etc.)</text>
+  <!-- 2) Location API -> Client -->
+  <path
+     class="arrowRev"
+     d="M 720 280 C 560 280, 520 320, 360 320"
+     marker-end="url(#arrowLight)"
+     id="path1666" />
+  <rect
+     x="420"
+     y="255"
+     width="420"
+     height="34"
+     class="pill"
+     id="rect1668" />
+  <text
+     x="435"
+     y="276"
+     class="mono"
+     id="text1670">200 FeatureCollection (lightweight)</text>
+  <!-- Lichte feature details -->
+  <g
+     transform="translate(90,350)"
+     id="g1686">
+    <rect
+       width="500"
+       height="140"
+       class="box"
+       id="rect1672" />
+    <text
+       x="16"
+       y="26"
+       class="note"
+       id="text1674">features[n]:</text>
+    <text
+       x="32"
+       y="52"
+       class="note"
+       id="text1676">- id, bbox, (mini)geometry</text>
+    <text
+       x="32"
+       y="78"
+       class="note"
+       id="text1678">- properties: display_name, highlight, score</text>
+    <text
+       x="32"
+       y="104"
+       class="note"
+       id="text1680">- properties.href[]: URL(s) naar volledige feature</text>
+    <!-- caret en plus zoals in tekst -->
+    <text
+       x="470"
+       y="10"
+       class="monoSmall"
+       id="text1682">^</text>
+    <text
+       x="468"
+       y="128"
+       class="monoSmall"
+       id="text1684">+</text>
+  </g>
+  <!-- 3) Client -> OGC API -->
+  <path
+     class="arrow"
+     d="M 350 470 C 800 470, 910 430, 1220 430"
+     marker-end="url(#arrowDark)"
+     id="path1688" />
+  <rect
+     x="600"
+     y="400"
+     width="740"
+     height="34"
+     class="pill"
+     id="rect1690" />
+  <text
+     x="615"
+     y="421"
+     class="mono"
+     id="text1692">GET {href[0]}  (bv.) GET /kadaster/.../ogc/v1/collections/adres/items/{id}</text>
+  <!-- 4) OGC API detail-notes -->
+  <g
+     transform="translate(1230,460)"
+     id="g1702">
+    <rect
+       width="320"
+       height="88"
+       class="box"
+       id="rect1694" />
+    <text
+       x="16"
+       y="28"
+       class="note"
+       id="text1696">Retourneert volledige feature:</text>
+    <text
+       x="32"
+       y="52"
+       class="note"
+       id="text1698">- alle properties</text>
+    <text
+       x="32"
+       y="74"
+       class="note"
+       id="text1700">- volledige geometrie</text>
+  </g>
+  <!-- 5) OGC API -> Client -->
+  <path
+     class="arrowRev"
+     d="M 1220 520 C 900 520, 780 560, 350 560"
+     marker-end="url(#arrowLight)"
+     id="path1704" />
+  <rect
+     x="520"
+     y="540"
+     width="420"
+     height="34"
+     class="pill"
+     id="rect1706" />
+  <text
+     x="535"
+     y="561"
+     class="mono"
+     id="text1708">200 Feature (GeoJSON/JSON-FG)</text>
+  <!-- Slotregel -->
+  <rect
+     x="90"
+     y="620"
+     width="560"
+     height="50"
+     class="box"
+     id="rect1710" />
+  <text
+     x="105"
+     y="650"
+     class="note"
+     id="text1712">[Client gebruikt nu de volledige feature in eigen UI/kaart]</text>
+  <!-- ====== Exacte ascii-tekst (optioneel zichtbaar) ====== -->
+  <!-- Dit blok bevat letterlijk ALLE tekstregels uit je codeblok, voor volledigheid -->
+
+  <metadata
+     id="metadata1758">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Location API</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+ 
+</svg>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>PDOK Location API – Demo met pijlen</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 30px;
+    }
+
+    .box {
+        padding: 20px;
+        border-radius: 8px;
+        background: #f6f8fb;
+        border: 1px solid #d0d7e1;
+        width: 650px;
+    }
+
+    .input-row {
+        margin-top: 10px;
+    }
+
+    input {
+        width: 400px;
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        padding: 8px 12px;
+        border: none;
+        background: #003b87;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .arrow {
+        margin: 25px 0;
+        padding: 15px;
+        background: #0057b8;
+        color: white;
+        font-weight: bold;
+        width: fit-content;
+        border-radius: 6px;
+        position: relative;
+    }
+
+    .arrow::after {
+        content: "";
+        position: absolute;
+        right: -25px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 25px solid #0057b8;
+    }
+
+    svg {
+        border: 1px solid #ccc;
+        width: 650px;
+        height: 400px;
+        margin-top: 20px;
+    }
+
+    text {
+        cursor: pointer;
+        fill: #003b87;
+    }
+    text:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+
+<body>
+
+<h2>PDOK Location API – Visuele Demo</h2>
+
+<div class="box">
+    <div><strong>Geocodeerservice om naar features te zoeken in geselecteerde collecties</strong></div>
+    <div class="input-row">
+        <input id="searchInput" 
+               placeholder="Bijv. Lieve Vrouwekerkhof Amersfoort">
+        <button onclick="doSearch()">Zoek</button>
+    </div>
+</div>
+
+<div id="arrow1" class="arrow">GET /search?... (nog niets ingevuld)</div>
+
+<div class="box" id="resultListBox">
+    <strong>Resultaten</strong>
+    <ul id="resultList"></ul>
+</div>
+
+<div id="arrow2" class="arrow">0 resultaten gevonden</div>
+
+<div class="box" id="detailsBox">
+    <strong>Gekozen adres / feature</strong><br>
+    <span id="selectedHref">Klik een item in de SVG…</span>
+</div>
+
+<div id="arrow3" class="arrow">href = (nog niets)</div>
+
+<svg id="svgResults" viewBox="0 0 800 800"></svg>
+
+<script>
+async function doSearch() {
+    const q = document.getElementById('searchInput').value;
+
+    const url = "https://api.pdok.nl/kadaster/location-api/v1-preprod/search?"
+        + "adres[relevance]=0.5&adres[version]=1"
+        + "&functioneel_gebied[relevance]=0.5&functioneel_gebied[version]=1"
+        + "&gemeentegebied[relevance]=0.5&gemeentegebied[version]=1"
+        + "&geografisch_gebied[relevance]=0.5&geografisch_gebied[version]=1"
+        + "&perceel[relevance]=0.5&perceel[version]=1"
+        + "&provinciegebied[relevance]=0.5&provinciegebied[version]=1"
+        + "&woonplaats[relevance]=0.5&woonplaats[version]=1"
+        + "&q=" + encodeURIComponent(q);
+
+    // pijl 1 dynamisch
+    document.getElementById("arrow1").innerText = url;
+
+    const res = await fetch(url);
+    const json = await res.json();
+
+    const svg = document.getElementById("svgResults");
+    const list = document.getElementById("resultList");
+
+    svg.innerHTML = "";
+    list.innerHTML = "";
+
+    let y = 30;
+
+    json.features.forEach((f, i) => {
+        const label = f.properties.weergavenaam || "(zonder naam)";
+        const href = f.links?.[0]?.href || null;
+
+        // lijst in HTML
+        list.innerHTML += `<li>${href}${label}</a></li>`;
+
+        // SVG text element
+        let t = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        t.setAttribute("x", 20);
+        t.setAttribute("y", y);
+        t.setAttribute("font-size", "20");
+        t.textContent = label;
+
+        t.addEventListener("click", () => {
+            document.getElementById("selectedHref").innerText = href;
+            document.getElementById("arrow3").innerText = "href = " + href;
+            window.open(href, "_blank");
+        });
+
+        svg.appendChild(t);
+        y += 30;
+    });
+
+    // pijl 2 dynamisch
+    document.getElementById("arrow2").innerText = json.features.length + " resultaten gevonden";
+}
+</script>
+</body>
+</html>

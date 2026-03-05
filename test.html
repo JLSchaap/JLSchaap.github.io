@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <title>PDOK Location API – OpenAPI-gedreven demo (preprod, vaste prefix + unittests)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root { --pdok:#0057b8; --box-bg:#f6f8fb; --box-bd:#d0d7e1; }
+    body { font-family: Arial, system-ui, -apple-system, Segoe UI, Roboto; margin: 28px; }
+    h2 { margin: 0 0 12px 0; }
+    .box { padding: 16px 20px; background: var(--box-bg); border: 1px solid var(--box-bd);
+           border-radius: 8px; width: 100%; box-sizing: border-box; }
+    .row { display: flex; gap: 24px; flex-wrap: wrap; align-items: flex-start; }
+    .col { flex: 1 1 380px; min-width: 320px; }
+    input[type="text"] { width: 420px; max-width: 100%; padding: 8px; margin-top: 8px; }
+    input[type="number"] { width: 88px; padding: 6px; }
+    button { padding: 8px 12px; background: var(--pdok); color: #fff;
+             border: none; border-radius: 4px; cursor: pointer; }
+    button[disabled] { opacity: .6; cursor: not-allowed; }
+    ul { margin: 8px 0 0 20px; }
+    svg { margin: 20px 0; cursor: pointer; user-select: none; }
+    .arrow-text { fill: white; font-size: 16px; font-weight: bold; pointer-events: none; }
+    .muted { color: #666; }
+    .small { font-size: 12px; }
+    .pill { display: inline-block; padding: 2px 8px; border-radius: 999px; background: #eef2f7;
+            border: 1px solid #d6dbe3; font-size: 12px; margin-left: 6px; }
+    .legend { margin: -6px 0 10px 0; }
+    fieldset { border: 1px solid #d6dbe3; border-radius: 6px; padding: 10px 12px; }
+    fieldset legend { padding: 0 6px; color: #243447; }
+    .grid { display: grid; gap: 8px 12px; grid-template-columns: auto 86px 106px; align-items: center; }
+    .grid > label { display: flex; align-items: center; gap: 6px; }
+    .nowrap { white-space: nowrap; }
+    .error { color: #b00020; font-weight: 600; }
+
+    /* Test runner styles */
+    .tests { margin-top: 8px; }
+    .test-item { background: #fff; border: 1px solid #e2e7ef; border-left-width: 6px; border-radius: 6px;
+                 padding: 10px 12px; margin: 10px 0; }
+    .test-pass { border-left-color: #17863a; }
+    .test-fail { border-left-color: #cc1f1a; }
+    .test-skip { border-left-color: #9aa4b2; opacity: .8; }
+    .test-title { font-weight: 600; margin-bottom: 4px; }
+    .test-meta { color: #555; font-size: 12px; margin-top: 6px; }
+    .test-links a { margin-right: 8px; }
+    .summary { padding: 10px 12px; background: #f0f4fa; border: 1px solid #d6dbe3; border-radius: 6px; }
+    .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background:#f7f7f7; border:1px solid #ddd; border-radius:4px; padding:0 4px; }
+  </style>
+</head>
+<body>
+
+  <h2>PDOK Location API – OpenAPI‑gedreven demo (preprod)</h2>
+
+  <div class="box">
+    <div class="row">
+      <div class="col">
+        <strong>Zoek locaties</strong>
+        <span class="pill" id="modeBadge" title="Bron-URL van OpenAPI">(laden…)</span><br />
+        <input id="searchInput" type="text" placeholder="Bijv. Lieve Vrouwekerkhof Amersfoort" />
+        <button id="searchBtn" title="Start zoekactie">Zoek</button>
+        <div class="legend small muted">Enter ↵ of klik op “Zoek”</div>
+
+        <div class="small" id="schemaInfo"></div>
+
+        <div style="margin-top:10px;">
+          <label class="small nowrap">Max. resultaten (1–50):
+            <input type="number" id="limitInput" min="1" max="50" step="1" value="20" />
+          </label>
+        </div>
+      </div>
+
+      <div class="col">
+        <fieldset>
+          <legend>Collecties (optioneel, deepObject)</legend>
+          <div class="grid small">
+            <!-- Label / Version / Relevance -->
+            <label><input type="checkbox" class="coll-cb" data-name="adres" /> adres</label>
+            <input type="number" class="coll-version" data-name="adres" min="1" step="1" value="1" title="version (verplicht bij selectie)" />
+            <input type="number" class="coll-relevance" data-name="adres" min="0" max="1" step="0.1" value="0.5" title="relevance (optioneel)" />
+
+            <label><input type="checkbox" class="coll-cb" data-name="woonplaats" /> woonplaats</label>
+            <input type="number" class="coll-version" data-name="woonplaats" min="1" step="1" value="1" />
+            <input type="number" class="coll-relevance" data-name="woonplaats" min="0" max="1" step="0.1" value="0.5" />
+
+            <label><input type="checkbox" class="coll-cb" data-name="functioneel_gebied" /> functioneel_gebied</label>
+            <input type="number" class="coll-version" data-name="functioneel_gebied" min="1" step="1" value="1" />
+            <input type="number" class="coll-relevance" data-name="functioneel_gebied" min="0" max="1" step="0.1" value="0.5" />
+
+            <label><input type="checkbox" class="coll-cb" data-name="geografisch_gebied" /> geografisch_gebied</label>
+            <input type="number" class="coll-version" data-name="geografisch_gebied" min="1" step="1" value="1" />
+            <input type="number" class="coll-relevance" data-name="geografisch_gebied" min="0" max="1" step="0.1" value="0.5" />
+
+            <label><input type="checkbox" class="coll-cb" data-name="perceel" /> perceel</label>
+            <input type="number" class="coll-version" data-name="perceel" min="1" step="1" value="1" />
+            <input type="number" class="coll-relevance" data-name="perceel" min="0" max="1" step="0.1" value="0.5" />
+
+            <label><input type="checkbox" class="coll-cb" data-name="gemeentegebied" /> gemeentegebied</label>
+            <input type="number" class="coll-version" data-name="gemeentegebied" min="1" step="1" value="1" />
+            <input type="number" class="coll-relevance" data-name="gemeentegebied" min="0" max="1" step="0.1" value="0.5" />
+
+            <label><input type="checkbox" class="coll-cb" data-name="provinciegebied" /> provinciegebied</label>
+            <input type="number" class="coll-version" data-name="provinciegebied" min="1" step="1" value="1" />
+            <input type="number" class="coll-relevance" data-name="provinciegebied" min="0" max="1" step="0.1" value="0.5" />
+          </div>
+          <div class="small muted" style="margin-top:6px;">
+            Bij selectie wordt <code>collection[version]</code> verplicht en <code>collection[relevance]</code> optioneel meegegeven.
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+
+  <!-- SVG pijl 1: toont de volledige GET-URL naar /search en opent in nieuw tabblad -->
+  <svg id="arrow1" width="800" height="60" role="button" aria-label="Open de zoek-URL">
+    <rect x="0" y="10" width="730" height="40" fill="#0057b8"></rect>
+    <polygon points="730,10 780,30 730,50" fill="#0057b8"></polygon>
+    <text id="arrow1text" class="arrow-text" x="20" y="35">GET /search?…</text>
+  </svg>
+
+  <div class="row">
+    <div class="box col">
+      <strong>Resultaten</strong>
+      <ul id="resultList"></ul>
+    </div>
+
+    <svg id="svgResults" viewBox="0 0 800 800" width="650" height="400"
+         style="border:1px solid #ccc; flex:1 1 650px; min-width:340px;" aria-label="Resultaten als SVG">
+      <!-- dynamisch -->
+    </svg>
+  </div>
+
+  <!-- SVG pijl 2: statusregel -->
+  <svg id="arrow2" width="800" height="60" role="note" aria-label="Status resultaten">
+    <rect x="0" y="10" width="730" height="40" fill="#0057b8"></rect>
+    <polygon points="730,10 780,30 730,50" fill="#0057b8"></polygon>
+    <text id="arrow2text" class="arrow-text" x="20" y="35">Nog geen resultaten</text>
+  </svg>
+
+  <div class="box">
+    <strong>Gekozen item</strong><br />
+    <span id="selectedHref" class="muted">(klik op een item)</span>
+  </div>
+
+  <!-- SVG pijl 3: opent de gekozen href -->
+  <svg id="arrow3" width="800" height="60" role="button" aria-label="Open gekozen href">
+    <rect x="0" y="10" width="730" height="40" fill="#0057b8"></rect>
+    <polygon points="730,10 780,30 730,50" fill="#0057b8"></polygon>
+    <text id="arrow3text" class="arrow-text" x="20" y="35">href = (nog niets)</text>
+  </svg>
+
+  <!-- ============== Test runner UI ============== -->
+  <div class="box">
+    <strong>Unittests</strong><br />
+    <button id="runTestsBtn" title="Voer automatische tests uit">Run unittests</button>
+    <div class="tests" id="testResults"></div>
+  </div>
+
+  <script>
+    // ========= VASTE PREFIX voor ALLE zoekpaden =========
+    const BASE_PREFIX = "https://api.pdok.nl/kadaster/location-api/v1-preprod";
+    // ========= Enige hard-gecodeerde spec-URL =========
+    const OPENAPI_URL = BASE_PREFIX + "/api?f=json";
+
+    // ========= State =========
+    let searchPath = null;    // bv. "/search" (uit de spec)
+    let searchMethod = "get"; // default
+    let declaredQueryParams = new Set(["q","limit","f"]); // aangevuld vanuit OpenAPI
+
+    // ========= DOM helpers =========
+    function el(id){ const n=document.getElementById(id); if(!n) throw new Error("Element niet gevonden: "+id); return n; }
+    function setArrow(svgId, textId, label, onClick){
+      el(textId).textContent = label;
+      const svg = el(svgId);
+      svg.onclick = null;
+      if(onClick) svg.onclick = onClick;
+    }
+    function clearResults(){ el("resultList").innerHTML=""; el("svgResults").innerHTML=""; }
+    function renderResult(label, href, y){
+      const li = document.createElement("li");
+      if (href) {
+        const a = document.createElement("a");
+        a.href = href; a.textContent = label; a.target = "_blank"; a.rel = "noopener noreferrer";
+        li.appendChild(a);
+      } else li.textContent = label;
+      el("resultList").appendChild(li);
+
+      const t = document.createElementNS("http://www.w3.org/2000/svg","text");
+      t.setAttribute("x","20"); t.setAttribute("y", String(y)); t.setAttribute("font-size","20");
+      t.style.cursor="pointer"; t.textContent=label;
+      t.addEventListener("click",()=>selectHref(href));
+      el("svgResults").appendChild(t);
+    }
+    function selectHref(href){
+      const target = el("selectedHref"); target.innerHTML="";
+      if(href){
+        const a = document.createElement("a");
+        a.href=href; a.textContent=href; a.target="_blank"; a.rel="noopener noreferrer";
+        target.appendChild(a);
+        setArrow("arrow3","arrow3text",href,()=>window.open(href,"_blank"));
+      } else {
+        target.textContent="(geen href)";
+        setArrow("arrow3","arrow3text","href = (geen)");
+      }
+    }
+
+    // ========= OpenAPI laden en /search bepalen =========
+    async function loadOpenApi(){
+      el("modeBadge").textContent="OpenAPI laden…";
+      el("modeBadge").title = OPENAPI_URL;
+
+      const resp = await fetch(OPENAPI_URL, { method:"GET" });
+      const ct = resp.headers.get("content-type") || "";
+      if(!resp.ok) throw new Error(`OpenAPI laden mislukt: HTTP ${resp.status}`);
+      if(!ct.includes("json")) throw new Error(`OpenAPI antwoord is geen JSON (content-type: ${ct||"onbekend"})`);
+      const oas = await resp.json();
+
+      // zoek pad met "search" (we negeren servers[].url; basis is BASE_PREFIX)
+      if (oas.paths && typeof oas.paths === "object") {
+        const paths = Object.keys(oas.paths);
+        const candidate = paths.find(p => /\/search\/?$/.test(p))
+                        || paths.find(p => p.toLowerCase().includes("search"))
+                        || "/search";
+        searchPath = candidate;
+
+        const opObj = oas.paths[candidate] || {};
+        if (opObj.get) searchMethod = "get";
+        else if (opObj.post) searchMethod = "post";
+
+        // query-parameters uit de spec meenemen (voor informatieve UI)
+        const params = (opObj[searchMethod]?.parameters) || [];
+        for (const p of params) {
+          if (p && p.in === "query" && typeof p.name === "string") declaredQueryParams.add(p.name);
+        }
+      } else {
+        searchPath = "/search";
+      }
+
+      el("modeBadge").textContent = "OpenAPI geladen";
+      el("schemaInfo").textContent = `Prefix: ${BASE_PREFIX} – pad: ${searchPath} – methode: ${searchMethod.toUpperCase()}`;
+
+      setArrow("arrow1","arrow1text","GET /search?…");
+      setArrow("arrow2","arrow2text","Nog geen resultaten");
+      setArrow("arrow3","arrow3text","href = (nog niets)");
+    }
+
+    // ========= Hulpfuncties voor deepObject collecties =========
+    function getCollectionSelections(){
+      const result = [];
+      const cbs = Array.from(document.querySelectorAll(".coll-cb"));
+      for (const cb of cbs) {
+        const name = cb.getAttribute("data-name");
+        if (!name) continue;
+        if (cb.checked) {
+          const vEl = document.querySelector(`.coll-version[data-name="${name}"]`);
+          const rEl = document.querySelector(`.coll-relevance[data-name="${name}"]`);
+          const version = vEl && vEl.value ? vEl.value.trim() : "";
+          const relevance = rEl && rEl.value ? rEl.value.trim() : "";
+          if (!version) {
+            throw new Error(`Versie ontbreekt voor collectie "${name}"`);
+          }
+          result.push({ name, version, relevance });
+        }
+      }
+      return result;
+    }
+
+    // ========= Absolute URL helper =========
+    function makeAbsoluteUrl(pathOrAbsolute) {
+      // Zorg dat elke zoek-URL met BASE_PREFIX begint
+      if (/^https?:\/\//i.test(pathOrAbsolute)) {
+        // Als het al een absolute URL is en NIET met BASE_PREFIX begint (bv. externe href),
+        // dan laten we die intact (href's kunnen naar andere PDOK OGC APIs wijzen).
+        return pathOrAbsolute;
+      }
+      const left = BASE_PREFIX.replace(/\/+$/,"");
+      const right = String(pathOrAbsolute).replace(/^\/+/,"");
+      return left + "/" + right;
+    }
+
+    // ========= Zoeken =========
+    function buildSearchUrl(q){
+      const absSearch = makeAbsoluteUrl(searchPath || "/search");
+      const url = new URL(absSearch);
+      const qp = new URLSearchParams();
+
+      // Verplichte & aanbevolen query's
+      qp.set("q", q);
+      // Limiet borgen binnen [1..50]
+      const lim = Math.max(1, Math.min(50, Number(el("limitInput").value) || 20));
+      qp.set("limit", String(lim));
+      // Forceer JSON-respons (media type uit spec)
+      qp.set("f", "json");
+
+      // Optionele deepObject collecties
+      const selections = getCollectionSelections();
+      for (const sel of selections) {
+        qp.set(`${sel.name}[version]`, sel.version);
+        if (sel.relevance !== "") qp.set(`${sel.name}[relevance]`, sel.relevance);
+      }
+
+      url.search = qp.toString();
+      return url.toString();
+    }
+
+    async function doSearch(){
+      const btn = el("searchBtn");
+      const q = el("searchInput").value.trim();
+      if(q.length < 2){ alert("Zoekterm moet minimaal 2 tekens bevatten."); return; }
+
+      btn.disabled = true;
+      clearResults(); selectHref(undefined);
+      setArrow("arrow2","arrow2text","Zoeken…");
+
+      try{
+        if(!searchPath) await loadOpenApi();
+
+        const url = buildSearchUrl(q);
+        setArrow("arrow1","arrow1text", url, () => window.open(url,"_blank"));
+
+        const resp = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Accept": "application/geo+json, application/vnd.ogc.fg+json;q=0.9, application/json;q=0.8"
+          }
+        });
+
+        // Verbeterde foutuitleg bij problem+json (bijv. 400 "no collection(s) specified…")
+        if(!resp.ok){
+          let msg = `HTTP ${resp.status} – ${resp.statusText}`;
+          try{
+            const ct = resp.headers.get("content-type") || "";
+            if (ct.includes("application/problem+json")) {
+              const problem = await resp.json();
+              msg = problem.detail || problem.title || msg;
+            }
+          }catch {}
+          throw new Error(msg);
+        }
+
+        const data = await resp.json();
+
+        // Verwacht: FeatureCollection met features[]
+        const feats = Array.isArray(data?.features) ? data.features : [];
+        let y = 30;
+        for(const f of feats){
+          const p = (f && f.properties) || {};
+          const label = (p.display_name || p.label || f.id || "(zonder naam)").toString();
+          let href;
+          if (Array.isArray(p.href) && p.href.length) href = String(p.href[0]); // schema: array
+          else if (typeof p.href === "string") href = p.href; // fallback
+          renderResult(label, href, y);
+          y += 28;
+        }
+
+        setArrow("arrow2","arrow2text", `${feats.length} resultaten gevonden`);
+      }catch(e){
+        console.error(e);
+        setArrow("arrow2","arrow2text", String(e && e.message ? e.message : e));
+        const info = el("schemaInfo");
+        const div = document.createElement("div");
+        div.className = "small error";
+        div.textContent = (e && e.message) ? e.message : String(e);
+        info.appendChild(div);
+      }finally{
+        btn.disabled = false;
+      }
+    }
+
+    // ========= Init =========
+    function init(){
+      el("searchBtn").addEventListener("click", () => { void doSearch(); });
+      el("searchInput").addEventListener("keydown", (e) => { if (e.key === "Enter") void doSearch(); });
+
+      // Laad OpenAPI alvast (voor UI-informatie); zoeken pas op actie
+      void loadOpenApi().catch(err=>{
+        console.error(err);
+        const info = el("schemaInfo");
+        const div = document.createElement("div");
+        div.className = "small error";
+        div.textContent = (err && err.message) ? err.message : String(err);
+        info.appendChild(div);
+      });
+
+      // Test button
+      el("runTestsBtn").addEventListener("click", () => { void runTests(); });
+    }
+    document.addEventListener("DOMContentLoaded", init);
+    // voor console-debug
+    window.doSearch = doSearch;
+
+    // ============== Eenvoudige test runner (zonder externe libs) ==============
+    async function runTests(){
+      const btn = el("runTestsBtn");
+      btn.disabled = true;
+      const out = el("testResults");
+      out.innerHTML = "";
+
+      const results = [];
+      const t0 = performance.now();
+
+      function addResult(name, status, details, links, durationMs){
+        const item = document.createElement("div");
+        item.className = "test-item " + (status==="pass"?"test-pass":status==="fail"?"test-fail":"test-skip");
+        const title = document.createElement("div");
+        title.className = "test-title";
+        title.textContent = `${status.toUpperCase()} • ${name}`;
+        const body = document.createElement("div");
+        body.innerHTML = details || "";
+        const meta = document.createElement("div");
+        meta.className = "test-meta";
+        meta.textContent = `Duur: ${durationMs?.toFixed(1) ?? 0} ms`;
+        const linkDiv = document.createElement("div");
+        linkDiv.className = "test-links small";
+        if (Array.isArray(links)) {
+          for (const l of links) {
+            if (!l || !l.href) continue;
+            const a = document.createElement("a");
+            a.href = l.href; a.textContent = l.label || l.href;
+            a.target = "_blank"; a.rel = "noopener noreferrer";
+            linkDiv.appendChild(a);
+          }
+        }
+        item.appendChild(title);
+        item.appendChild(body);
+        item.appendChild(linkDiv);
+        item.appendChild(meta);
+        out.appendChild(item);
+        results.push({name, status});
+      }
+
+      // --------------- Test 1: OpenAPI laden ---------------
+      let test1_ok = false;
+      let tmp_searchPath = null;
+      try{
+        const t1 = performance.now();
+        const resp = await fetch(OPENAPI_URL, { method:"GET" });
+        const t2 = performance.now();
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const ct = resp.headers.get("content-type") || "";
+        if (!ct.includes("json")) throw new Error(`Content-Type geen JSON: ${ct}`);
+        const oas = await resp.json();
+        tmp_searchPath = (oas.paths && typeof oas.paths === "object")
+            ? (Object.keys(oas.paths).find(p => /\/search\/?$/.test(p)) || Object.keys(oas.paths).find(p => p.toLowerCase().includes("search")) || "/search")
+            : "/search";
+        test1_ok = true;
+        addResult("OpenAPI laden", "pass",
+          `OpenAPI JSON gedownload en geparseerd.<br>
+           <span class="small">prefix: <span class="kbd">${BASE_PREFIX}</span>, searchPath: <span class="kbd">${tmp_searchPath}</span></span>`,
+          [{href: OPENAPI_URL, label: "OpenAPI JSON"}],
+          t2 - t1
+        );
+      }catch(e){
+        addResult("OpenAPI laden", "fail", `Fout: ${e.message}`, [{href: OPENAPI_URL, label: "OpenAPI JSON"}], 0);
+      }
+
+      // --------------- Test 2: Zoek-URL opbouw (met deepObject en vaste prefix) ---------------
+      let test2_ok = false;
+      let builtUrl = null;
+      const save = {
+        q: el("searchInput").value,
+        limit: el("limitInput").value,
+        cb: Array.from(document.querySelectorAll(".coll-cb")).map(cb => ({el: cb, checked: cb.checked})),
+        vers: Array.from(document.querySelectorAll(".coll-version")).map(v => ({el: v, val: v.value})),
+        rel: Array.from(document.querySelectorAll(".coll-relevance")).map(r => ({el: r, val: r.value}))
+      };
+      try{
+        if (!test1_ok) throw new Error("OpenAPI niet beschikbaar");
+        // Stel UI in voor test
+        el("searchInput").value = "Amersfoort";
+        el("limitInput").value = "5";
+        // activeer 1 collectie als voorbeeld (woonplaats)
+        const cb = document.querySelector('.coll-cb[data-name="woonplaats"]');
+        const vv = document.querySelector('.coll-version[data-name="woonplaats"]');
+        const rr = document.querySelector('.coll-relevance[data-name="woonplaats"]');
+        if (cb && vv) {
+          cb.checked = true; vv.value = "1"; if (rr) rr.value = "0.5";
+        }
+        if (!searchPath) { searchPath = tmp_searchPath; }
+
+        const t1 = performance.now();
+        builtUrl = buildSearchUrl("Amersfoort");
+        const t2 = performance.now();
+        // Verwachtingen (prefix + params)
+        const ok = builtUrl.startsWith(BASE_PREFIX)
+               && builtUrl.includes("q=Amersfoort") && builtUrl.includes("limit=5") && builtUrl.includes("f=json")
+               && builtUrl.includes("woonplaats%5Bversion%5D=1");
+        if (!ok) throw new Error("Zoek-URL bevat niet alle verwachte onderdelen (prefix/params)");
+        test2_ok = true;
+        addResult("Zoek-URL opbouw (vaste prefix)", "pass",
+          `URL start met vaste prefix en bevat <span class="kbd">q</span>, <span class="kbd">limit</span>, <span class="kbd">f=json</span> en deepObject <span class="kbd">woonplaats[version]</span>.`,
+          [{href: builtUrl, label: "GET /search (check)"}],
+          t2 - t1
+        );
+      }catch(e){
+        addResult("Zoek-URL opbouw (vaste prefix)", "fail", `Fout: ${e.message}`, builtUrl ? [{href: builtUrl, label: "GET /search (check)"}] : [], 0);
+      }finally{
+        // herstel UI
+        el("searchInput").value = save.q;
+        el("limitInput").value = save.limit;
+        for (const x of save.cb) x.el.checked = x.checked;
+        for (const x of save.vers) x.el.value = x.val;
+        for (const x of save.rel) x.el.value = x.val;
+      }
+
+      // --------------- Test 3: Zoek-call uitvoeren (met collectie) ---------------
+      let test3_ok = false;
+      let searchData = null;
+      try{
+        if (!test2_ok) throw new Error("Zoek-URL niet beschikbaar");
+        const t1 = performance.now();
+        const resp = await fetch(builtUrl, {
+          method: "GET",
+          headers: {
+            "Accept": "application/geo+json, application/vnd.ogc.fg+json;q=0.9, application/json;q=0.8"
+          }
+        });
+        const t2 = performance.now();
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        searchData = await resp.json();
+        if (!searchData || !Array.isArray(searchData.features)) throw new Error("Respons heeft geen 'features' array");
+        test3_ok = true;
+        addResult("Zoek-call uitvoeren", "pass",
+          `HTTP 200 en JSON met <span class="kbd">features</span> array (lengte: ${searchData.features.length}).`,
+          [{href: builtUrl, label: "GET /search (uitgevoerd)"}],
+          t2 - t1
+        );
+      }catch(e){
+        addResult("Zoek-call uitvoeren", "fail", `Fout: ${e.message}`, builtUrl ? [{href: builtUrl, label: "GET /search (uitgevoerd)"}] : [], 0);
+      }
+
+      // --------------- Test 4: Feature-eigenschappen (display_name + href[]) ---------------
+      let test4_ok = false;
+      let firstHref = null;
+      try{
+        if (!test3_ok) throw new Error("Geen zoekresultaten beschikbaar");
+        const t1 = performance.now();
+        const feats = Array.isArray(searchData.features) ? searchData.features : [];
+        if (feats.length === 0) {
+          addResult("Feature-eigenschappen", "skip", "Geen resultaten om te controleren.", [{href: builtUrl, label:"GET /search"}], 0);
+        } else {
+          const p = feats[0]?.properties || {};
+          if (typeof p.display_name !== "string") throw new Error("properties.display_name ontbreekt of is geen string");
+          if (Array.isArray(p.href) && p.href.length) {
+            firstHref = String(p.href[0]);
+          } else if (typeof p.href === "string") {
+            firstHref = p.href; // fallback
+          } else {
+            throw new Error("properties.href (array) ontbreekt");
+          }
+          const t2 = performance.now();
+          test4_ok = true;
+          const links = [{href: builtUrl, label:"GET /search"}];
+          if (firstHref) links.push({href:firstHref, label:"Eerste feature href"});
+          addResult("Feature-eigenschappen", "pass",
+            `Eerste feature heeft <span class="kbd">display_name</span> en <span class="kbd">href[]</span>.`,
+            links, t2 - t1
+          );
+        }
+      }catch(e){
+        const links = [{href: builtUrl, label:"GET /search"}];
+        if (firstHref) links.push({href:firstHref, label:"Eerste feature href"});
+        addResult("Feature-eigenschappen", "fail", `Fout: ${e.message}`, links, 0);
+      }
+
+      // --------------- Test 5: UI-update via selectHref() ---------------
+      try{
+        if (!test4_ok || !firstHref) {
+          addResult("UI-update (selectHref)", "skip", "Geen href om te kiezen.", [], 0);
+        } else {
+          const t1 = performance.now();
+          selectHref(firstHref);
+          const ok1 = el("arrow3text").textContent === firstHref || el("arrow3text").textContent?.includes(firstHref);
+          const linkEl = el("selectedHref").querySelector("a");
+          const ok2 = !!(linkEl && linkEl.href && linkEl.href.indexOf(firstHref) > -1);
+          if (!ok1 || !ok2) throw new Error("UI is niet correct geüpdatet");
+          const t2 = performance.now();
+          addResult("UI-update (selectHref)", "pass",
+            `Pijl 3 en “Gekozen item” zijn correct geüpdatet.`,
+            [{href:firstHref, label:"Gekozen href (check)"}],
+            t2 - t1
+          );
+        }
+      }catch(e){
+        addResult("UI-update (selectHref)", "fail", `Fout: ${e.message}`, firstHref?[{href:firstHref, label:"Gekozen href (check)"}]:[], 0);
+      }
+
+      // --------------- Test 6: Limit-beperking (optioneel) ---------------
+      try{
+        if (!searchData) {
+          addResult("Limit-beperking", "skip", "Geen respons om te controleren.", [], 0);
+        } else {
+          const lim = 5; // we vroegen 5 in test-URL
+          const count = Array.isArray(searchData.features) ? searchData.features.length : 0;
+          if (count <= lim) {
+            addResult("Limit-beperking", "pass",
+              `Aantal features (${count}) ≤ limit (${lim}).`,
+              [{href: builtUrl, label:"GET /search (limit)"}],
+              0
+            );
+          } else {
+            addResult("Limit-beperking", "fail",
+              `Aantal features (${count}) > limit (${lim}).`,
+              [{href: builtUrl, label:"GET /search (limit)"}],
+              0
+            );
+          }
+        }
+      }catch(e){
+        addResult("Limit-beperking", "fail", `Fout: ${e.message}`, [{href: builtUrl, label:"GET /search (limit)"}], 0);
+      }
+
+      // --------------- Test 7 (NIEUW): Backend-eis "minstens één collectie" ---------------
+      // Bouw expres een URL ZONDER deepObject-collecties en verwacht HTTP 400 met problem+json
+      try{
+        // UI staat nog op oorspronkelijke waarden (herstel uit Test 2). Forceer "geen collecties".
+        const savedCbs = Array.from(document.querySelectorAll(".coll-cb")).map(cb => ({el: cb, checked: cb.checked}));
+        for (const x of savedCbs) x.el.checked = false;
+
+        if (!searchPath) searchPath = tmp_searchPath;
+        const urlNoCollections = (function(){
+          // tijdelijke build zonder selections
+          const absSearch = (BASE_PREFIX.replace(/\/+$/,"") + "/" + (String(searchPath||"/search").replace(/^\/+/,"")));
+          const u = new URL(absSearch);
+          const qp = new URLSearchParams();
+          qp.set("q","Amersfoort");
+          qp.set("limit","3");
+          qp.set("f","json");
+          u.search = qp.toString();
+          return u.toString();
+        })();
+
+        const t1 = performance.now();
+        const resp = await fetch(urlNoCollections, {
+          method: "GET",
+          headers: { "Accept": "application/geo+json, application/json;q=0.8" }
+        });
+        const t2 = performance.now();
+
+        if (resp.ok) throw new Error("Server accepteerde verzoek zonder collecties (verwacht 400)");
+        if (resp.status !== 400) throw new Error(`Verwacht HTTP 400, kreeg HTTP ${resp.status}`);
+
+        let detail = "";
+        try{
+          const ct = resp.headers.get("content-type") || "";
+          if (ct.includes("application/problem+json")) {
+            const problem = await resp.json();
+            detail = (problem.detail || problem.title || "").toString();
+          }
+        }catch{}
+        const passMsg = detail
+          ? `Ontving 400 met problem+json: <span class="kbd">${detail}</span>`
+          : `Ontving 400 (problem+json detail kon niet worden gelezen).`;
+
+        addResult("Serverregel: min. één collectie vereist", "pass",
+          passMsg,
+          [{href: urlNoCollections, label:"GET /search (zonder collecties)"}],
+          t2 - t1
+        );
+
+        // herstel checkbox-state
+        for (const x of savedCbs) x.el.checked = x.checked;
+
+      }catch(e){
+        addResult("Serverregel: min. één collectie vereist", "fail",
+          `Fout: ${e.message}`,
+          [], 0
+        );
+      }
+
+      // --------------- Samenvatting ---------------
+      const t1 = performance.now();
+      const passed = results.filter(r => r.status === "pass").length;
+      const failed = results.filter(r => r.status === "fail").length;
+      const skipped = results.filter(r => r.status === "skip").length;
+
+      const summary = document.createElement("div");
+      summary.className = "summary small";
+      summary.innerHTML = `
+        <strong>Samenvatting</strong><br>
+        Geslaagd: <span class="kbd">${passed}</span> &nbsp;|&nbsp;
+        Gefaald: <span class="kbd">${failed}</span> &nbsp;|&nbsp;
+        Overgeslagen: <span class="kbd">${skipped}</span> &nbsp;|&nbsp;
+        Totale duur: <span class="kbd">${(t1 - t0).toFixed(1)} ms</span>
+      `;
+      out.prepend(summary);
+      btn.disabled = false;
+    }
+  </script>
+
+</body>
+</html>
