@@ -468,30 +468,32 @@ ___
 * [PDOK OGC API records demo](https://api.pdok.nl/catalogus/v1-demo/collections/metadata:main/)
 * [Clearly](https://ogc-demo.clearly.app/v2)
 
-##  PDOK Location API
+## PDOK Location API
 
 ### 🔹 Landing page
 
-- <https://api.pdok.nl/kadaster/location-api/v1-demo/>
+* <https://api.pdok.nl/kadaster/location-api/v1-demo/>
 
 ### 🔹 OpenAPI-documentatie
 
-- JSON: <https://api.pdok.nl/kadaster/location-api/v1-demo/api?f=json>
+* JSON: <https://api.pdok.nl/kadaster/location-api/v1-demo/api?f=json>
+
 * HTML: <https://api.pdok.nl/kadaster/location-api/v1-demo/api?f=html>
 
 ### 🔹 Conformance
 
-- <https://api.pdok.nl/kadaster/location-api/v1-demo/conformance>
+* <https://api.pdok.nl/kadaster/location-api/v1-demo/conformance>
 
 ### 🔹 Collections
 
-- Alle collecties:  
+* Alle collecties:  
   <https://api.pdok.nl/kadaster/location-api/v1-demo/collections>
 
 * Specifieke collection (generiek endpoint):  
   <https://api.pdok.nl/kadaster/location-api/v1-demo/collections/{collectionId}>
 
 Voorbeelden:
+
 * Adres: <https://api.pdok.nl/kadaster/location-api/v1-demo/collections/adres>  
 * Woonplaats: <https://api.pdok.nl/kadaster/location-api/v1-demo/collections/woonplaats>  
 * Perceel: <https://api.pdok.nl/kadaster/location-api/v1-demo/collections/perceel>  
@@ -502,34 +504,36 @@ Voorbeelden:
 
 ### 1️⃣ Basiszoekopdracht
 
-- <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damrak>
-- https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damrak&adres[version]=1&adres[relevance]=0.5
-- https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damrak&adres[version]=1&adres[relevance]=0.5&f=json
+* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damrak>
+* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damrak&adres[version]=1&adres[relevance]=0.5>
+* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damrak&adres[version]=1&adres[relevance]=0.5&f=json>
 
 ### 2️⃣ Autocomplete (gedeeltelijke input)
-- https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damr&adres[version]=1&adres[relevance]=0.5&limit=5>
-- https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damr&adres[version]=1&adres[relevance]=0.5&&limit=5&f=json>
+
+- <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damr&adres[version]=1&adres[relevance]=0.5&limit=5>>
+* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damr&adres[version]=1&adres[relevance]=0.5&&limit=5&f=json>>
 
 ### 3️⃣ Zoeken in specifieke collecties (deepObject)
 
-- <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=dam&adres[version]=1&f=json>>
+* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=dam&adres[version]=1&f=json>>
+
 * <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=dama&woonplaats[version]=1&woonplaats[relevance]=0.5&f=json>
 
 ### 4️⃣ Zoekopdracht met relevance‑weging
 
-- <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=utrecht&adres[version]=1&adres[relevance]=0.8>
+* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=utrecht&adres[version]=1&adres[relevance]=0.8>
 
 ### 5️⃣ Zoekopdracht met BBOX‑filter
 
-- <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=rotter&bbox=4.4,51.8,5.0,52.0>
+* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=rotter&bbox=4.4,51.8,5.0,52.0>
 
 ### 6️⃣ Resultaat ophalen als JSON-FG
 
-- <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=amsterdam&f=jsonfg>
+* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=amsterdam&f=jsonfg>
 
 ### 7️⃣ Resultaat ophalen als HTML
 
-- <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=den%20haag&f=html>
+* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=den%20haag&f=html>
 
 ---
 
