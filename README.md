@@ -1,5 +1,7 @@
 [Table of content](./READMEtoc.md)
 
+# Location API
+
 ## 🔍 Search API demo’s
 
 * API: <https://api.pdok.nl/kadaster/location-api/v1-demo>
