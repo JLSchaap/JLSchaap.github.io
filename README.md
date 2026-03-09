@@ -24,7 +24,7 @@
 
 * <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=dam&adres[version]=1&f=json>>
 
-* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=dama&woonplaats[version]=1&woonplaats[relevance]=0.5&f=json>
+* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=dam&woonplaats[version]=1&woonplaats[relevance]=0.5&f=json>
 
 ### 4️⃣ Zoekopdracht met relevance‑weging
 
@@ -44,11 +44,11 @@ rond centrum nederland:
 
 ### 6️⃣ Resultaat ophalen als GeoJSON
 
-* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=amsterdam&f=geojson>
+* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=amsterdam&f=geojson&adres[version]=1&adres[relevance]=0.5>
 
 ### 6️⃣ Resultaat ophalen als JSON-FG
 
-* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=amsterdam&f=jsonfg>
+* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=amsterdam&f=jsonfg&adres[version]=1&adres[relevance]=0.5>
 
 ### 7️⃣ Resultaat ophalen als HTML
 
