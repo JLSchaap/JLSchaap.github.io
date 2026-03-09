@@ -5,9 +5,10 @@
 * API: <https://api.pdok.nl/kadaster/location-api/v1-demo>
 * Conformance:  <https://api.pdok.nl/kadaster/location-api/v1-demo/conformance>
 * Collections: <https://api.pdok.nl/kadaster/location-api/v1-demo/collections>
-* Display
 
 ### 1️⃣ Basiszoekopdracht
+
+[Collectie](https://api.pdok.nl/kadaster/location-api/v1-demo/collections) selectie is relevant:
 
 * <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damrak> (minimal een collectie met versie verplicht)
 * <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damrak&adres[version]=1&adres[relevance]=0.5>
