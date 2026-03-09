@@ -1,18 +1,23 @@
 [Table of content](./READMEtoc.md)
 
-
 ## 🔍 Search API demo’s
+
+* API: <https://api.pdok.nl/kadaster/location-api/v1-demo>
+* Conformance:  <https://api.pdok.nl/kadaster/location-api/v1-demo/conformance>
+* Collections: <https://api.pdok.nl/kadaster/location-api/v1-demo/collections>
+* Display
 
 ### 1️⃣ Basiszoekopdracht
 
-* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damrak>
+* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damrak> (minimal een collectie met versie verplicht)
 * <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damrak&adres[version]=1&adres[relevance]=0.5>
 * <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damrak&adres[version]=1&adres[relevance]=0.5&f=json>
 
-### 2️⃣ Autocomplete (gedeeltelijke input)
+### 2️⃣ Autocomplete (gedeeltelijke input) limit 1 tot 50 resultaten
 
-- <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damr&adres[version]=1&adres[relevance]=0.5&limit=5>>
-* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damr&adres[version]=1&adres[relevance]=0.5&&limit=5&f=json>>
+* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damr&adres[version]=1&adres[relevance]=0.5&limit=1&f=json>>
+
+* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damr&adres[version]=1&adres[relevance]=0.5&&limit=50&f=json>>
 
 ### 3️⃣ Zoeken in specifieke collecties (deepObject)
 
@@ -23,10 +28,22 @@
 ### 4️⃣ Zoekopdracht met relevance‑weging
 
 * <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=utrecht&adres[version]=1&adres[relevance]=0.8>
+* Provincie prio: <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=utrecht&gemeentegebied%5Brelevance%5D=0.1&gemeentegebied%5Bversion%5D=1&provinciegebied%5Brelevance%5D=0.9&provinciegebied%5Bversion%5D=1&woonplaats%5Brelevance%5D=0.1&woonplaats%5Bversion%5D=1&f=json>
+* Gemeente prio: <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=utrecht&gemeentegebied%5Brelevance%5D=0.9&gemeentegebied%5Bversion%5D=1&provinciegebied%5Brelevance%5D=0.1&provinciegebied%5Bversion%5D=1&woonplaats%5Brelevance%5D=0.1&woonplaats%5Bversion%5D=1&f=json>
+* Woonplaats prio: <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=utrecht&gemeentegebied%5Brelevance%5D=0.1&gemeentegebied%5Bversion%5D=1&provinciegebied%5Brelevance%5D=0.1&provinciegebied%5Bversion%5D=1&woonplaats%5Brelevance%5D=0.9&woonplaats%5Bversion%5D=1&f=json>
 
 ### 5️⃣ Zoekopdracht met BBOX‑filter
 
-* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=rotter&bbox=4.4,51.8,5.0,52.0>
+* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damrak&adres%5Brelevance%5D=0.5&adres%5Bversion%5D=1&limit=3&bbox=2.8377106886394086,50.10815179279933,8.404484244866381,53.87250129000339&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&f=json>
+
+rond nederland:         bbox=2.8377106886394086,50.10815179279933,8.404484244866381,53.87250129000339
+ <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damrak&adres[version]=1&adres[relevance]=0.5&f=json&bbox=2.8377106886394086,50.10815179279933,8.404484244866381,53.87250129000339>
+rond centrum nederland:
+ <<https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damrak&adres[version]=1&adres[relevance]=0.5&f=json&bbox=5.090993080367572,51.84038004496384,5.876125141956711,52.32645304080979>
+
+### 6️⃣ Resultaat ophalen als GeoJSON
+
+* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=amsterdam&f=geojson>
 
 ### 6️⃣ Resultaat ophalen als JSON-FG
 
@@ -37,12 +54,6 @@
 * <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=den%20haag&f=html>
 
 ---
-
-## 🔗 Link naar volledige feature (voor demo-stap 4)
-
-*(Deze URL komt uit een zoekresultaat — pas het ID aan naar je demo-resultaat)*
-
-* <https://api.pdok.nl/kadaster/location-api/v1-demo/collections/woonplaats/items/GM0766>
 
 # Standards
 
