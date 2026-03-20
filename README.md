@@ -2,14 +2,16 @@
 
 # PDOK OGC API – Tiles
 
-| Dataset / Product | Tiles‑endpoint | Tile‑type | Bronnen |
-|---|---|---|---|
-| **BGT – Basisregistratie Grootschalige Topografie** | <https://api.pdok.nl/lv/bgt/ogc/v1/tiles> | Vector Tiles | [1](https://pdok.github.io/leermodule-ogc-api/tiles/Analyseer%20een%20voorbeeldkaart/) [2](https://apis.developer.overheid.nl/apis/iptK0BqNR) |
-| **BAG – Basisregistratie Adressen en Gebouwen** | <https://api.pdok.nl/lv/bag/ogc/v1/tiles> | Vector Tiles | [3](https://www.kadaster.nl/zakelijk/datasets/pdok-platform-voor-open-data) [4](https://www.geonovum.nl/nieuws/bgt-beschikbaar-als-ogc-api-features-bestand) |
-| **BRK – Bestuurlijke Gebieden** | <https://api.pdok.nl/kadaster/brk-bestuurlijke-gebieden/ogc/v1/tiles> | Vector Tiles | [5](https://api.pdok.nl/kadaster/brt-zeegebieden/ogc/v1?f=html&lang=en) |
-| **BRK – Kadastrale Kaart** | <https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/tiles> | Vector Tiles | [6](https://api.pdok.nl/brt/top10nl/download/v1_0/ui/) [7](https://www.pdok.nl/vector-tiles) |
-| **BRT – TOP10NL** | <https://api.pdok.nl/brt/top10nl/ogc/v1/tiles> | Vector Tiles | [8](https://www.kadaster.nl/-/zelf-aan-de-slag-met-de-brt-achtergrondkaart) |
-| **BRT – Achtergrondkaart** | <https://api.pdok.nl/kadaster/brt-achtergrondkaart/ogc/v1/tiles> | Vector Tiles | |
+
+
+| Dataset / Product                                  | Tiles‑endpoint                                                                                   | Tile‑type                     |
+|----------------------------------------------------|---------------------------------------------------------------------------------------------------|-------------------------------|
+| **BGT – Basisregistratie Grootschalige Topografie** | https://api.pdok.nl/lv/bgt/ogc/v1/tiles                                                          | Vector Tiles                  |
+| **BAG – Basisregistratie Adressen en Gebouwen**     | https://api.pdok.nl/lv/bag/ogc/v1/tiles                                                          | Vector Tiles                  |
+| **BRK – Bestuurlijke Gebieden**                     | https://api.pdok.nl/kadaster/brk-bestuurlijke-gebieden/ogc/v1/tiles                              | Vector Tiles                  |
+| **BRK – Kadastrale Kaart**                          | https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/tiles                                   | Vector Tiles                  |
+| **BRT – TOP10NL**                                   | https://api.pdok.nl/brt/top10nl/ogc/v1/tiles                                                     | Vector Tiles                  |
+| **BRT – Achtergrondkaart**                          | https://api.pdok.nl/kadaster/brt-achtergrondkaart/ogc/v1/tiles                                   | Vector Tiles                  |
 
 # Location API
 
