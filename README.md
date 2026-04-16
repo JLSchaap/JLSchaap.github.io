@@ -17,58 +17,58 @@
 
 ## 🔍 Search API demo’s
 
-* API: <https://api.pdok.nl/kadaster/location-api/v1-demo>
-* Conformance:  <https://api.pdok.nl/kadaster/location-api/v1-demo/conformance>
-* Collections: <https://api.pdok.nl/kadaster/location-api/v1-demo/collections>
+* API: <https://api.pdok.nl/kadaster/location-api/v1>
+* Conformance:  <https://api.pdok.nl/kadaster/location-api/v1/conformance>
+* Collections: <https://api.pdok.nl/kadaster/location-api/v1/collections>
 
 ### 1️⃣ Basiszoekopdracht
 
-[Collectie](https://api.pdok.nl/kadaster/location-api/v1-demo/collections) selectie is relevant:
+[Collectie](https://api.pdok.nl/kadaster/location-api/v1/collections) selectie is relevant:
 
-* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damrak> (minimal een collectie met versie verplicht)
-* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damrak&adres[version]=1&adres[relevance]=0.5>
-* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damrak&adres[version]=1&adres[relevance]=0.5&f=json>
+* <https://api.pdok.nl/kadaster/location-api/v1/search?q=damrak> (minimal een collectie met versie verplicht)
+* <https://api.pdok.nl/kadaster/location-api/v1/search?q=damrak&adres[version]=1&adres[relevance]=0.5>
+* <https://api.pdok.nl/kadaster/location-api/v1/search?q=damrak&adres[version]=1&adres[relevance]=0.5&f=json>
 
 ### 2️⃣ Autocomplete (gedeeltelijke input) limit 1 tot 50 resultaten
 
-* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damr&adres[version]=1&adres[relevance]=0.5&limit=1&f=json>>
+* <https://api.pdok.nl/kadaster/location-api/v1/search?q=damr&adres[version]=1&adres[relevance]=0.5&limit=1&f=json>>
 
-* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damr&adres[version]=1&adres[relevance]=0.5&&limit=50&f=json>>
+* <https://api.pdok.nl/kadaster/location-api/v1/search?q=damr&adres[version]=1&adres[relevance]=0.5&&limit=50&f=json>>
 
 ### 3️⃣ Zoeken in specifieke collecties (deepObject)
 
-* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=dam&adres[version]=1&f=json>>
+* <https://api.pdok.nl/kadaster/location-api/v1/search?q=dam&adres[version]=1&f=json>>
 
-* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=dam&woonplaats[version]=1&woonplaats[relevance]=0.5&f=json>
+* <https://api.pdok.nl/kadaster/location-api/v1/search?q=dam&woonplaats[version]=1&woonplaats[relevance]=0.5&f=json>
 
 ### 4️⃣ Zoekopdracht met relevance‑weging
 
-* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=utrecht&adres[version]=1&adres[relevance]=0.8>
-* Provincie prio: <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=utrecht&gemeentegebied%5Brelevance%5D=0.1&gemeentegebied%5Bversion%5D=1&provinciegebied%5Brelevance%5D=0.9&provinciegebied%5Bversion%5D=1&woonplaats%5Brelevance%5D=0.1&woonplaats%5Bversion%5D=1&f=json>
-* Gemeente prio: <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=utrecht&gemeentegebied%5Brelevance%5D=0.9&gemeentegebied%5Bversion%5D=1&provinciegebied%5Brelevance%5D=0.1&provinciegebied%5Bversion%5D=1&woonplaats%5Brelevance%5D=0.1&woonplaats%5Bversion%5D=1&f=json>
-* Woonplaats prio: <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=utrecht&gemeentegebied%5Brelevance%5D=0.1&gemeentegebied%5Bversion%5D=1&provinciegebied%5Brelevance%5D=0.1&provinciegebied%5Bversion%5D=1&woonplaats%5Brelevance%5D=0.9&woonplaats%5Bversion%5D=1&f=json>
+* <https://api.pdok.nl/kadaster/location-api/v1/search?q=utrecht&adres[version]=1&adres[relevance]=0.8>
+* Provincie prio: <https://api.pdok.nl/kadaster/location-api/v1/search?q=utrecht&gemeentegebied%5Brelevance%5D=0.1&gemeentegebied%5Bversion%5D=1&provinciegebied%5Brelevance%5D=0.9&provinciegebied%5Bversion%5D=1&woonplaats%5Brelevance%5D=0.1&woonplaats%5Bversion%5D=1&f=json>
+* Gemeente prio: <https://api.pdok.nl/kadaster/location-api/v1/search?q=utrecht&gemeentegebied%5Brelevance%5D=0.9&gemeentegebied%5Bversion%5D=1&provinciegebied%5Brelevance%5D=0.1&provinciegebied%5Bversion%5D=1&woonplaats%5Brelevance%5D=0.1&woonplaats%5Bversion%5D=1&f=json>
+* Woonplaats prio: <https://api.pdok.nl/kadaster/location-api/v1/search?q=utrecht&gemeentegebied%5Brelevance%5D=0.1&gemeentegebied%5Bversion%5D=1&provinciegebied%5Brelevance%5D=0.1&provinciegebied%5Bversion%5D=1&woonplaats%5Brelevance%5D=0.9&woonplaats%5Bversion%5D=1&f=json>
 
 ### 5️⃣ Zoekopdracht met BBOX‑filter
 
 rond nederland:
 
-* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damrak&adres[version]=1&adres[relevance]=0.5&f=json&bbox=2.8377106886394086,50.10815179279933,8.404484244866381,53.87250129000339>
+* <https://api.pdok.nl/kadaster/location-api/v1/search?q=damrak&adres[version]=1&adres[relevance]=0.5&f=json&bbox=2.8377106886394086,50.10815179279933,8.404484244866381,53.87250129000339>
 
 rond centrum nederland:
 
-* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=damrak&adres[version]=1&adres[relevance]=0.5&f=json&bbox=5.090993080367572,51.84038004496384,5.876125141956711,52.32645304080979>
+* <https://api.pdok.nl/kadaster/location-api/v1/search?q=damrak&adres[version]=1&adres[relevance]=0.5&f=json&bbox=5.090993080367572,51.84038004496384,5.876125141956711,52.32645304080979>
 
 ### 6️⃣ Resultaat ophalen als GeoJSON
 
-* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=amsterdam&f=geojson&adres[version]=1&adres[relevance]=0.5>
+* <https://api.pdok.nl/kadaster/location-api/v1/search?q=amsterdam&f=geojson&adres[version]=1&adres[relevance]=0.5>
 
 ### 6️⃣ Resultaat ophalen als JSON-FG
 
-* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=amsterdam&f=jsonfg&adres[version]=1&adres[relevance]=0.5>
+* <https://api.pdok.nl/kadaster/location-api/v1/search?q=amsterdam&f=jsonfg&adres[version]=1&adres[relevance]=0.5>
 
 ### 7️⃣ Resultaat ophalen als HTML
 
-* <https://api.pdok.nl/kadaster/location-api/v1-demo/search?q=den%20haag&f=html>
+* <https://api.pdok.nl/kadaster/location-api/v1/search?q=den%20haag&f=html>
 
 ---
 
@@ -170,7 +170,7 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 
 [feature info](https://service.pdok.nl/kadaster/cp/wms/v1_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&BBOX=81181.3688522478332743%2C455047.25335909030400217%2C81181.79916609986685216%2C455047.67003244906663895&CRS=EPSG%3A28992&WIDTH=2&HEIGHT=2&LAYERS=CP.CadastralParcel&STYLES=CP.CadastralParcel.Default&FORMAT=image%2Fpng&QUERY_LAYERS=CP.CadastralParcel&INFO_FORMAT=text%2Fhtml&I=0&J=1)
 
-[Monitoring status](https://www.pdok.nl/status-detail/-/service/13761162/KADASTER-cp-v1-0-INSPIRE-WMS)
+[Monitoring status](https://www.pdok.nl/status-detail/-/service/14227702/Kadastrale-Percelen-INSPIRE-geharmoniseerd-1-0-0-OGC-API)
 
 #### Inspire download
 
@@ -544,31 +544,31 @@ ___
 
 ### 🔹 Landing page
 
-* <https://api.pdok.nl/kadaster/location-api/v1-demo/>
+* <https://api.pdok.nl/kadaster/location-api/v1/>
 
 ### 🔹 OpenAPI-documentatie
 
-* JSON: <https://api.pdok.nl/kadaster/location-api/v1-demo/api?f=json>
+* JSON: <https://api.pdok.nl/kadaster/location-api/v1/api?f=json>
 
-* HTML: <https://api.pdok.nl/kadaster/location-api/v1-demo/api?f=html>
+* HTML: <https://api.pdok.nl/kadaster/location-api/v1/api?f=html>
 
 ### 🔹 Conformance
 
-* <https://api.pdok.nl/kadaster/location-api/v1-demo/conformance>
+* <https://api.pdok.nl/kadaster/location-api/v1/conformance>
 
 ### 🔹 Collections
 
 * Alle collecties:  
-  <https://api.pdok.nl/kadaster/location-api/v1-demo/collections>
+  <https://api.pdok.nl/kadaster/location-api/v1/collections>
 
 * Specifieke collection (generiek endpoint):  
-  <https://api.pdok.nl/kadaster/location-api/v1-demo/collections/{collectionId}>
+  https://api.pdok.nl/kadaster/location-api/v1/collections/{collectionId}
 
 Voorbeelden:
 
-* Adres: <https://api.pdok.nl/kadaster/location-api/v1-demo/collections/adres>  
-* Woonplaats: <https://api.pdok.nl/kadaster/location-api/v1-demo/collections/woonplaats>  
-* Perceel: <https://api.pdok.nl/kadaster/location-api/v1-demo/collections/perceel>  
+* Adres: <https://api.pdok.nl/kadaster/location-api/v1/collections/adres>  
+* Woonplaats: <https://api.pdok.nl/kadaster/location-api/v1/collections/woonplaats>  
+* Perceel: <https://api.pdok.nl/kadaster/location-api/v1/collections/perceel>  
 
 ---
 
