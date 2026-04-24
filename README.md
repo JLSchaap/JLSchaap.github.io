@@ -571,6 +571,12 @@ Voorbeelden:
 * Perceel: <https://api.pdok.nl/kadaster/location-api/v1/collections/perceel>  
 
 ---
+## Generieke component Location API <https://npmx.dev/package/@kadaster/ggc-search-location>
+
+[calls api](https://github.com/kadaster/generieke-geo-componenten/blob/5b5a0e2009b9193d1b620187be8c04caebd34be8/projects/ggc-search-location/src/lib/service/pdok-location-api.service.ts#L42)
+
+[Johns-Fork sample app](https://jlschaap.github.io/generieke-geo-componenten/#)
+
 
 __
 [![check markdown links](https://github.com/JLSchaap/JLSchaap.github.io/actions/workflows/checkMarkdown.yml/badge.svg)](https://github.com/JLSchaap/JLSchaap.github.io/actions/workflows/checkMarkdown.yml)
