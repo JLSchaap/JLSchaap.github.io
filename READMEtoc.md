@@ -1,6 +1,13 @@
 ## Table of Contents
 
+- [PDOK OGC API – Tiles](./README.md#pdok-ogc-api-tiles)
 - [Location API](./README.md#location-api)
+  - [PDOK Location API](./README.md#pdok-location-api)
+    - [🔹 Landing page](./README.md#-landing-page)
+    - [🔹 OpenAPI-documentatie](./README.md#-openapi-documentatie)
+    - [🔹 Conformance](./README.md#-conformance)
+    - [🔹 Collections](./README.md#-collections)
+  - [Generieke component Location API](./README.md#generieke-component-location-api)
   - [🔍 Search API demo’s](./README.md#-search-api-demos)
     - [1️⃣ Basiszoekopdracht](./README.md#1-basiszoekopdracht)
     - [2️⃣ Autocomplete (gedeeltelijke input) limit 1 tot 50 resultaten](./README.md#2-autocomplete-gedeeltelijke-input-limit-1-tot-50-resultaten)
@@ -73,8 +80,3 @@
 - [Twin testbed](./README.md#twin-testbed)
 - [viewer](./README.md#viewer)
 - [catalog](./README.md#catalog)
-  - [PDOK Location API](./README.md#pdok-location-api)
-    - [🔹 Landing page](./README.md#-landing-page)
-    - [🔹 OpenAPI-documentatie](./README.md#-openapi-documentatie)
-    - [🔹 Conformance](./README.md#-conformance)
-    - [🔹 Collections](./README.md#-collections)

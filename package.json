@@ -2,8 +2,9 @@
   "name": "mainpage",
   "version": "1.0.0",
   "scripts": {
+    "build": "tocnpm run check && npm run toc",
     "check": "markdown-link-check -c check.cfg ./README.md",
-    "toc": "./markdown-toc.sh README.md > READMEtoc.md"
+    "toc": "sh ./markdown-toc.sh README.md > READMEtoc.md"
   },
   "devDependencies": {
     "markdown-link-check": "^3.14.2"

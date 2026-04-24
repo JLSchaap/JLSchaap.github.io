@@ -2,8 +2,6 @@
 
 # PDOK OGC API – Tiles
 
-
-
 | Dataset / Product | Tiles‑endpoint | Tile‑type |
 |---|---|---|
 | **BGT – Basisregistratie Grootschalige Topografie** | [https://api.pdok.nl/lv/bgt/ogc/v1/tiles](https://api.pdok.nl/lv/bgt/ogc/v1/tiles) | Vector Tiles |
@@ -15,17 +13,50 @@
 
 # Location API
 
-## 🔍 Search API demo’s
+## PDOK Location API
 
-* API: <https://api.pdok.nl/kadaster/location-api/v1>
-* Conformance:  <https://api.pdok.nl/kadaster/location-api/v1/conformance>
-* Collections: <https://api.pdok.nl/kadaster/location-api/v1/collections>
+### 🔹 Landing page
+
+* <https://api.pdok.nl/kadaster/location-api/v1/>
+
+### 🔹 OpenAPI-documentatie
+
+* JSON: <https://api.pdok.nl/kadaster/location-api/v1/api?f=json>
+
+* HTML: <https://api.pdok.nl/kadaster/location-api/v1/api?f=html>
+
+### 🔹 Conformance
+
+* <https://api.pdok.nl/kadaster/location-api/v1/conformance>
+
+### 🔹 Collections
+
+* Alle collecties:  
+  <https://api.pdok.nl/kadaster/location-api/v1/collections>
+
+* Specifieke collection (generiek endpoint):  
+  [https://api.pdok.nl/kadaster/location-api/v1/collections/{collectionId}](https://api.pdok.nl/kadaster/location-api/v1/collections)
+
+Voorbeelden:
+
+* Adres: <https://api.pdok.nl/kadaster/location-api/v1/collections/adres>  
+* Woonplaats: <https://api.pdok.nl/kadaster/location-api/v1/collections/woonplaats>  
+* Perceel: <https://api.pdok.nl/kadaster/location-api/v1/collections/perceel>  
+
+## Generieke component Location API
+
+[Beschikbaar als npm package](<https://npmx.dev/package/@kadaster/ggc-search-location>)
+[calls api](https://github.com/kadaster/generieke-geo-componenten/blob/5b5a0e2009b9193d1b620187be8c04caebd34be8/projects/ggc-search-location/src/lib/service/pdok-location-api.service.ts#L42)
+
+[Johns-Fork van GGC sample app](https://jlschaap.github.io/generieke-geo-componenten/#)
+
+## 🔍 Search API demo’s
 
 ### 1️⃣ Basiszoekopdracht
 
 [Collectie](https://api.pdok.nl/kadaster/location-api/v1/collections) selectie is relevant:
 
-* <https://api.pdok.nl/kadaster/location-api/v1/search?q=damrak> (minimal een collectie met versie verplicht)
+* `https://api.pdok.nl/kadaster/location-api/v1/search?q=damrak` (minimal een collectie met versie verplicht)
 * <https://api.pdok.nl/kadaster/location-api/v1/search?q=damrak&adres[version]=1&adres[relevance]=0.5>
 * <https://api.pdok.nl/kadaster/location-api/v1/search?q=damrak&adres[version]=1&adres[relevance]=0.5&f=json>
 
@@ -192,7 +223,7 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 
 | Field             | Value                                                                                                                                                     |
 |------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Specification** | [Commission Regulation (EU) No. 1089/2010](https://eur-lex.europa.eu/eli/reg/2010/1089/oj/eng) – implementing Directive 2007/2/EC on interoperability of spatial datasets and services |
+| **Specification** | Commission Regulation (EU) No. 1089/2010 `https://eur-lex.europa.eu/eli/reg/2010/1089/oj/eng` – implementing Directive 2007/2/EC on interoperability of spatial datasets and services |
 | **Specification** | *Interoperable* conformance class                                                                                        |
 | **Explanation**   | The service complies with the requirements of the **interoperable** conformance class   -|
 | **Specification** | *WFS 2.0* conformance class
@@ -539,44 +570,6 @@ ___
 * [https://api.pdok.nl](https://api.pdok.nl/)
 * [PDOK OGC API records demo](https://api.pdok.nl/catalogus/v1-demo/collections/metadata:main/)
 * [Clearly](https://ogc-demo.clearly.app/v2)
-
-## PDOK Location API
-
-### 🔹 Landing page
-
-* <https://api.pdok.nl/kadaster/location-api/v1/>
-
-### 🔹 OpenAPI-documentatie
-
-* JSON: <https://api.pdok.nl/kadaster/location-api/v1/api?f=json>
-
-* HTML: <https://api.pdok.nl/kadaster/location-api/v1/api?f=html>
-
-### 🔹 Conformance
-
-* <https://api.pdok.nl/kadaster/location-api/v1/conformance>
-
-### 🔹 Collections
-
-* Alle collecties:  
-  <https://api.pdok.nl/kadaster/location-api/v1/collections>
-
-* Specifieke collection (generiek endpoint):  
-  https://api.pdok.nl/kadaster/location-api/v1/collections/{collectionId}
-
-Voorbeelden:
-
-* Adres: <https://api.pdok.nl/kadaster/location-api/v1/collections/adres>  
-* Woonplaats: <https://api.pdok.nl/kadaster/location-api/v1/collections/woonplaats>  
-* Perceel: <https://api.pdok.nl/kadaster/location-api/v1/collections/perceel>  
-
----
-## Generieke component Location API <https://npmx.dev/package/@kadaster/ggc-search-location>
-
-[calls api](https://github.com/kadaster/generieke-geo-componenten/blob/5b5a0e2009b9193d1b620187be8c04caebd34be8/projects/ggc-search-location/src/lib/service/pdok-location-api.service.ts#L42)
-
-[Johns-Fork sample app](https://jlschaap.github.io/generieke-geo-componenten/#)
-
 
 __
 [![check markdown links](https://github.com/JLSchaap/JLSchaap.github.io/actions/workflows/checkMarkdown.yml/badge.svg)](https://github.com/JLSchaap/JLSchaap.github.io/actions/workflows/checkMarkdown.yml)
