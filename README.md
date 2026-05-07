@@ -1,15 +1,5 @@
 [Table of content](./READMEtoc.md)
 
-# PDOK OGC API – Tiles
-
-| Dataset / Product | Tiles‑endpoint | Tile‑type |
-|---|---|---|
-| **BGT – Basisregistratie Grootschalige Topografie** | [https://api.pdok.nl/lv/bgt/ogc/v1/tiles](https://api.pdok.nl/lv/bgt/ogc/v1/tiles) | Vector Tiles |
-| **BAG – Basisregistratie Adressen en Gebouwen** | [https://api.pdok.nl/lv/bag/ogc/v1/tiles](https://api.pdok.nl/lv/bag/ogc/v1/tiles) | Vector Tiles |
-| **BRK – Bestuurlijke Gebieden** | [https://api.pdok.nl/kadaster/brk-bestuurlijke-gebieden/ogc/v1/tiles](https://api.pdok.nl/kadaster/brk-bestuurlijke-gebieden/ogc/v1/tiles) | Vector Tiles |
-| **BRK – Kadastrale Kaart** | [https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/tiles](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/tiles) | Vector Tiles |
-| **BRT – TOP10NL** | [https://api.pdok.nl/brt/top10nl/ogc/v1/tiles](https://api.pdok.nl/brt/top10nl/ogc/v1/tiles) | Vector Tiles |
-| **BRT – Achtergrondkaart** | [https://api.pdok.nl/kadaster/brt-achtergrondkaart/ogc/v1/tiles](https://api.pdok.nl/kadaster/brt-achtergrondkaart/ogc/v1/tiles) | Vector Tiles |
 
 # Location API
 
@@ -101,6 +91,17 @@ rond centrum nederland:
 
 * <https://api.pdok.nl/kadaster/location-api/v1/search?q=den%20haag&f=html>
 
+---
+# PDOK OGC API – Tiles
+
+| Dataset / Product | Tiles‑endpoint | Tile‑type |
+|---|---|---|
+| **BGT – Basisregistratie Grootschalige Topografie** | [https://api.pdok.nl/lv/bgt/ogc/v1/tiles](https://api.pdok.nl/lv/bgt/ogc/v1/tiles) | Vector Tiles |
+| **BAG – Basisregistratie Adressen en Gebouwen** | [https://api.pdok.nl/lv/bag/ogc/v1/tiles](https://api.pdok.nl/lv/bag/ogc/v1/tiles) | Vector Tiles |
+| **BRK – Bestuurlijke Gebieden** | [https://api.pdok.nl/kadaster/brk-bestuurlijke-gebieden/ogc/v1/tiles](https://api.pdok.nl/kadaster/brk-bestuurlijke-gebieden/ogc/v1/tiles) | Vector Tiles |
+| **BRK – Kadastrale Kaart** | [https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/tiles](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/tiles) | Vector Tiles |
+| **BRT – TOP10NL** | [https://api.pdok.nl/brt/top10nl/ogc/v1/tiles](https://api.pdok.nl/brt/top10nl/ogc/v1/tiles) | Vector Tiles |
+| **BRT – Achtergrondkaart** | [https://api.pdok.nl/kadaster/brt-achtergrondkaart/ogc/v1/tiles](https://api.pdok.nl/kadaster/brt-achtergrondkaart/ogc/v1/tiles) | Vector Tiles |
 ---
 
 # Standards
