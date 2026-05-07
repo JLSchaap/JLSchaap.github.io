@@ -3,7 +3,11 @@
 
 # Location API
 
+
+
 ## PDOK Location API
+
+zie ook Leermodule: <https://pdok.github.io/leermodule-location-api/>
 
 ### 🔹 Landing page
 
@@ -437,6 +441,7 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 * [3D basisvoorziening](https://api.pdok.nl/kadaster/3d-basisvoorziening/ogc/v1)
 
 # [OGC Api features](https://ogcapi.ogc.org/features/)
+zie ook Leermodule: <https://pdok.github.io/leermodule-ogc-api/>
 
 ## [Collections](https://docs.ogc.org/is/17-069r4/17-069r4.html#_feature_collections_rootcollections)
 
