@@ -39,10 +39,12 @@ Voorbeelden:
 
 ## Generieke component Location API
 
-[Beschikbaar als npm package](<https://npmx.dev/package/@kadaster/ggc-search-location>)
+* <https://www.generiekegeocomponenten.nl>
+
+* [Beschikbaar als npm package](<https://npmx.dev/package/@kadaster/ggc-search-location>)
 [calls api](https://github.com/kadaster/generieke-geo-componenten/blob/5b5a0e2009b9193d1b620187be8c04caebd34be8/projects/ggc-search-location/src/lib/service/pdok-location-api.service.ts#L42)
 
-[Johns-Fork van GGC sample app](https://jlschaap.github.io/generieke-geo-componenten/#)
+* [Johns-Fork van GGC sample app](https://jlschaap.github.io/generieke-geo-componenten/#)
 
 ## 🔍 Search API demo’s
 
