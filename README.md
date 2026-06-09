@@ -2,9 +2,12 @@
 
 # API DAYS
 
-* <www.pdok.nl>  <https://www.youtube.com/watch?v=qLOlTxJZlQU>
+* <https://api.pdok.nl/kadaster/location-api/v1/>
 * <https://api.pdok.nl/>
 * <https://github.com/PDOK/gokoala>
+* <https://www.youtube.com/watch?v=qLOlTxJZlQU>
+* <https://www.pdok.nl>
+
 
 # Location API
 
