@@ -219,7 +219,7 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 
 [feature info](https://service.pdok.nl/kadaster/cp/wms/v1_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&BBOX=81181.3688522478332743%2C455047.25335909030400217%2C81181.79916609986685216%2C455047.67003244906663895&CRS=EPSG%3A28992&WIDTH=2&HEIGHT=2&LAYERS=CP.CadastralParcel&STYLES=CP.CadastralParcel.Default&FORMAT=image%2Fpng&QUERY_LAYERS=CP.CadastralParcel&INFO_FORMAT=text%2Fhtml&I=0&J=1)
 
-[Monitoring status](https://www.pdok.nl/status-detail/-/service/14227702/Kadastrale-Percelen-INSPIRE-geharmoniseerd-1-0-0-OGC-API)
+[Monitoring status](https://www.pdok.nl/status-detail/-/service/4518108/Kadastrale-Percelen-INSPIRE-geharmoniseerd-1-0-0-OGC-API)
 
 #### Inspire download
 
