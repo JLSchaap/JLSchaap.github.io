@@ -566,7 +566,7 @@ zie ook Leermodule: <https://pdok.github.io/leermodule-ogc-api/>
 * [Gesloten Gebieden voor Visserij](https://api.pdok.nl/rvo/gesloten-gebieden-visserij/ogc/v1)
 * [Schelpdierpercelen](https://api.pdok.nl/rvo/schelpdierpercelen/ogc/v1)
 * [Schelpdierpercelen (INSPIRE geharmoniseerd)](https://api.pdok.nl/rvo/schelpdierpercelen-geharmoniseerd/ogc/v1)
-* [Invasieve Exoten (INSPIRE geharmoniseerd)](https://api.pdok.nl/rvo/invasieve-exoten-geharmoniseerd/ogc/v1)
+* [Invasieve Exoten (INSPIRE geharmoniseerd)](https://api.pdok.nl/rvo/invasieve-exoten-geharmoniseerd/ogc/v2)
 
 ## Energie
 
@@ -585,7 +585,14 @@ ___
 * [3d NL TWIN](https://netherlands3d.eu/twin/)
 * [Johns OGC-API records demo](./records.html)
 
+
+
 # catalog
+
+# STAC
+* <https://stacspec.org/>
+
+# ogc-api records
 
 * [https://api.pdok.nl](https://api.pdok.nl/)
 * [PDOK OGC API records demo](https://api.pdok.nl/catalogus/v1-demo/collections/metadata:main/)
