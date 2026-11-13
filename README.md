@@ -80,8 +80,7 @@ where naam like '%Holland'
 Demo run: <https://app.pdok.nl/cloud-demo-viewer/demo/>
 
 
-### Spatial selectie
-```sql
+### Spatial selectie```sql
 SELECT spoor.*
 FROM read_parquet('spoor_parquet_1') spoor
 WHERE ST_Intersects(
