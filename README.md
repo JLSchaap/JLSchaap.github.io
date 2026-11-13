@@ -18,6 +18,9 @@ zie conformance class  <https://api.pdok.nl/kadaster/bgt/ogc/v1/conformance>
 
 <https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor>
 
+
+![Polygoon in RD New met donkere omlijning op de PDOK BRT Achtergrondkaart grijs](./brt-grijs-polygoon.png)
+
 ## Spatial filter  (Geometries) (naam van geometry attribuut te vinden via het schema van de collectie)
 
 <https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/items?filter=s_intersects%28geometry%2CPOLYGON%28%284.3179+52.0809%2C4.3200+52.0854%2C4.3249+52.0873%2C4.3298+52.0854%2C4.3319+52.0809%2C4.3298+52.0764%2C4.3249+52.0745%2C4.3200+52.0764%2C4.3179+52.0809%29%29%29&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=1000>
@@ -79,7 +82,7 @@ Demo run: <https://app.pdok.nl/cloud-demo-viewer/demo/>
 
 '''sql
 SELECT spoor.*
-FROM read_parquet('spoor_parquet_2') spoor
+FROM read_parquet('spoor_parquet_1') spoor
 WHERE ST_Intersects(
   spoor.geom,
   ST_GeomFromText('POLYGON((82186 454735, 82329 455235, 82663 455446, 82997 455235, 83140 454735, 82997 454235, 82663 454024, 82329 454235, 82186 454735))')
