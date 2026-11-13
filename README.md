@@ -64,10 +64,15 @@ Voorbeelden: `before` → `T_BEFORE`, `after` → `T_AFTER`, `equals` → `T_EQU
 # Cloud Demo Viewer GeoParquet
 
 <https://geoparquet.org/>
+'''sql    
+SELECT *
+FROM read_parquet('provinciegebied_parquet_0')
+where naam like '%Holland'
+'''
 
 <https://app.pdok.nl/cloud-demo-viewer/>
 
-# 12 provincies
+# Demo run
 Demo run: <https://app.pdok.nl/cloud-demo-viewer/demo/>
 '''sql       
 SELECT spoor.*
