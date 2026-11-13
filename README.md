@@ -1,5 +1,83 @@
 [Table of content](./READMEtoc.md)
 
+
+# GEOBUZZ 2026 
+
+# OGC API Features: filteren op ruimtelijke, attributen en tijd (deel 3) — https://docs.ogc.org/is/19-079r2/19-079r2.html#conf_filter
+
+# Op alle OGC API Features endpoints dus ook op de BGT
+b.v. https://api.pdok.nl/kadaster/bgt/ogc/v1/ 
+zie conformance class  https://api.pdok.nl/kadaster/bgt/ogc/v1/conformance
+
+# BGT Spoor
+https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor
+
+# Spatial filter  (Geometries) (naam van geometry attribuut te vinden via het schema van de collectie)
+https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/items?filter=s_intersects%28geometry%2CPOLYGON%28%284.3179+52.0809%2C4.3200+52.0854%2C4.3249+52.0873%2C4.3298+52.0854%2C4.3319+52.0809%2C4.3298+52.0764%2C4.3249+52.0745%2C4.3200+52.0764%2C4.3179+52.0809%29%29%29&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=1000
+
+
+basic-spatial-functions
+└── S_INTERSECTS (punt en bbox) 
+
+basic-spatial-functions-plus
+└── S_INTERSECTS
+    + extra geometrietypen
+
+spatial-functions
+├── S_INTERSECTS
+├── S_CONTAINS
+├── S_CROSSES
+├── S_DISJOINT
+├── S_EQUALS
+├── S_OVERLAPS
+├── S_TOUCHES
+└── S_WITHIN
+
+
+
+#Feature filtering alleen op Queryables "subset van velden uit het Schema"
+
+
+https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/schema
+
+https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/items?filter=s_intersects%28geometry%2CPOLYGON%28%284.3179+52.0809%2C4.3200+52.0854%2C4.3249+52.0873%2C4.3298+52.0854%2C4.3319+52.0809%2C4.3298+52.0764%2C4.3249+52.0745%2C4.3200+52.0764%2C4.3179+52.0809%29%29%29&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=1000&functie=trein
+
+
+# filter op tijd (time filter) peildatum    (Allen's Interval Algebra. https://en.wikipedia.org/wiki/Allen%27s_interval_algebra)
+
+Zonder datum
+
+https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/items?filter=s_intersects%28geometry%2CPOLYGON%28%284.3179+52.0809%2C4.3200+52.0854%2C4.3249+52.0873%2C4.3298+52.0854%2C4.3319+52.0809%2C4.3298+52.0764%2C4.3249+52.0745%2C4.3200+52.0764%2C4.3179+52.0809%29%29%29&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=1000
+
+Met datum 
+https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/items?filter=s_intersects%28geometry%2CPOLYGON%28%284.3179+52.0809%2C4.3200+52.0854%2C4.3249+52.0873%2C4.3298+52.0854%2C4.3319+52.0809%2C4.3298+52.0764%2C4.3249+52.0745%2C4.3200+52.0764%2C4.3179+52.0809%29%29%29&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=1000&datetime=2016-01-13T00%3A00%3A00.000Z
+
+
+Allen-relaties voor tijdsintervallen kunnen worden uitgedrukt met CQL2-operatoren.  
+Voorbeelden: `before` → `T_BEFORE`, `after` → `T_AFTER`, `equals` → `T_EQUALS` en `overlaps` → `T_INTERSECTS` 
+
+
+
+# Cloud Demo Viewer GeoParquet
+
+https://geoparquet.org/ 
+
+https://app.pdok.nl/cloud-demo-viewer/
+
+# 12 provincies
+Demo run: https://app.pdok.nl/cloud-demo-viewer/demo/
+
+SELECT spoor.*
+FROM read_parquet('spoor_parquet_2') spoor
+WHERE ST_Intersects(
+  spoor.geom,
+  ST_GeomFromText('POLYGON((82186 454735, 82329 455235, 82663 455446, 82997 455235, 83140 454735, 82997 454235, 82663 454024, 82329 454235, 82186 454735))')
+)
+  AND spoor.functie = 'trein'
+
+
+maar combinatie maken met andere datasets 
+
 # API DAYS
 
 * <https://api.pdok.nl/kadaster/location-api/v1/>
@@ -601,3 +679,44 @@ ___
 __
 [![check markdown links](https://github.com/JLSchaap/JLSchaap.github.io/actions/workflows/checkMarkdown.yml/badge.svg)](https://github.com/JLSchaap/JLSchaap.github.io/actions/workflows/checkMarkdown.yml)
 mobilitytwin.
+
+
+```mermaid
+flowchart LR
+    A[GIS-tijdperk]
+    A --> B["1999<br/>WMS<br/>Kaarten als afbeelding"]
+    A --> C["2002<br/>GML<br/>Uitwisseling van geodata in XML"]
+    A --> D["2005<br/>WFS<br/>Geografische objecten via XML"]
+    A --> E["2007<br/>CSW<br/>Metadata catalogi"]
+    A --> F["2007<br/>WPS<br/>Geo-processen"]
+    A --> G["2010-2015<br/>SOA<br/>XML domineert"]
+    A --> H["2010+<br/>REST groeit explosief<br/>JSON wordt standaard op het web"]
+    A --> I["2011<br/>Swagger<br/>API-documentatie en interactief testen"]
+    A --> J["2015<br/>OpenAPI Specification<br/>Industriestandaard voor API-beschrijving"]
+    A --> K["2017<br/>OGC API Features Part 1<br/>Eerste OGC API generatie"]
+    A --> L["2020+<br/>OGC API Tiles<br/>OGC API Maps<br/>OGC API Records<br/>OGC API Processes"]
+    A --> M["Nu<br/>API-first<br/>OpenAPI<br/>Swagger UI<br/>JSON<br/>Cloud-native<br/>STAC<br/>GeoParquet"]
+
+    U[INSPIRE-ontwikkelingen]
+    U --> V["2007<br/>INSPIRE-richtlijn<br/>Europese infrastructuur voor ruimtelijke informatie"]
+    U --> W["2010-2013<br/>Implementatieregels<br/>Metadata, dataspecificaties en netwerkdiensten"]
+    U --> X["2013+<br/>INSPIRE-data en -services<br/>Geharmoniseerde Europese geodata"]
+    U --> Y["Nu<br/>Open data en API's<br/>Modernisering en hergebruik"]
+
+    N[Ontwikkelingen buiten het GIS-domein]
+    N --> O["1998-2005<br/>XML en SOAP<br/>Webservices voor systeemintegratie"]
+    N --> P["2005-2010<br/>SOA en ESB<br/>Centrale gegevensuitwisseling"]
+    N --> Q["2010+<br/>Einde van het SOAP-tijdperk<br/>REST en JSON worden dominant"]
+    N --> R["2010-2015<br/>Big data<br/>Hadoop en grootschalige data-analyse"]
+    N --> S["2015+<br/>Streaming en cloud<br/>Realtime data-analyse en microservices"]
+    N --> T["Nu<br/>Data mesh<br/>Lakehouse<br/>AI en machine learning"]
+
+    G -. parallel .-> P
+    H -. sluit aan op .-> Q
+    M -. convergentie .-> T
+    J -. Europese context .-> U
+    U -. doorontwikkeling .-> M
+
+    %% Hoofdonderdelen van links naar rechts: GIS, INSPIRE en buiten het GIS-domein.
+    A ~~~ U ~~~ N
+```
