@@ -223,7 +223,7 @@ rond centrum nederland:
 | Dataset / Product | Tiles‑endpoint | Tile‑type |
 |---|---|---|
 | **BGT – Basisregistratie Grootschalige Topografie** | [https://api.pdok.nl/lv/bgt/ogc/v1/tiles](https://api.pdok.nl/lv/bgt/ogc/v1/tiles) | Vector Tiles |
-| **BAG – Basisregistratie Adressen en Gebouwen** | [https://api.pdok.nl/lv/bag/ogc/v1/tiles](https://api.pdok.nl/lv/bag/ogc/v1/tiles) | Vector Tiles |
+| **BAG – Basisregistratie Adressen en Gebouwen** | [https://api.pdok.nl/kadaster/bag/ogc/v2/tiles](https://api.pdok.nl/kadaster/bag/ogc/v2/tiles) | Vector Tiles |
 | **BRK – Bestuurlijke Gebieden** | [https://api.pdok.nl/kadaster/brk-bestuurlijke-gebieden/ogc/v1/tiles](https://api.pdok.nl/kadaster/brk-bestuurlijke-gebieden/ogc/v1/tiles) | Vector Tiles |
 | **BRK – Kadastrale Kaart** | [https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/tiles](https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/tiles) | Vector Tiles |
 | **BRT – TOP10NL** | [https://api.pdok.nl/brt/top10nl/ogc/v1/tiles](https://api.pdok.nl/brt/top10nl/ogc/v1/tiles) | Vector Tiles |
@@ -280,8 +280,7 @@ Source:
 Harvesters CSW:
 
 * [NL Data portal](https://data.overheid.nl/)
-* [EU Inspire](https://inspire-geoportal.ec.europa.eu/)
-* [EU Data portal](https://data.europa.eu/)
+* [EU Data portal (ook INSPIRE; vervangt het opgeheven INSPIRE Geoportal)](https://data.europa.eu/en)
 
 Non Inspire Dutch API harvest:
 
@@ -306,7 +305,7 @@ Definition CP:
 
 [Aanmerkingsregister CP](https://www.aanmerking.nl/aanmerkingsregister?decision_policy_manager=noted&priority=483&provider=63&policy_manager=All&data_owner=All&dataset__theme_target_id=99&hvd-theme=All&inspire_link__type_value=All&hvd_link__type_value=All&items_per_page=10)
 
-[Cadastral parcels Theme Netherlands](https://inspire-geoportal.ec.europa.eu/srv/eng/catalog.search#/results?country=nl&view=themeOverview&theme=cp&iacs=none&legislation=none&envdomain=none&basedomain=0)
+[Cadastral parcels Netherlands (European Data Portal search)](https://data.europa.eu/data/datasets?locale=en&query=Kadastrale%20Percelen)
 
 ### Kadastrale Percelen (INSPIRE geharmoniseerd) Cadastral Parcels (INSPIRE harmonized)
 
@@ -329,7 +328,7 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 
 [feature info](https://service.pdok.nl/kadaster/cp/wms/v1_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&BBOX=81181.3688522478332743%2C455047.25335909030400217%2C81181.79916609986685216%2C455047.67003244906663895&CRS=EPSG%3A28992&WIDTH=2&HEIGHT=2&LAYERS=CP.CadastralParcel&STYLES=CP.CadastralParcel.Default&FORMAT=image%2Fpng&QUERY_LAYERS=CP.CadastralParcel&INFO_FORMAT=text%2Fhtml&I=0&J=1)
 
-[Monitoring status](https://www.pdok.nl/status-detail/-/service/4518108/Kadastrale-Percelen-INSPIRE-geharmoniseerd-1-0-0-OGC-API)
+[Monitoring status](https://www.pdok.nl/status-detail/-/service/4722058/Kadastrale-Percelen-INSPIRE-geharmoniseerd-1-0-0-OGC-API)
 
 #### Inspire download
 
@@ -558,7 +557,7 @@ Status: ✅ Pass – Dataset follows the INSPIRE data specification.
 
 * [Top10NL](https://api.pdok.nl/brt/top10nl/ogc/v1)
 * [BGT](https://api.pdok.nl/lv/bgt/ogc/v1)
-* [BAG](https://api.pdok.nl/lv/bag/ogc/v1)
+* [BAG](https://api.pdok.nl/kadaster/bag/ogc/v2/)
 * [Bestuurlijke gebieden](https://api.pdok.nl/kadaster/bestuurlijkegebieden/ogc/v1)
 * [BRO](https://api.pdok.nl/bzk/bro-gminsamenhang-karakteristieken/ogc/v1)
 * [3D basisvoorziening](https://api.pdok.nl/kadaster/3d-basisvoorziening/ogc/v1)
@@ -704,7 +703,7 @@ ___
 # ogc-api records
 
 * [https://api.pdok.nl](https://api.pdok.nl/)
-* [PDOK OGC API records demo](https://api.pdok.nl/catalogus/v1-demo/collections/metadata:main/)
+* PDOK OGC API records demo
 * [Clearly](https://ogc-demo.clearly.app/v2)
 
 __
