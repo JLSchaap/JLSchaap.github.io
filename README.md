@@ -4,24 +4,22 @@
 
 ## OGC API Features: filteren op ruimtelijke, attributen en tijd (part 3) en CQL (Common Query Language part 5)
 
-* Part 3 <https://docs.ogc.org/is/19-079r2/19-079r2.html#conf_filter>
+- Part 3 <https://docs.ogc.org/is/19-079r2/19-079r2.html#conf_filter>
+- Part 5 <https://docs.ogc.org/is/21-065r2/21-065r2.html#conf_basic-spatial-functions-plus>
 
-* Part 5 <https://docs.ogc.org/is/21-065r2/21-065r2.html#conf_basic-spatial-functions-plus>
-
-## Op alle OGC API Features endpoints dus ook op de BGT
+### Op alle OGC API Features endpoints dus ook op de BGT
 
 b.v. <https://api.pdok.nl/kadaster/bgt/ogc/v1/>
 
-zie conformance class  <https://api.pdok.nl/kadaster/bgt/ogc/v1/conformance>
+zie conformance class <https://api.pdok.nl/kadaster/bgt/ogc/v1/conformance>
 
-## BGT Spoor
+### BGT Spoor
 
 <https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor>
 
-
 ![Polygoon in RD New met donkere omlijning op de PDOK BRT Achtergrondkaart grijs](./brt-grijs-polygoon.png)
 
-## Spatial filter  (Geometries) (naam van geometry attribuut te vinden via het schema van de collectie)
+### Spatial filter (Geometries) (naam van geometry attribuut te vinden via het schema van de collectie)
 
 <https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/items?filter=s_intersects%28geometry%2CPOLYGON%28%284.3179+52.0809%2C4.3200+52.0854%2C4.3249+52.0873%2C4.3298+52.0854%2C4.3319+52.0809%2C4.3298+52.0764%2C4.3249+52.0745%2C4.3200+52.0764%2C4.3179+52.0809%29%29%29&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=1000>
 
@@ -46,41 +44,42 @@ spatial-functions
 └── S_WITHIN
 ```
 
-## Feature filtering alleen op Queryables "subset van velden uit het Schema"
+### Feature filtering alleen op Queryables "subset van velden uit het Schema"
 
 <https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/schema>
 
 <https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/items?filter=s_intersects%28geometry%2CPOLYGON%28%284.3179+52.0809%2C4.3200+52.0854%2C4.3249+52.0873%2C4.3298+52.0854%2C4.3319+52.0809%2C4.3298+52.0764%2C4.3249+52.0745%2C4.3200+52.0764%2C4.3179+52.0809%29%29%29&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=1000&functie=trein>
 
-##  filter op tijd (time filter) peildatum    (Allen's Interval Algebra. https://en.wikipedia.org/wiki/Allen%27s_interval_algebra)
+### filter op tijd (time filter) peildatum (Allen's Interval Algebra. https://en.wikipedia.org/wiki/Allen%27s_interval_algebra)
 
-Zonder datum
+**Zonder datum**
 
 <https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/items?filter=s_intersects%28geometry%2CPOLYGON%28%284.3179+52.0809%2C4.3200+52.0854%2C4.3249+52.0873%2C4.3298+52.0854%2C4.3319+52.0809%2C4.3298+52.0764%2C4.3249+52.0745%2C4.3200+52.0764%2C4.3179+52.0809%29%29%29&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=1000>
 
-Met datum
+**Met datum**
+
 <https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/items?filter=s_intersects%28geometry%2CPOLYGON%28%284.3179+52.0809%2C4.3200+52.0854%2C4.3249+52.0873%2C4.3298+52.0854%2C4.3319+52.0809%2C4.3298+52.0764%2C4.3249+52.0745%2C4.3200+52.0764%2C4.3179+52.0809%29%29%29&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=1000&datetime=2016-01-13T00%3A00%3A00.000Z>
 
 Allen-relaties voor tijdsintervallen kunnen worden uitgedrukt met CQL2-operatoren.  
 Voorbeelden: `before` → `T_BEFORE`, `after` → `T_AFTER`, `equals` → `T_EQUALS` en `overlaps` → `T_INTERSECTS`
 
-##  Cloud Demo Viewer GeoParquet
+## Cloud Demo Viewer GeoParquet
 
 <https://geoparquet.org/>
 
-'''sql
+```sql
 SELECT *
 FROM read_parquet('provinciegebied_parquet_0')
 where naam like '%Holland'
-'''
+```
 
 <https://app.pdok.nl/cloud-demo-viewer/>
 
-##  Demo run
+### Demo run
 
 Demo run: <https://app.pdok.nl/cloud-demo-viewer/demo/>
 
-'''sql
+```sql
 SELECT spoor.*
 FROM read_parquet('spoor_parquet_1') spoor
 WHERE ST_Intersects(
@@ -88,14 +87,13 @@ WHERE ST_Intersects(
   ST_GeomFromText('POLYGON((82186 454735, 82329 455235, 82663 455446, 82997 455235, 83140 454735, 82997 454235, 82663 454024, 82329 454235, 82186 454735))')
 )
   AND spoor.functie = 'trein'
+```
 
-'''
+### Combinatie maken met andere datasets
 
-##  Combinatie maken met andere datasets
+#### recept volg het spoor
 
-## recept volg het spoor
-
-'''sql
+```sql
 SELECT spoor.*
 FROM read_parquet('spoor_parquet_1') spoor
 JOIN read_parquet('gemeentegebied_parquet_2') gemeente
@@ -106,6 +104,7 @@ JOIN read_parquet('gemeentegebied_parquet_2') gemeente
 WHERE gemeente.naam = '''s-Gravenhage'
   AND spoor.functie = 'trein'
   AND spoor.eind_registratie IS NULL
+```
 
 ------------------
 
