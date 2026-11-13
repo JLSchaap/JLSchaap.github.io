@@ -3,19 +3,21 @@
 
 # GEOBUZZ 2026 
 
-# OGC API Features: filteren op ruimtelijke, attributen en tijd (deel 3) — https://docs.ogc.org/is/19-079r2/19-079r2.html#conf_filter
+# OGC API Features: filteren op ruimtelijke, attributen en tijd (deel 3) — <https://docs.ogc.org/is/19-079r2/19-079r2.html#conf_filter>
 
 # Op alle OGC API Features endpoints dus ook op de BGT
-b.v. https://api.pdok.nl/kadaster/bgt/ogc/v1/ 
-zie conformance class  https://api.pdok.nl/kadaster/bgt/ogc/v1/conformance
+b.v. <https://api.pdok.nl/kadaster/bgt/ogc/v1/> 
+zie conformance class  <https://api.pdok.nl/kadaster/bgt/ogc/v1/conformance>
 
 # BGT Spoor
-https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor
+<https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor>
 
 # Spatial filter  (Geometries) (naam van geometry attribuut te vinden via het schema van de collectie)
-https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/items?filter=s_intersects%28geometry%2CPOLYGON%28%284.3179+52.0809%2C4.3200+52.0854%2C4.3249+52.0873%2C4.3298+52.0854%2C4.3319+52.0809%2C4.3298+52.0764%2C4.3249+52.0745%2C4.3200+52.0764%2C4.3179+52.0809%29%29%29&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=1000
+<https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/items?filter=s_intersects%28geometry%2CPOLYGON%28%284.3179+52.0809%2C4.3200+52.0854%2C4.3249+52.0873%2C4.3298+52.0854%2C4.3319+52.0809%2C4.3298+52.0764%2C4.3249+52.0745%2C4.3200+52.0764%2C4.3179+52.0809%29%29%29&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=1000>
 
 
+basic-spatial-functions
+```text
 basic-spatial-functions
 └── S_INTERSECTS (punt en bbox) 
 
@@ -32,25 +34,26 @@ spatial-functions
 ├── S_OVERLAPS
 ├── S_TOUCHES
 └── S_WITHIN
+```
 
 
 
 #Feature filtering alleen op Queryables "subset van velden uit het Schema"
 
 
-https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/schema
+<https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/schema>
 
-https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/items?filter=s_intersects%28geometry%2CPOLYGON%28%284.3179+52.0809%2C4.3200+52.0854%2C4.3249+52.0873%2C4.3298+52.0854%2C4.3319+52.0809%2C4.3298+52.0764%2C4.3249+52.0745%2C4.3200+52.0764%2C4.3179+52.0809%29%29%29&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=1000&functie=trein
+<https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/items?filter=s_intersects%28geometry%2CPOLYGON%28%284.3179+52.0809%2C4.3200+52.0854%2C4.3249+52.0873%2C4.3298+52.0854%2C4.3319+52.0809%2C4.3298+52.0764%2C4.3249+52.0745%2C4.3200+52.0764%2C4.3179+52.0809%29%29%29&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=1000&functie=trein
 
 
 # filter op tijd (time filter) peildatum    (Allen's Interval Algebra. https://en.wikipedia.org/wiki/Allen%27s_interval_algebra)
 
 Zonder datum
 
-https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/items?filter=s_intersects%28geometry%2CPOLYGON%28%284.3179+52.0809%2C4.3200+52.0854%2C4.3249+52.0873%2C4.3298+52.0854%2C4.3319+52.0809%2C4.3298+52.0764%2C4.3249+52.0745%2C4.3200+52.0764%2C4.3179+52.0809%29%29%29&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=1000
+<https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/items?filter=s_intersects%28geometry%2CPOLYGON%28%284.3179+52.0809%2C4.3200+52.0854%2C4.3249+52.0873%2C4.3298+52.0854%2C4.3319+52.0809%2C4.3298+52.0764%2C4.3249+52.0745%2C4.3200+52.0764%2C4.3179+52.0809%29%29%29&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=1000
 
 Met datum 
-https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/items?filter=s_intersects%28geometry%2CPOLYGON%28%284.3179+52.0809%2C4.3200+52.0854%2C4.3249+52.0873%2C4.3298+52.0854%2C4.3319+52.0809%2C4.3298+52.0764%2C4.3249+52.0745%2C4.3200+52.0764%2C4.3179+52.0809%29%29%29&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=1000&datetime=2016-01-13T00%3A00%3A00.000Z
+<https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/items?filter=s_intersects%28geometry%2CPOLYGON%28%284.3179+52.0809%2C4.3200+52.0854%2C4.3249+52.0873%2C4.3298+52.0854%2C4.3319+52.0809%2C4.3298+52.0764%2C4.3249+52.0745%2C4.3200+52.0764%2C4.3179+52.0809%29%29%29&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=1000&datetime=2016-01-13T00%3A00%3A00.000Z
 
 
 Allen-relaties voor tijdsintervallen kunnen worden uitgedrukt met CQL2-operatoren.  
@@ -60,13 +63,13 @@ Voorbeelden: `before` → `T_BEFORE`, `after` → `T_AFTER`, `equals` → `T_EQU
 
 # Cloud Demo Viewer GeoParquet
 
-https://geoparquet.org/ 
+<https://geoparquet.org/>
 
-https://app.pdok.nl/cloud-demo-viewer/
+<https://app.pdok.nl/cloud-demo-viewer/>
 
 # 12 provincies
-Demo run: https://app.pdok.nl/cloud-demo-viewer/demo/
-
+Demo run: <https://app.pdok.nl/cloud-demo-viewer/demo/>
+'''sql       
 SELECT spoor.*
 FROM read_parquet('spoor_parquet_2') spoor
 WHERE ST_Intersects(
@@ -75,7 +78,7 @@ WHERE ST_Intersects(
 )
   AND spoor.functie = 'trein'
 
-
+'''
 maar combinatie maken met andere datasets 
 
 # API DAYS
