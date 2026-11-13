@@ -3,16 +3,21 @@
 
 # GEOBUZZ 2026 
 
-# OGC API Features: filteren op ruimtelijke, attributen en tijd (deel 3) — <https://docs.ogc.org/is/19-079r2/19-079r2.html#conf_filter>
+# OGC API Features: filteren op ruimtelijke, attributen en tijd (part 3) en CQL (Common Query Language part 5)
 
-# Op alle OGC API Features endpoints dus ook op de BGT
+Part 3 <https://docs.ogc.org/is/19-079r2/19-079r2.html#conf_filter>
+Part 5 <https://docs.ogc.org/is/21-065r2/21-065r2.html#conf_basic-spatial-functions-plus>
+
+
+## Op alle OGC API Features endpoints dus ook op de BGT
 b.v. <https://api.pdok.nl/kadaster/bgt/ogc/v1/> 
+
 zie conformance class  <https://api.pdok.nl/kadaster/bgt/ogc/v1/conformance>
 
-# BGT Spoor
+## BGT Spoor
 <https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor>
 
-# Spatial filter  (Geometries) (naam van geometry attribuut te vinden via het schema van de collectie)
+## Spatial filter  (Geometries) (naam van geometry attribuut te vinden via het schema van de collectie)
 <https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/items?filter=s_intersects%28geometry%2CPOLYGON%28%284.3179+52.0809%2C4.3200+52.0854%2C4.3249+52.0873%2C4.3298+52.0854%2C4.3319+52.0809%2C4.3298+52.0764%2C4.3249+52.0745%2C4.3200+52.0764%2C4.3179+52.0809%29%29%29&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=1000>
 
 
@@ -36,10 +41,7 @@ spatial-functions
 └── S_WITHIN
 ```
 
-
-
-#Feature filtering alleen op Queryables "subset van velden uit het Schema"
-
+## Feature filtering alleen op Queryables "subset van velden uit het Schema"
 
 <https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/schema>
 
@@ -74,6 +76,7 @@ where naam like '%Holland'
 
 # Demo run
 Demo run: <https://app.pdok.nl/cloud-demo-viewer/demo/>
+
 '''sql       
 SELECT spoor.*
 FROM read_parquet('spoor_parquet_2') spoor
@@ -84,7 +87,25 @@ WHERE ST_Intersects(
   AND spoor.functie = 'trein'
 
 '''
-maar combinatie maken met andere datasets 
+
+
+# Combinatie maken met andere datasets 
+
+## recept volg het spoor
+
+'''sql
+SELECT spoor.*
+FROM read_parquet('spoor_parquet_1') spoor
+JOIN read_parquet('gemeentegebied_parquet_2') gemeente
+  ON ST_Intersects(
+    spoor.geom,
+    gemeente.geometry
+  )
+WHERE gemeente.naam = '''s-Gravenhage'
+  AND spoor.functie = 'trein'
+  AND spoor.eind_registratie IS NULL
+
+
 
 # API DAYS
 
