@@ -49,7 +49,7 @@ spatial-functions
 
 <https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/spoor/items?filter=s_intersects%28geometry%2CPOLYGON%28%284.3179+52.0809%2C4.3200+52.0854%2C4.3249+52.0873%2C4.3298+52.0854%2C4.3319+52.0809%2C4.3298+52.0764%2C4.3249+52.0745%2C4.3200+52.0764%2C4.3179+52.0809%29%29%29&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FOGC%2F1.3%2FCRS84&limit=1000&functie=trein>
 
-# filter op tijd (time filter) peildatum    (Allen's Interval Algebra. https://en.wikipedia.org/wiki/Allen%27s_interval_algebra)
+##  filter op tijd (time filter) peildatum    (Allen's Interval Algebra. https://en.wikipedia.org/wiki/Allen%27s_interval_algebra)
 
 Zonder datum
 
@@ -61,7 +61,7 @@ Met datum
 Allen-relaties voor tijdsintervallen kunnen worden uitgedrukt met CQL2-operatoren.  
 Voorbeelden: `before` → `T_BEFORE`, `after` → `T_AFTER`, `equals` → `T_EQUALS` en `overlaps` → `T_INTERSECTS`
 
-# Cloud Demo Viewer GeoParquet
+##  Cloud Demo Viewer GeoParquet
 
 <https://geoparquet.org/>
 
@@ -73,7 +73,7 @@ where naam like '%Holland'
 
 <https://app.pdok.nl/cloud-demo-viewer/>
 
-# Demo run
+##  Demo run
 
 Demo run: <https://app.pdok.nl/cloud-demo-viewer/demo/>
 
@@ -88,7 +88,7 @@ WHERE ST_Intersects(
 
 '''
 
-# Combinatie maken met andere datasets
+##  Combinatie maken met andere datasets
 
 ## recept volg het spoor
 
@@ -103,6 +103,9 @@ JOIN read_parquet('gemeentegebied_parquet_2') gemeente
 WHERE gemeente.naam = '''s-Gravenhage'
   AND spoor.functie = 'trein'
   AND spoor.eind_registratie IS NULL
+
+------------------
+
 
 # API DAYS
 
