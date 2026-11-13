@@ -1,5 +1,3 @@
-[Table of content](./READMEtoc.md)
-
 # GEOBUZZ 2026
 
 ## OGC API Features: filteren op ruimtelijke, attributen en tijd (part 3) en CQL (Common Query Language part 5)
